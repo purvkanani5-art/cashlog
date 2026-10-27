@@ -1,6 +1,6 @@
 /* Service worker: cache-first for the app shell so the app opens with no signal.
    Bump CACHE_VERSION on every deploy; old caches are deleted on activate. */
-const CACHE_VERSION = 'cl-v2';
+const CACHE_VERSION = 'cl-v3';
 const SHELL = [
   './',
   './index.html',
@@ -8,6 +8,9 @@ const SHELL = [
   './app.js',
   './manifest.webmanifest',
   './icons/icon.svg',
+  './icons/icon-small.svg',
+  './icons/logo-light.svg',
+  './icons/logo-dark.svg',
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
   './icons/icon-512.png',

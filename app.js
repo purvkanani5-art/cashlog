@@ -4,7 +4,7 @@
    Money is integer paise everywhere; rupee text is converted exactly, never through floating point. */
 'use strict';
 
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.1.1';
 const KEYS = { entries: 'cl.entries', lists: 'cl.lists', settings: 'cl.settings', lastExport: 'cl.lastExport' };
 const LOCK_AFTER_MS = 2 * 60 * 1000; // ask for the PIN again after two minutes away
 // 1.1 (Kuberlekha decision #118): account, account_id = the money account the entry was paid from; one file per account.
@@ -418,10 +418,15 @@ function headerHtml() {
   const tab = (id, label, badge) =>
     `<button class="tab${state.view === id ? ' on' : ''}" data-action="view" data-view="${id}" aria-pressed="${state.view === id}">${label}${badge ? ` <span class="badge">${badge}</span>` : ''}</button>`;
   return `<header class="top">
-    <div class="brand"><img src="./icons/icon.svg" alt="" width="34" height="34" /><div><span class="eyebrow">Kuberlekha</span><h1>Cash Log</h1></div></div>
+    <div class="brand">${wordmark()}<h1>Cash Log</h1></div>
     <div class="month">${monthLine()}</div>
   </header>
   <nav class="tabs" aria-label="Sections">${tab('add', state.editing ? 'Change' : 'Add')}${tab('entries', 'Entries', n || '')}${tab('settings', 'Settings')}</nav>`;
+}
+
+/** Kuberlekha's own name-and-emblem logo (its brand files, copied as-is), in the version for the phone's theme. */
+function wordmark(cls = '') {
+  return `<picture><source srcset="./icons/logo-dark.svg" media="(prefers-color-scheme: dark)" /><img class="wordmark ${cls}" src="./icons/logo-light.svg" alt="Kuberlekha" width="728" height="232" /></picture>`;
 }
 
 function monthLine() {
@@ -619,8 +624,7 @@ function lockHtml() {
   const dots = [0, 1, 2, 3].map((i) => `<span class="dot${i < state.pin.length ? ' on' : ''}"></span>`).join('');
   const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
   return `<section class="lock">
-    <img src="./icons/icon.svg" alt="" width="64" height="64" />
-    <p class="eyebrow">Kuberlekha</p>
+    ${wordmark('lg')}
     <h1>Cash Log</h1>
     <p>Enter your PIN</p>
     <div class="dots" aria-label="${state.pin.length} of 4 digits">${dots}</div>

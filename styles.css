@@ -89,22 +89,21 @@ a {
 
 .brand {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
 }
 
-.brand img {
-  border-radius: 7px;
-}
-
-.brand .eyebrow {
+/* Kuberlekha's logo (name + emblem), as its own app shows it; the dark version switches with the theme. */
+.wordmark {
   display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
-  line-height: 1.1;
+  height: 36px;
+  width: auto;
+}
+
+.wordmark.lg {
+  height: 64px;
+  margin: 0 auto;
 }
 
 h1 {
@@ -525,21 +524,8 @@ h3 {
   padding-top: 12vh;
 }
 
-.lock img {
-  border-radius: 12px;
-}
-
 .lock h1 {
-  margin: 10px 0 4px;
-}
-
-.lock .eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brand);
-  margin: 0;
+  margin: 14px 0 4px;
 }
 
 .dots {

@@ -14,8 +14,10 @@
   read-only here.
 - **Settings:** load the categories, people and accounts list downloaded from Kuberlekha, set a 4-digit PIN.
 
-Plain HTML, CSS and JavaScript; no build step. Hosted on GitHub Pages. Brand colours and the icon frame are
-Kuberlekha's (ledger red, gold, ivory). Bump `CACHE_VERSION` in `sw.js` and `APP_VERSION` in `app.js` on
-every release.
+Plain HTML, CSS and JavaScript; no build step. Hosted on GitHub Pages. The icon and the logo are Kuberlekha's
+own brand files (`icons/icon.svg`, `icons/logo-light.svg`, `icons/logo-dark.svg`, copied unchanged from
+`frontend/public/brand`), and the colours are its ledger red, gold and ivory; the PNG icons are renders of
+`icon.svg` on the same red, so the corners stay red when the phone rounds them. Bump `CACHE_VERSION` in
+`sw.js` and `APP_VERSION` in `app.js` on every release.
 
 The CSV format is documented in Kuberlekha's `docs/parsers.md` (Cash Log section).
