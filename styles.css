@@ -1,34 +1,38 @@
+/* Kuberlekha's brand (its frontend/src/index.css, decision #92): ledger red, gold, ivory. Gold is never text on a
+   light background; the brand colour is red in light mode and gold in dark mode, as in Kuberlekha. */
 :root {
-  --bg: #f4f1e8;
+  --bg: #fffdf8;
   --card: #ffffff;
-  --ink: #17231e;
-  --muted: #6b746f;
-  --line: #e2ddd0;
-  --brand: #0f3d2e;
-  --brand-ink: #f4f1e8;
-  --accent: #b8860b;
-  --spent: #17231e;
-  --received: #1d7a46;
+  --ink: #2a1b14;
+  --muted: #6b5547;
+  --line: #ebe0c9;
+  --brand: #8b1a1a;
+  --brand-ink: #fbf3dc;
+  --accent: #e8b93e;
+  --accent-ink: #2a1a06;
+  --spent: #2a1b14;
+  --received: #1a9c6c;
   --danger: #b3261e;
-  --chip: #ece7da;
+  --chip: #f4ecda;
   --radius: 14px;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0d1512;
-    --card: #16211c;
-    --ink: #eef0ea;
-    --muted: #96a19b;
-    --line: #26332d;
-    --brand: #2e7d5b;
-    --brand-ink: #f4f1e8;
-    --accent: #e9c46a;
-    --spent: #eef0ea;
-    --received: #5fd08f;
+    --bg: #17110e;
+    --card: #1e1713;
+    --ink: #f3ead7;
+    --muted: #b9a893;
+    --line: #3a2e25;
+    --brand: #e8b93e;
+    --brand-ink: #2a1a06;
+    --accent: #f7dc8b;
+    --accent-ink: #2a1a06;
+    --spent: #f3ead7;
+    --received: #2fbf87;
     --danger: #ff8a80;
-    --chip: #22302a;
+    --chip: #2a211b;
     color-scheme: dark;
   }
 }
@@ -93,9 +97,20 @@ a {
   border-radius: 7px;
 }
 
+.brand .eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  line-height: 1.1;
+}
+
 h1 {
   font-size: 20px;
   margin: 0;
+  line-height: 1.15;
 }
 
 h2 {
@@ -158,7 +173,7 @@ h3 {
   padding: 0 6px;
   border-radius: 10px;
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
   font-size: 12px;
   line-height: 20px;
 }
@@ -419,7 +434,7 @@ h3 {
 }
 
 .state.new {
-  color: var(--accent);
+  color: var(--brand);
 }
 
 .state.done {
@@ -516,6 +531,15 @@ h3 {
 
 .lock h1 {
   margin: 10px 0 4px;
+}
+
+.lock .eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin: 0;
 }
 
 .dots {

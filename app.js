@@ -1,13 +1,15 @@
-/* Cash Log: cash spending kept on this phone, exported as a CSV that Kuberlekha imports like a bank statement
-   (Kuberlekha docs/decisions.md #117). Nothing is sent anywhere: the only way out is the Export button.
+/* Kuberlekha Cash Log: spending kept on this phone, exported as a CSV that Kuberlekha imports like a bank statement
+   (Kuberlekha docs/decisions.md #117, #118). Nothing is sent anywhere: the only way out is the Export button.
 
    Money is integer paise everywhere; rupee text is converted exactly, never through floating point. */
 'use strict';
 
-const APP_VERSION = '1.0.0';
+const APP_VERSION = '1.1.0';
 const KEYS = { entries: 'cl.entries', lists: 'cl.lists', settings: 'cl.settings', lastExport: 'cl.lastExport' };
 const LOCK_AFTER_MS = 2 * 60 * 1000; // ask for the PIN again after two minutes away
-const COLUMNS = ['cashlog_id', 'date', 'type', 'amount', 'category', 'category_id', 'person', 'person_id', 'my_share', 'shares', 'note'];
+// 1.1 (Kuberlekha decision #118): account, account_id = the money account the entry was paid from; one file per account.
+const COLUMNS = ['cashlog_id', 'date', 'type', 'amount', 'category', 'category_id', 'person', 'person_id', 'my_share', 'shares', 'note', 'account', 'account_id'];
+const ACCOUNT_KINDS = ['cash', 'bank', 'credit_card'];
 // Kuberlekha's own expense names, until its list is loaded.
 const DEFAULT_CATEGORIES = ['Food and Dining', 'Groceries', 'Transport and Fuel', 'Shopping', 'Health', 'Entertainment', 'Family and Gifts', 'Other Expenses'];
 
@@ -34,7 +36,7 @@ function save(key, value) {
 
 const state = {
   entries: load(KEYS.entries, []),
-  lists: load(KEYS.lists, null) || { entity: null, made: null, categories: DEFAULT_CATEGORIES.map((name) => ({ id: null, name, group: null })), people: [] },
+  lists: load(KEYS.lists, null) || { entity: null, made: null, categories: DEFAULT_CATEGORIES.map((name) => ({ id: null, name, group: null })), people: [], accounts: [] },
   settings: load(KEYS.settings, {}),
   lastExport: load(KEYS.lastExport, null),
   view: 'add',
@@ -112,7 +114,7 @@ function key(name) {
 // ---- the form -----------------------------------------------------------------------------------------------
 
 function blankForm(type = 'spent') {
-  return { type, amount: '', category: null, note: '', date: todayISO(), split: false, people: [], mode: 'equal', includeMe: true, person: null };
+  return { type, amount: '', category: null, note: '', date: todayISO(), split: false, people: [], mode: 'equal', includeMe: true, person: null, account: null };
 }
 
 function form() {
@@ -151,7 +153,8 @@ function entryFromForm(f) {
   if (total === null || total === 0) return { problem: 'Enter the amount.' };
   if (!/^\d{4}-\d{2}-\d{2}$/.test(f.date)) return { problem: 'Choose the date.' };
   if (f.date > todayISO()) return { problem: 'The date is in the future.' };
-  const base = { date: f.date, amountPaise: total, note: f.note.trim() };
+  // account null = the cash account (so entries made before the list had accounts stay cash)
+  const base = { date: f.date, amountPaise: total, note: f.note.trim(), account: f.account ? { id: f.account.id, name: f.account.name, kind: f.account.kind } : null };
   if (f.type === 'received') {
     if (!f.person) return { problem: 'Choose who paid you.' };
     return { entry: { ...base, type: 'received', person: f.person, category: null, mySharePaise: 0, shares: [] } };
@@ -170,6 +173,7 @@ function formFromEntry(e) {
   f.note = e.note || '';
   f.category = e.category;
   f.person = e.person;
+  f.account = e.account || null;
   if (e.shares.length) {
     f.split = true;
     f.mode = 'amounts';
@@ -186,6 +190,29 @@ function categories() {
 
 function people() {
   return state.lists.people;
+}
+
+/** The money accounts from Kuberlekha's list (1.1); empty with an older list. */
+function accounts() {
+  return state.lists.accounts || [];
+}
+
+/** The account an entry belongs to when none was chosen: the first cash account in the list, else plain cash. */
+function cashAccount() {
+  return accounts().find((a) => a.kind === 'cash') || accounts()[0] || { id: null, name: 'Cash in Hand', kind: 'cash' };
+}
+
+/** The account of a form or an entry (null = cash). */
+function accountOf(x) {
+  return (x && x.account) || cashAccount();
+}
+
+function findAccount(name) {
+  return accounts().find((a) => key(a.name) === key(name));
+}
+
+function sameAccount(a, b) {
+  return a.id !== null && b.id !== null ? a.id === b.id : key(a.name) === key(b.name);
 }
 
 /** Most used in the last 90 days first, then the rest in list order. */
@@ -231,12 +258,16 @@ function loadList(data) {
   }
   const cats = data.categories.filter((c) => c && c.name).map((c) => ({ id: Number.isInteger(c.id) ? c.id : null, name: String(c.name), group: c.group ? String(c.group) : null }));
   const ppl = data.people.filter((p) => p && p.name).map((p) => ({ id: Number.isInteger(p.id) ? p.id : null, name: String(p.name) }));
+  // 1.1: the money accounts (cash, bank, card); a list from an older Kuberlekha has none.
+  const accs = (Array.isArray(data.accounts) ? data.accounts : [])
+    .filter((a) => a && a.name)
+    .map((a) => ({ id: Number.isInteger(a.id) ? a.id : null, name: String(a.name), kind: ACCOUNT_KINDS.includes(a.kind) ? a.kind : 'other' }));
   // Names added on the phone stay until Kuberlekha knows them.
   const extraCats = categories().filter((c) => c.id === null && !cats.some((x) => key(x.name) === key(c.name)) && !DEFAULT_CATEGORIES.includes(c.name));
   const extraPeople = people().filter((p) => p.id === null && !ppl.some((x) => key(x.name) === key(p.name)));
-  state.lists = { entity: data.entity || null, made: data.made || null, categories: [...cats, ...extraCats], people: [...ppl, ...extraPeople] };
+  state.lists = { entity: data.entity || null, made: data.made || null, categories: [...cats, ...extraCats], people: [...ppl, ...extraPeople], accounts: accs };
   save(KEYS.lists, state.lists);
-  return { categories: cats.length, people: ppl.length };
+  return { categories: cats.length, people: ppl.length, accounts: accs.length };
 }
 
 // ---- export -------------------------------------------------------------------------------------------------
@@ -263,6 +294,8 @@ function csvOf(entries) {
         e.type === 'spent' ? rupees(e.mySharePaise) : '',
         shares,
         e.note,
+        accountOf(e).name,
+        accountOf(e).id ?? '',
       ]
         .map(csvCell)
         .join(','),
@@ -275,30 +308,51 @@ function pending() {
   return state.entries.filter((e) => !e.exportedAt);
 }
 
+/** One file per account: cash-<date>.csv for the cash account, the account's name for the others. */
+function fileName(account, date) {
+  const slug = sameAccount(account, cashAccount()) ? 'cash' : account.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'account';
+  return `${slug}-${date}.csv`;
+}
+
+/** Entries grouped by the account they were paid from, in list order (cash first). */
+function filesOf(list) {
+  const groups = [];
+  for (const e of list) {
+    const account = accountOf(e);
+    let g = groups.find((x) => sameAccount(x.account, account));
+    if (!g) groups.push((g = { account, entries: [] }));
+    g.entries.push(e);
+  }
+  const date = todayISO();
+  return groups.map((g) => ({ account: g.account, file: new File([csvOf(g.entries)], fileName(g.account, date), { type: 'text/csv' }) }));
+}
+
+function download(file) {
+  const url = URL.createObjectURL(file);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = file.name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
+}
+
 async function exportEntries(all) {
   const list = (all ? state.entries : pending()).slice().sort((a, b) => (a.date + a.createdAt).localeCompare(b.date + b.createdAt));
   if (!list.length) return toast('Nothing new to export.');
-  const name = `cash-${todayISO()}.csv`;
-  const file = new File([csvOf(list)], name, { type: 'text/csv' });
+  const files = filesOf(list);
+  const blobs = files.map((f) => f.file);
   let shared = false;
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+  if (navigator.canShare && navigator.canShare({ files: blobs })) {
     try {
-      await navigator.share({ files: [file], title: name });
+      await navigator.share({ files: blobs, title: blobs.length === 1 ? blobs[0].name : `${blobs.length} Cash Log files` });
       shared = true;
     } catch (err) {
       if (err && err.name === 'AbortError') return; // the owner closed the share sheet: nothing exported
     }
   }
-  if (!shared) {
-    const url = URL.createObjectURL(file);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = name;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 10000);
-  }
+  if (!shared) for (const f of blobs) download(f);
   const now = new Date().toISOString();
   const marked = list.filter((e) => !e.exportedAt).map((e) => e.id);
   for (const e of list) if (!e.exportedAt) e.exportedAt = now;
@@ -306,7 +360,12 @@ async function exportEntries(all) {
   state.lastExport = { at: now, ids: marked, count: list.length };
   save(KEYS.lastExport, state.lastExport);
   render();
-  toast(`Exported ${list.length} ${list.length === 1 ? 'entry' : 'entries'}. Upload ${name} in Kuberlekha → Import → Cash in Hand.`);
+  const n = `${list.length} ${list.length === 1 ? 'entry' : 'entries'}`;
+  toast(
+    files.length === 1
+      ? `Exported ${n}. Upload ${files[0].file.name} in Kuberlekha → Import → ${files[0].account.name}.`
+      : `Exported ${n} in ${files.length} files. In Kuberlekha → Import, upload each to its account: ${files.map((f) => `${f.file.name} → ${f.account.name}`).join(', ')}.`,
+  );
 }
 
 function undoExport() {
@@ -359,7 +418,7 @@ function headerHtml() {
   const tab = (id, label, badge) =>
     `<button class="tab${state.view === id ? ' on' : ''}" data-action="view" data-view="${id}" aria-pressed="${state.view === id}">${label}${badge ? ` <span class="badge">${badge}</span>` : ''}</button>`;
   return `<header class="top">
-    <div class="brand"><img src="./icons/icon.svg" alt="" width="28" height="28" /><h1>Cash Log</h1></div>
+    <div class="brand"><img src="./icons/icon.svg" alt="" width="34" height="34" /><div><span class="eyebrow">Kuberlekha</span><h1>Cash Log</h1></div></div>
     <div class="month">${monthLine()}</div>
   </header>
   <nav class="tabs" aria-label="Sections">${tab('add', state.editing ? 'Change' : 'Add')}${tab('entries', 'Entries', n || '')}${tab('settings', 'Settings')}</nav>`;
@@ -424,6 +483,12 @@ function addHtml() {
       <label class="field"><span class="label">Note</span><input class="input" id="note" maxlength="200" placeholder="${f.type === 'spent' ? 'Lunch, auto, vegetables…' : 'Optional'}" value="${esc(f.note)}" data-input="note" /></label>
       <label class="field date"><span class="label">Date</span><input class="input" id="date" type="date" max="${todayISO()}" value="${esc(f.date)}" data-change="date" /></label>
     </div>`;
+  if (accounts().length > 1) {
+    // 1.1: where the money came from (or went into); the cash account unless tapped.
+    const chosen = accountOf(f);
+    body += `<div class="field accounts"><div class="label">${f.type === 'spent' ? 'Paid from' : 'Received into'}</div>
+      <div class="chips">${accounts().map((a) => chip(a.name, sameAccount(a, chosen), 'account', `data-value="${esc(a.name)}"`)).join('')}</div></div>`;
+  }
   if (f.type === 'spent') body += splitHtml(f);
   body += `<p class="error" id="form-error" role="alert">${esc(state.error || '')}</p>
     <button class="primary" data-action="save">${editing ? 'Save changes' : f.type === 'spent' ? 'Save spend' : 'Save money received'}</button>
@@ -470,6 +535,7 @@ function entrySub(e) {
     if (e.note && e.category) bits.push(e.category.name);
     if (e.shares.length) bits.push(`split: you ${inr(e.mySharePaise)}, ${e.shares.map((s) => `${s.name} ${inr(s.amountPaise)}`).join(', ')}`);
   }
+  if (!sameAccount(accountOf(e), cashAccount())) bits.push(accountOf(e).name);
   return bits.map(esc).join(' · ');
 }
 
@@ -498,7 +564,7 @@ function entriesHtml() {
     ${n.length ? `<div><b>${n.length} new ${n.length === 1 ? 'entry' : 'entries'}</b> <span class="muted">· ${inr(total)} cash</span></div>
     <button class="primary" data-action="export">Export ${n.length} new</button>` : '<div class="muted">Everything is exported.</div>'}
     ${state.lastExport && state.lastExport.ids.length ? `<p class="small muted">Last export ${niceDate(state.lastExport.at.slice(0, 10))}: ${state.lastExport.count} entries · <a href="#" data-action="undoExport">Undo, export them again</a></p>` : ''}
-    <p class="small muted">Save the file to the PC, then in Kuberlekha: Import → Cash in Hand → upload.</p>
+    <p class="small muted">${accounts().length > 1 ? 'One file per account. Save them to the PC, then in Kuberlekha: Import → upload each to the account it is named for.' : 'Save the file to the PC, then in Kuberlekha: Import → Cash in Hand → upload.'}</p>
   </section>`;
   const list = sorted();
   if (!list.length) return html + '<p class="muted center">No entries yet.</p>';
@@ -527,9 +593,9 @@ function settingsHtml() {
   const phonePeople = people().filter((p) => p.id === null);
   return `<section class="card">
     <h2>Categories and people</h2>
-    <p>${L.made ? `From Kuberlekha${L.entity ? ` (${esc(L.entity)})` : ''}, ${niceDate(L.made)}: ` : 'Not loaded from Kuberlekha yet: '}${categories().length} categories, ${people().length} people.</p>
+    <p>${L.made ? `From Kuberlekha${L.entity ? ` (${esc(L.entity)})` : ''}, ${niceDate(L.made)}: ` : 'Not loaded from Kuberlekha yet: '}${categories().length} categories, ${people().length} people, ${accounts().length} ${accounts().length === 1 ? 'account' : 'accounts'}.</p>
     <button class="primary" data-action="loadList">Load list from Kuberlekha</button>
-    <p class="small muted">In Kuberlekha: Import → “download the list for Cash Log”. Send the file to the phone, then load it here. Load it again after adding categories or people there.</p>
+    <p class="small muted">In Kuberlekha: Import → “download the list for Cash Log”. Send the file to the phone, then load it here. Load it again after adding categories, people or accounts there.${accounts().length > 1 ? ` Entries are paid from ${esc(cashAccount().name)} unless you tap another account; the export makes one file per account.` : ''}</p>
     ${phoneCats.length || phonePeople.length ? `<div class="label">Added on the phone (Kuberlekha adds unknown people; an unknown category waits for you in review)</div>
       <div class="chips">${[...phoneCats.map((c) => ['category', c.name]), ...phonePeople.map((p) => ['person', p.name])].map(([k, n]) => `<button class="chip removable" data-action="removeName" data-kind="${k}" data-value="${esc(n)}" aria-label="Remove ${esc(n)}">${esc(n)} ✕</button>`).join('')}</div>` : ''}
   </section>
@@ -546,14 +612,15 @@ function settingsHtml() {
     <button class="ghost danger" data-action="clearOld">Delete exported entries older than 90 days</button>
     <p class="small muted">Entries live only on this phone. Deleting Safari's website data, or the app from the home screen, deletes them too: export often. Exporting an entry twice never puts it in the books twice.</p>
   </section>
-  <p class="muted center small">Cash Log ${APP_VERSION}</p>`;
+  <p class="muted center small">Kuberlekha Cash Log ${APP_VERSION}</p>`;
 }
 
 function lockHtml() {
   const dots = [0, 1, 2, 3].map((i) => `<span class="dot${i < state.pin.length ? ' on' : ''}"></span>`).join('');
   const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
   return `<section class="lock">
-    <img src="./icons/icon.svg" alt="" width="56" height="56" />
+    <img src="./icons/icon.svg" alt="" width="64" height="64" />
+    <p class="eyebrow">Kuberlekha</p>
     <h1>Cash Log</h1>
     <p>Enter your PIN</p>
     <div class="dots" aria-label="${state.pin.length} of 4 digits">${dots}</div>
@@ -600,6 +667,7 @@ function entryDetail(e) {
     lines.push(['Your share', inr(e.mySharePaise)]);
     for (const s of e.shares) lines.push([`${s.name} owes`, inr(s.amountPaise)]);
   }
+  if (accounts().length > 1 || e.account) lines.push([e.type === 'received' ? 'Received into' : 'Paid from', accountOf(e).name]);
   if (e.note) lines.push(['Note', e.note]);
   lines.push(['Status', e.exportedAt ? `Exported ${niceDate(e.exportedAt.slice(0, 10))}` : 'Not exported yet']);
   return `<h2>${esc(entryTitle(e))}</h2>
@@ -650,8 +718,13 @@ const actions = {
   },
   type(el) {
     const f = form();
-    state.form = { ...blankForm(el.dataset.value), amount: f.amount, date: f.date, note: f.note };
+    state.form = { ...blankForm(el.dataset.value), amount: f.amount, date: f.date, note: f.note, account: f.account };
     state.error = null;
+    render();
+  },
+  account(el) {
+    const a = findAccount(el.dataset.value);
+    form().account = a ? { id: a.id, name: a.name, kind: a.kind } : null;
     render();
   },
   category(el) {
@@ -820,7 +893,7 @@ const changes = {
     try {
       const n = loadList(JSON.parse(await file.text()));
       render();
-      toast(`Loaded ${n.categories} categories and ${n.people} people.`);
+      toast(`Loaded ${n.categories} categories, ${n.people} people and ${n.accounts} ${n.accounts === 1 ? 'account' : 'accounts'}.`);
     } catch (err) {
       toast(err instanceof SyntaxError ? 'That file is not a list from Kuberlekha.' : err.message);
     }

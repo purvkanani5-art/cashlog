@@ -1,13 +1,13 @@
 {
-  "name": "Cash Log",
+  "name": "Kuberlekha Cash Log",
   "short_name": "Cash Log",
-  "description": "Cash spending kept on the phone and exported to Kuberlekha as a CSV.",
+  "description": "Kuberlekha's phone companion: spending kept on the phone and exported as a CSV for the books.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0F3D2E",
-  "theme_color": "#0F3D2E",
+  "background_color": "#FBF3DC",
+  "theme_color": "#8B1A1A",
   "icons": [
     { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
