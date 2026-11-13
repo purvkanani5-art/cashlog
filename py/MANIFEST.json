@@ -1,0 +1,14 @@
+{
+ "from": "Kuberlekha v0.16.0",
+ "engine": "1",
+ "files": {
+  "calc/__init__.py": "2da84f6b73a1fa596c4e925585f239050ebf88d865d345e929da84fef307760f",
+  "calc/cashflow.py": "6b39fc8a0190be6acee32ef1c187d10de357a9f7f7ba5edad2ec3480551fa834",
+  "calc/core.py": "9a998dce672122fccb96ad33793656f737c4e67a08e98b36cb91896a130c1ffc",
+  "calc/expr.py": "4d8c59c98d57959498a1c6d9c67c2ec4637b0d2372cf40e5efaa12a21a37431c",
+  "calc/rates.py": "f4e9389fa502f1d6b05c8ee4a8c229ee4e3e48adc381e3ee3da1818f9ef5d8ec",
+  "calc/tax_engine.py": "9078655b89c7801341b4703f8c9da4a7997378f76984352d25531848a5983c7e",
+  "calc/tvm.py": "8606e63d72dba3b263a3ab54cdaf956f1beca532532f28779bda6ea65467c1b4",
+  "calc/utils.py": "4151e206762ff81219b282e3bd4e43e267a9cbd6101ff89bbdd8f6346345a1e4"
+ }
+}

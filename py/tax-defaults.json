@@ -1,0 +1,404 @@
+[
+ {
+  "fy": "2025-26",
+  "name": "New regime, FY 2025-26 (Finance Act 2025)",
+  "slabs": [
+   {
+    "upto_paise": 40000000,
+    "rate_bp": 0
+   },
+   {
+    "upto_paise": 80000000,
+    "rate_bp": 500
+   },
+   {
+    "upto_paise": 120000000,
+    "rate_bp": 1000
+   },
+   {
+    "upto_paise": 160000000,
+    "rate_bp": 1500
+   },
+   {
+    "upto_paise": 200000000,
+    "rate_bp": 2000
+   },
+   {
+    "upto_paise": 240000000,
+    "rate_bp": 2500
+   },
+   {
+    "upto_paise": null,
+    "rate_bp": 3000
+   }
+  ],
+  "standard_deduction_paise": 7500000,
+  "rebate_limit_paise": 120000000,
+  "rebate_max_paise": 6000000,
+  "rebate_on_special": false,
+  "surcharges": [
+   {
+    "above_paise": 500000000,
+    "rate_bp": 1000
+   },
+   {
+    "above_paise": 1000000000,
+    "rate_bp": 1500
+   },
+   {
+    "above_paise": 2000000000,
+    "rate_bp": 2500
+   }
+  ],
+  "cess_bp": 400,
+  "round_to_paise": 1000,
+  "kinds": [
+   {
+    "key": "salary",
+    "label": "Salary and pension",
+    "group": "Salary",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": true,
+    "use_basic_exemption": false,
+    "note": "Gross salary. The standard deduction is taken off for you."
+   },
+   {
+    "key": "house_property",
+    "label": "Income from house property",
+    "group": "House property",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Net annual value less 30% and interest on a let-out property's loan."
+   },
+   {
+    "key": "business_non_speculative",
+    "label": "Business or profession, non-speculative",
+    "group": "Business",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Including F&O trading, which is non-speculative business."
+   },
+   {
+    "key": "business_speculative",
+    "label": "Speculative business (intraday equity)",
+    "group": "Business",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Slab rates. A speculative loss cannot reduce other income."
+   },
+   {
+    "key": "stcg_111a",
+    "label": "Short-term capital gains, listed equity and equity funds (111A)",
+    "group": "Capital gains",
+    "treatment": "special",
+    "rate_bp": 2000,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": true,
+    "note": "STT paid. 20% for transfers on or after 23-Jul-2024."
+   },
+   {
+    "key": "stcg_other",
+    "label": "Short-term capital gains, other assets",
+    "group": "Capital gains",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Taxed at slab rates. Includes debt funds bought from April 2023 (section 50AA)."
+   },
+   {
+    "key": "ltcg_112a",
+    "label": "Long-term capital gains, listed equity and equity funds (112A)",
+    "group": "Capital gains",
+    "treatment": "special",
+    "rate_bp": 1250,
+    "exemption_paise": 12500000,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": true,
+    "note": "12.5% on gains above 1.25 lakh in the year."
+   },
+   {
+    "key": "ltcg_other",
+    "label": "Long-term capital gains, other assets (112)",
+    "group": "Capital gains",
+    "treatment": "special",
+    "rate_bp": 1250,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": true,
+    "note": "Property, gold, unlisted shares and the like: 12.5% without indexation."
+   },
+   {
+    "key": "dividends",
+    "label": "Dividends",
+    "group": "Other sources",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Taxed at slab rates; surcharge capped at 15%."
+   },
+   {
+    "key": "other_sources",
+    "label": "Interest and other income",
+    "group": "Other sources",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Savings and FD interest, family pension and the like."
+   },
+   {
+    "key": "vda_115bbh",
+    "label": "Crypto and other virtual digital assets (115BBH)",
+    "group": "Special rates",
+    "treatment": "special",
+    "rate_bp": 3000,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "30% flat; no deductions and no set-off of losses."
+   },
+   {
+    "key": "winnings_115bb",
+    "label": "Lottery, games and betting winnings (115BB)",
+    "group": "Special rates",
+    "treatment": "special",
+    "rate_bp": 3000,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "30% flat."
+   }
+  ],
+  "note": "Resident individual. Check against the Finance Act for the year before relying on it."
+ },
+ {
+  "fy": "2026-27",
+  "name": "New regime, FY 2026-27 (Income-tax Act 2025)",
+  "slabs": [
+   {
+    "upto_paise": 40000000,
+    "rate_bp": 0
+   },
+   {
+    "upto_paise": 80000000,
+    "rate_bp": 500
+   },
+   {
+    "upto_paise": 120000000,
+    "rate_bp": 1000
+   },
+   {
+    "upto_paise": 160000000,
+    "rate_bp": 1500
+   },
+   {
+    "upto_paise": 200000000,
+    "rate_bp": 2000
+   },
+   {
+    "upto_paise": 240000000,
+    "rate_bp": 2500
+   },
+   {
+    "upto_paise": null,
+    "rate_bp": 3000
+   }
+  ],
+  "standard_deduction_paise": 7500000,
+  "rebate_limit_paise": 120000000,
+  "rebate_max_paise": 6000000,
+  "rebate_on_special": false,
+  "surcharges": [
+   {
+    "above_paise": 500000000,
+    "rate_bp": 1000
+   },
+   {
+    "above_paise": 1000000000,
+    "rate_bp": 1500
+   },
+   {
+    "above_paise": 2000000000,
+    "rate_bp": 2500
+   }
+  ],
+  "cess_bp": 400,
+  "round_to_paise": 1000,
+  "kinds": [
+   {
+    "key": "salary",
+    "label": "Salary and pension",
+    "group": "Salary",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": true,
+    "use_basic_exemption": false,
+    "note": "Gross salary. The standard deduction is taken off for you."
+   },
+   {
+    "key": "house_property",
+    "label": "Income from house property",
+    "group": "House property",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Net annual value less 30% and interest on a let-out property's loan."
+   },
+   {
+    "key": "business_non_speculative",
+    "label": "Business or profession, non-speculative",
+    "group": "Business",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Including F&O trading, which is non-speculative business."
+   },
+   {
+    "key": "business_speculative",
+    "label": "Speculative business (intraday equity)",
+    "group": "Business",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Slab rates. A speculative loss cannot reduce other income."
+   },
+   {
+    "key": "stcg_111a",
+    "label": "Short-term capital gains, listed equity and equity funds (111A)",
+    "group": "Capital gains",
+    "treatment": "special",
+    "rate_bp": 2000,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": true,
+    "note": "STT paid. 20% for transfers on or after 23-Jul-2024."
+   },
+   {
+    "key": "stcg_other",
+    "label": "Short-term capital gains, other assets",
+    "group": "Capital gains",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Taxed at slab rates. Includes debt funds bought from April 2023 (section 50AA)."
+   },
+   {
+    "key": "ltcg_112a",
+    "label": "Long-term capital gains, listed equity and equity funds (112A)",
+    "group": "Capital gains",
+    "treatment": "special",
+    "rate_bp": 1250,
+    "exemption_paise": 12500000,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": true,
+    "note": "12.5% on gains above 1.25 lakh in the year."
+   },
+   {
+    "key": "ltcg_other",
+    "label": "Long-term capital gains, other assets (112)",
+    "group": "Capital gains",
+    "treatment": "special",
+    "rate_bp": 1250,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": true,
+    "note": "Property, gold, unlisted shares and the like: 12.5% without indexation."
+   },
+   {
+    "key": "dividends",
+    "label": "Dividends",
+    "group": "Other sources",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": 1500,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Taxed at slab rates; surcharge capped at 15%."
+   },
+   {
+    "key": "other_sources",
+    "label": "Interest and other income",
+    "group": "Other sources",
+    "treatment": "slab",
+    "rate_bp": 0,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "Savings and FD interest, family pension and the like."
+   },
+   {
+    "key": "vda_115bbh",
+    "label": "Crypto and other virtual digital assets (115BBH)",
+    "group": "Special rates",
+    "treatment": "special",
+    "rate_bp": 3000,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "30% flat; no deductions and no set-off of losses."
+   },
+   {
+    "key": "winnings_115bb",
+    "label": "Lottery, games and betting winnings (115BB)",
+    "group": "Special rates",
+    "treatment": "special",
+    "rate_bp": 3000,
+    "exemption_paise": 0,
+    "surcharge_cap_bp": null,
+    "standard_deduction": false,
+    "use_basic_exemption": false,
+    "note": "30% flat."
+   }
+  ],
+  "note": "Budget 2026 kept the FY 2025-26 slabs and rates. From this year share buybacks are taxed as capital gains, not dividends."
+ }
+]

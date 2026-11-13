@@ -156,7 +156,8 @@ h3 {
   padding: 9px 0;
   border-radius: 9px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px; /* five tabs since 1.2 */
+  min-width: 0;
   color: var(--muted);
 }
 
@@ -561,4 +562,315 @@ h3 {
   background: var(--card);
   font-size: 26px;
   font-weight: 600;
+}
+
+/* ---- Calc and Tax tabs (1.2, tools.js) ---------------------------------------------------------------------- */
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.r {
+  text-align: right;
+}
+
+.t-input {
+  position: relative;
+}
+
+.t-pre,
+.t-post {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.t-pre {
+  left: 12px;
+}
+
+.t-post {
+  right: 12px;
+}
+
+.t-input .input.num,
+.t-row .input.num {
+  text-align: right;
+}
+
+.t-pad-l {
+  padding-left: 28px;
+}
+
+.t-pad-r {
+  padding-right: 30px;
+}
+
+.t-solved {
+  background: var(--chip);
+  font-weight: 700;
+  text-align: right;
+}
+
+.t-err {
+  color: var(--danger);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.t-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.t-row .input {
+  min-width: 0;
+}
+
+.t-cf {
+  width: 34px;
+  flex: none;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.t-count {
+  width: 64px;
+  flex: none;
+}
+
+.t-x {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.t-answer .t-big {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 28px;
+  font-weight: 700;
+  word-break: break-all;
+  margin: 2px 0 6px;
+}
+
+.t-values {
+  margin: 10px 0 0;
+}
+
+.t-values > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
+
+.t-values > div.strong {
+  font-weight: 700;
+}
+
+.t-values dt {
+  flex: 1;
+}
+
+.t-values dd {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: right;
+}
+
+.t-sto {
+  border: 1px solid var(--line);
+  background: var(--chip);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 6px;
+  color: var(--ink);
+}
+
+.t-warn {
+  border-color: var(--accent);
+}
+
+.t-steps {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  padding-left: 18px;
+}
+
+details.card summary {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.t-scroll {
+  max-height: 420px;
+  overflow: auto;
+  margin-top: 8px;
+}
+
+.t-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.t-table th,
+.t-table td {
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.t-table th {
+  position: sticky;
+  top: 0;
+  background: var(--card);
+  color: var(--muted);
+  font-weight: 600;
+  text-align: left;
+}
+
+.t-table th.r {
+  text-align: right;
+}
+
+.t-table td.w {
+  white-space: normal;
+  min-width: 7em;
+}
+
+.t-sheets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.t-sheets .select {
+  flex: 1 1 100%;
+}
+
+.t-sheets .ghost {
+  flex: 1;
+  width: auto;
+  padding: 9px;
+  font-size: 14px;
+}
+
+.t-padbtn {
+  margin: 0 0 14px;
+}
+
+.t-expr {
+  font-size: 22px;
+  text-align: right;
+}
+
+.t-keys {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.t-keys button,
+.t-fns button,
+.t-regs button {
+  border: 1px solid var(--line);
+  background: var(--card);
+  border-radius: 10px;
+  min-height: 44px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.t-keys .t-eq {
+  grid-column: span 2;
+  background: var(--brand);
+  color: var(--brand-ink);
+  border: 0;
+}
+
+.t-fns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.t-fns button {
+  font-size: 14px;
+  min-height: 36px;
+  padding: 0 10px;
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+.t-regs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.t-regs button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.t-regs span {
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.t-tape {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 260px;
+  overflow: auto;
+}
+
+.t-tape button {
+  width: 100%;
+  text-align: right;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 6px 2px;
+  color: var(--ink);
+}
+
+.t-group {
+  margin-top: 14px;
+  color: var(--brand);
+}
+
+.link {
+  border: 0;
+  background: transparent;
+  color: var(--brand);
+  font-weight: 600;
+  padding: 0 4px;
 }

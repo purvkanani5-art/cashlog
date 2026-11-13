@@ -1,0 +1,4 @@
+# Kuberlekha's engine files are checked by hash (py/MANIFEST.json); Pyodide is vendored as published.
+py/** -text
+pyodide/** -text
+tests/vectors.json -text

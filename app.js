@@ -4,7 +4,7 @@
    Money is integer paise everywhere; rupee text is converted exactly, never through floating point. */
 'use strict';
 
-const APP_VERSION = '1.1.1';
+const APP_VERSION = '1.2.0';
 const KEYS = { entries: 'cl.entries', lists: 'cl.lists', settings: 'cl.settings', lastExport: 'cl.lastExport' };
 const LOCK_AFTER_MS = 2 * 60 * 1000; // ask for the PIN again after two minutes away
 // 1.1 (Kuberlekha decision #118): account, account_id = the money account the entry was paid from; one file per account.
@@ -265,7 +265,9 @@ function loadList(data) {
   // Names added on the phone stay until Kuberlekha knows them.
   const extraCats = categories().filter((c) => c.id === null && !cats.some((x) => key(x.name) === key(c.name)) && !DEFAULT_CATEGORIES.includes(c.name));
   const extraPeople = people().filter((p) => p.id === null && !ppl.some((x) => key(x.name) === key(p.name)));
-  state.lists = { entity: data.entity || null, made: data.made || null, categories: [...cats, ...extraCats], people: [...ppl, ...extraPeople], accounts: accs };
+  // 1.2: the owner's income tax rates for the Tax tab; a list from an older Kuberlekha has none (built-in rates then).
+  const taxRules = Array.isArray(data.tax_rules) && data.tax_rules.every((r) => r && r.fy && Array.isArray(r.slabs) && Array.isArray(r.kinds)) ? data.tax_rules : null;
+  state.lists = { entity: data.entity || null, made: data.made || null, categories: [...cats, ...extraCats], people: [...ppl, ...extraPeople], accounts: accs, tax_rules: taxRules };
   save(KEYS.lists, state.lists);
   return { categories: cats.length, people: ppl.length, accounts: accs.length };
 }
@@ -410,6 +412,12 @@ function render() {
     $app.innerHTML = lockHtml();
     return;
   }
+  if (state.view === 'calc' || state.view === 'tax') {
+    // 1.2 (Kuberlekha #120): Kuberlekha's calculator engine, in Python on the phone; tools.js draws these tabs.
+    $app.innerHTML = headerHtml() + '<div id="tool"></div>';
+    window.CashTools.mount(state.view, document.getElementById('tool'));
+    return;
+  }
   $app.innerHTML = headerHtml() + (state.view === 'entries' ? entriesHtml() : state.view === 'settings' ? settingsHtml() : addHtml());
 }
 
@@ -421,7 +429,7 @@ function headerHtml() {
     <div class="brand">${wordmark()}<h1>Cash Log</h1></div>
     <div class="month">${monthLine()}</div>
   </header>
-  <nav class="tabs" aria-label="Sections">${tab('add', state.editing ? 'Change' : 'Add')}${tab('entries', 'Entries', n || '')}${tab('settings', 'Settings')}</nav>`;
+  <nav class="tabs" aria-label="Sections">${tab('add', state.editing ? 'Change' : 'Add')}${tab('entries', 'Entries', n || '')}${tab('calc', 'Calc')}${tab('tax', 'Tax')}${tab('settings', 'Settings')}</nav>`;
 }
 
 /** Kuberlekha's own name-and-emblem logo (its brand files, copied as-is), in the version for the phone's theme. */
@@ -600,6 +608,7 @@ function settingsHtml() {
     <h2>Categories and people</h2>
     <p>${L.made ? `From Kuberlekha${L.entity ? ` (${esc(L.entity)})` : ''}, ${niceDate(L.made)}: ` : 'Not loaded from Kuberlekha yet: '}${categories().length} categories, ${people().length} people, ${accounts().length} ${accounts().length === 1 ? 'account' : 'accounts'}.</p>
     <button class="primary" data-action="loadList">Load list from Kuberlekha</button>
+    <p class="small muted">${state.lists.tax_rules ? `The Tax tab uses the rates from this list (FY ${state.lists.tax_rules.map((r) => esc(r.fy)).join(', ')}).` : 'The Tax tab uses built-in rates until a list from Kuberlekha 0.16 or later is loaded.'}</p>
     <p class="small muted">In Kuberlekha: Import → “download the list for Cash Log”. Send the file to the phone, then load it here. Load it again after adding categories, people or accounts there.${accounts().length > 1 ? ` Entries are paid from ${esc(cashAccount().name)} unless you tap another account; the export makes one file per account.` : ''}</p>
     ${phoneCats.length || phonePeople.length ? `<div class="label">Added on the phone (Kuberlekha adds unknown people; an unknown category waits for you in review)</div>
       <div class="chips">${[...phoneCats.map((c) => ['category', c.name]), ...phonePeople.map((p) => ['person', p.name])].map(([k, n]) => `<button class="chip removable" data-action="removeName" data-kind="${k}" data-value="${esc(n)}" aria-label="Remove ${esc(n)}">${esc(n)} ✕</button>`).join('')}</div>` : ''}
@@ -941,7 +950,9 @@ document.addEventListener('input', (e) => {
 
 // ---- start --------------------------------------------------------------------------------------------------
 
+window.cashLogTaxRules = () => state.lists.tax_rules || null;
+
 state.locked = hasPin();
 render();
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
-if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('./sw.js').catch(() => {});
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) navigator.serviceWorker.register('./sw.js').catch(() => {});
