@@ -4,7 +4,7 @@
    Money is integer paise everywhere; rupee text is converted exactly, never through floating point. */
 'use strict';
 
-const APP_VERSION = '1.2.0';
+const APP_VERSION = '1.2.1';
 const KEYS = { entries: 'cl.entries', lists: 'cl.lists', settings: 'cl.settings', lastExport: 'cl.lastExport' };
 const LOCK_AFTER_MS = 2 * 60 * 1000; // ask for the PIN again after two minutes away
 // 1.1 (Kuberlekha decision #118): account, account_id = the money account the entry was paid from; one file per account.
@@ -57,7 +57,7 @@ function saveEntries() {
 
 /** '1,250.5' -> 125050; anything that is not an exact rupee amount -> null. */
 function toPaise(text) {
-  const s = String(text ?? '').replace(/[₹,\s]/g, '');
+  const s = String(text ?? '').replace(/[â‚¹,\s]/g, '');
   if (!/^\d+(\.\d{1,2})?$/.test(s)) return null;
   const [r, p = ''] = s.split('.');
   return Number(r) * 100 + Number((p + '00').slice(0, 2));
@@ -68,12 +68,12 @@ function rupees(paise) {
   return `${Math.floor(paise / 100)}.${String(paise % 100).padStart(2, '0')}`;
 }
 
-/** 12345650 -> '₹1,23,456.50' (Indian grouping); whole rupees drop the paise. */
+/** 12345650 -> 'â‚¹1,23,456.50' (Indian grouping); whole rupees drop the paise. */
 function inr(paise) {
   const whole = String(Math.floor(Math.abs(paise) / 100));
   const grouped = whole.length > 3 ? whole.slice(0, -3).replace(/\B(?=(\d{2})+$)/g, ',') + ',' + whole.slice(-3) : whole;
   const p = Math.abs(paise) % 100;
-  return `${paise < 0 ? '−' : ''}₹${grouped}${p ? '.' + String(p).padStart(2, '0') : ''}`;
+  return `${paise < 0 ? 'âˆ’' : ''}â‚¹${grouped}${p ? '.' + String(p).padStart(2, '0') : ''}`;
 }
 
 function todayISO() {
@@ -365,8 +365,8 @@ async function exportEntries(all) {
   const n = `${list.length} ${list.length === 1 ? 'entry' : 'entries'}`;
   toast(
     files.length === 1
-      ? `Exported ${n}. Upload ${files[0].file.name} in Kuberlekha → Import → ${files[0].account.name}.`
-      : `Exported ${n} in ${files.length} files. In Kuberlekha → Import, upload each to its account: ${files.map((f) => `${f.file.name} → ${f.account.name}`).join(', ')}.`,
+      ? `Exported ${n}. Upload ${files[0].file.name} in Kuberlekha â†’ Import â†’ ${files[0].account.name}.`
+      : `Exported ${n} in ${files.length} files. In Kuberlekha â†’ Import, upload each to its account: ${files.map((f) => `${f.file.name} â†’ ${f.account.name}`).join(', ')}.`,
   );
 }
 
@@ -462,14 +462,14 @@ function categorySelect(f) {
     groups.get(g).push(c);
   }
   const opt = (c) => `<option value="${esc(c.name)}"${f.category && key(f.category.name) === key(c.name) ? ' selected' : ''}>${esc(c.name)}</option>`;
-  let html = '<option value="">All categories…</option>';
+  let html = '<option value="">All categoriesâ€¦</option>';
   for (const [g, items] of groups) html += g ? `<optgroup label="${esc(g)}">${items.map(opt).join('')}</optgroup>` : items.map(opt).join('');
-  return `<select class="select" data-change="category" aria-label="All categories">${html}<option value="__new">+ New category…</option></select>`;
+  return `<select class="select" data-change="category" aria-label="All categories">${html}<option value="__new">+ New categoryâ€¦</option></select>`;
 }
 
 function personSelect(change, label) {
   const opts = people().map((p) => `<option value="${esc(p.name)}">${esc(p.name)}</option>`).join('');
-  return `<select class="select" data-change="${change}" aria-label="${label}"><option value="">${label}…</option>${opts}<option value="__new">+ New person…</option></select>`;
+  return `<select class="select" data-change="${change}" aria-label="${label}"><option value="">${label}â€¦</option>${opts}<option value="__new">+ New personâ€¦</option></select>`;
 }
 
 function addHtml() {
@@ -477,7 +477,7 @@ function addHtml() {
   const editing = state.editing ? state.entries.find((e) => e.id === state.editing) : null;
   let body = `<section class="card">
     ${seg('type', f.type, [['spent', 'Spent'], ['received', 'Received']])}
-    <label class="amount"><span>₹</span><input id="amount" inputmode="decimal" autocomplete="off" placeholder="0" value="${esc(f.amount)}" data-input="amount" aria-label="Amount in rupees" /></label>`;
+    <label class="amount"><span>â‚¹</span><input id="amount" inputmode="decimal" autocomplete="off" placeholder="0" value="${esc(f.amount)}" data-input="amount" aria-label="Amount in rupees" /></label>`;
   if (f.type === 'spent') {
     const top = topCategories();
     const chosenTop = f.category && top.some((c) => key(c.name) === key(f.category.name));
@@ -493,7 +493,7 @@ function addHtml() {
       ${personSelect('person', 'All people')}</div>`;
   }
   body += `<div class="row2">
-      <label class="field"><span class="label">Note</span><input class="input" id="note" maxlength="200" placeholder="${f.type === 'spent' ? 'Lunch, auto, vegetables…' : 'Optional'}" value="${esc(f.note)}" data-input="note" /></label>
+      <label class="field"><span class="label">Note</span><input class="input" id="note" maxlength="200" placeholder="${f.type === 'spent' ? 'Lunch, auto, vegetablesâ€¦' : 'Optional'}" value="${esc(f.note)}" data-input="note" /></label>
       <label class="field date"><span class="label">Date</span><input class="input" id="date" type="date" max="${todayISO()}" value="${esc(f.date)}" data-change="date" /></label>
     </div>`;
   if (accounts().length > 1) {
@@ -533,7 +533,7 @@ function splitSummary(f) {
   const s = splitOf(f);
   if (s.problem) return `<span class="muted">${esc(s.problem)}</span>`;
   const parts = [`You ${inr(s.mine)}`, ...s.shares.map((x) => `${esc(x.name)} ${inr(x.amountPaise)}`)];
-  return parts.join(' · ') + (s.shares.length ? `<div class="muted small">They owe you ${inr(s.shares.reduce((t, x) => t + x.amountPaise, 0))}</div>` : '');
+  return parts.join(' Â· ') + (s.shares.length ? `<div class="muted small">They owe you ${inr(s.shares.reduce((t, x) => t + x.amountPaise, 0))}</div>` : '');
 }
 
 function entryTitle(e) {
@@ -543,20 +543,20 @@ function entryTitle(e) {
 
 function entrySub(e) {
   const bits = [];
-  if (e.type === 'received') bits.push('Received' + (e.note ? ` · ${e.note}` : ''));
+  if (e.type === 'received') bits.push('Received' + (e.note ? ` Â· ${e.note}` : ''));
   else {
     if (e.note && e.category) bits.push(e.category.name);
     if (e.shares.length) bits.push(`split: you ${inr(e.mySharePaise)}, ${e.shares.map((s) => `${s.name} ${inr(s.amountPaise)}`).join(', ')}`);
   }
   if (!sameAccount(accountOf(e), cashAccount())) bits.push(accountOf(e).name);
-  return bits.map(esc).join(' · ');
+  return bits.map(esc).join(' Â· ');
 }
 
 function entryRow(e) {
-  const sign = e.type === 'received' ? '+' : '−';
+  const sign = e.type === 'received' ? '+' : 'âˆ’';
   return `<button class="entry" data-action="open" data-id="${e.id}">
     <span class="what"><span class="title">${esc(entryTitle(e))}</span><span class="sub">${entrySub(e)}</span></span>
-    <span class="how"><span class="amt ${e.type}">${sign}${inr(e.amountPaise).replace('−', '')}</span><span class="state ${e.exportedAt ? 'done' : 'new'}">${e.exportedAt ? 'Exported' : 'New'}</span></span>
+    <span class="how"><span class="amt ${e.type}">${sign}${inr(e.amountPaise).replace('âˆ’', '')}</span><span class="state ${e.exportedAt ? 'done' : 'new'}">${e.exportedAt ? 'Exported' : 'New'}</span></span>
   </button>`;
 }
 
@@ -567,17 +567,17 @@ function sorted() {
 function recentHtml() {
   const list = sorted().slice(0, 5);
   if (!list.length) return '<p class="muted center">Your cash entries appear here.</p>';
-  return `<section class="group"><h2>Recent <a href="#" data-action="view" data-view="entries">All ›</a></h2>${list.map(entryRow).join('')}</section>`;
+  return `<section class="group"><h2>Recent <a href="#" data-action="view" data-view="entries">All â€º</a></h2>${list.map(entryRow).join('')}</section>`;
 }
 
 function entriesHtml() {
   const n = pending();
   const total = n.reduce((s, e) => s + (e.type === 'spent' ? -e.amountPaise : e.amountPaise), 0);
   let html = `<section class="card export">
-    ${n.length ? `<div><b>${n.length} new ${n.length === 1 ? 'entry' : 'entries'}</b> <span class="muted">· ${inr(total)} cash</span></div>
+    ${n.length ? `<div><b>${n.length} new ${n.length === 1 ? 'entry' : 'entries'}</b> <span class="muted">Â· ${inr(total)} cash</span></div>
     <button class="primary" data-action="export">Export ${n.length} new</button>` : '<div class="muted">Everything is exported.</div>'}
-    ${state.lastExport && state.lastExport.ids.length ? `<p class="small muted">Last export ${niceDate(state.lastExport.at.slice(0, 10))}: ${state.lastExport.count} entries · <a href="#" data-action="undoExport">Undo, export them again</a></p>` : ''}
-    <p class="small muted">${accounts().length > 1 ? 'One file per account. Save them to the PC, then in Kuberlekha: Import → upload each to the account it is named for.' : 'Save the file to the PC, then in Kuberlekha: Import → Cash in Hand → upload.'}</p>
+    ${state.lastExport && state.lastExport.ids.length ? `<p class="small muted">Last export ${niceDate(state.lastExport.at.slice(0, 10))}: ${state.lastExport.count} entries Â· <a href="#" data-action="undoExport">Undo, export them again</a></p>` : ''}
+    <p class="small muted">${accounts().length > 1 ? 'One file per account. Save them to the PC, then in Kuberlekha: Import â†’ upload each to the account it is named for.' : 'Save the file to the PC, then in Kuberlekha: Import â†’ Cash in Hand â†’ upload.'}</p>
   </section>`;
   const list = sorted();
   if (!list.length) return html + '<p class="muted center">No entries yet.</p>';
@@ -609,9 +609,9 @@ function settingsHtml() {
     <p>${L.made ? `From Kuberlekha${L.entity ? ` (${esc(L.entity)})` : ''}, ${niceDate(L.made)}: ` : 'Not loaded from Kuberlekha yet: '}${categories().length} categories, ${people().length} people, ${accounts().length} ${accounts().length === 1 ? 'account' : 'accounts'}.</p>
     <button class="primary" data-action="loadList">Load list from Kuberlekha</button>
     <p class="small muted">${state.lists.tax_rules ? `The Tax tab uses the rates from this list (FY ${state.lists.tax_rules.map((r) => esc(r.fy)).join(', ')}).` : 'The Tax tab uses built-in rates until a list from Kuberlekha 0.16 or later is loaded.'}</p>
-    <p class="small muted">In Kuberlekha: Import → “download the list for Cash Log”. Send the file to the phone, then load it here. Load it again after adding categories, people or accounts there.${accounts().length > 1 ? ` Entries are paid from ${esc(cashAccount().name)} unless you tap another account; the export makes one file per account.` : ''}</p>
+    <p class="small muted">In Kuberlekha: Import â†’ â€œdownload the list for Cash Logâ€. Send the file to the phone, then load it here. Load it again after adding categories, people or accounts there.${accounts().length > 1 ? ` Entries are paid from ${esc(cashAccount().name)} unless you tap another account; the export makes one file per account.` : ''}</p>
     ${phoneCats.length || phonePeople.length ? `<div class="label">Added on the phone (Kuberlekha adds unknown people; an unknown category waits for you in review)</div>
-      <div class="chips">${[...phoneCats.map((c) => ['category', c.name]), ...phonePeople.map((p) => ['person', p.name])].map(([k, n]) => `<button class="chip removable" data-action="removeName" data-kind="${k}" data-value="${esc(n)}" aria-label="Remove ${esc(n)}">${esc(n)} ✕</button>`).join('')}</div>` : ''}
+      <div class="chips">${[...phoneCats.map((c) => ['category', c.name]), ...phonePeople.map((p) => ['person', p.name])].map(([k, n]) => `<button class="chip removable" data-action="removeName" data-kind="${k}" data-value="${esc(n)}" aria-label="Remove ${esc(n)}">${esc(n)} âœ•</button>`).join('')}</div>` : ''}
   </section>
   <section class="card">
     <h2>PIN</h2>
@@ -631,14 +631,14 @@ function settingsHtml() {
 
 function lockHtml() {
   const dots = [0, 1, 2, 3].map((i) => `<span class="dot${i < state.pin.length ? ' on' : ''}"></span>`).join('');
-  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', '⌫'];
+  const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', 'âŒ«'];
   return `<section class="lock">
     ${wordmark('lg')}
     <h1>Cash Log</h1>
     <p>Enter your PIN</p>
     <div class="dots" aria-label="${state.pin.length} of 4 digits">${dots}</div>
     <p class="error" role="alert">${esc(state.error || '')}</p>
-    <div class="keypad">${keys.map((k) => (k ? `<button data-action="pinKey" data-value="${k}" aria-label="${k === '⌫' ? 'Delete' : k}">${k}</button>` : '<span></span>')).join('')}</div>
+    <div class="keypad">${keys.map((k) => (k ? `<button data-action="pinKey" data-value="${k}" aria-label="${k === 'âŒ«' ? 'Delete' : k}">${k}</button>` : '<span></span>')).join('')}</div>
   </section>`;
 }
 
@@ -674,7 +674,7 @@ function entryDetail(e) {
   const lines = [
     ['Date', niceDate(e.date)],
     ['Amount', inr(e.amountPaise)],
-    e.type === 'received' ? ['From', e.person.name] : ['Category', e.category ? e.category.name : '—'],
+    e.type === 'received' ? ['From', e.person.name] : ['Category', e.category ? e.category.name : 'â€”'],
   ];
   if (e.type === 'spent' && e.shares.length) {
     lines.push(['Your share', inr(e.mySharePaise)]);
@@ -859,7 +859,7 @@ const actions = {
   async pinKey(el) {
     const k = el.dataset.value;
     state.error = null;
-    if (k === '⌫') state.pin = state.pin.slice(0, -1);
+    if (k === 'âŒ«') state.pin = state.pin.slice(0, -1);
     else if (state.pin.length < 4) state.pin += k;
     if (state.pin.length === 4) {
       if ((await pinHash(state.pin)) === state.settings.pinHash) {

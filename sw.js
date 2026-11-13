@@ -3,7 +3,7 @@
 
    1.2: the calculator engine (py/) is part of the shell. Pyodide (pyodide/, about 13 MB) has its own cache named
    for its version: it is downloaded once, kept across app releases, and replaced only when PYODIDE changes. */
-const CACHE_VERSION = 'cl-v4';
+const CACHE_VERSION = 'cl-v5';
 const PYODIDE = 'cl-pyodide-314.0.7';
 const SHELL = [
   './',

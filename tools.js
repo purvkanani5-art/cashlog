@@ -388,7 +388,9 @@ const CashTools = (() => {
     if (!T.py) {
       T.root.innerHTML = T.loadError
         ? `<section class="card"><h2>The calculator could not start</h2><p>${esc(T.loadError)}</p><p class="small muted">Open Cash Log once with a signal so it can keep the calculator on this phone; after that it works offline.</p><button type="button" class="primary" data-t-retry>Try again</button></section>`
-        : '<section class="card"><h2>Starting the calculator…</h2><p class="small muted">Python is loading on this phone. The first time takes a few seconds; after that it opens without a signal.</p></section>';
+        : `<section class="card"><h2>Starting the calculator…</h2><p class="small muted">Python is loading on this phone. The first time takes a few seconds; after that it opens without a signal.</p>${
+            T.slow ? '<p>Still loading. With a weak signal the first start can take a minute or two.</p><button type="button" class="ghost" data-t-retry>Try again</button>' : ''
+          }</section>`;
       return;
     }
     try {
@@ -476,7 +478,10 @@ const CashTools = (() => {
     if (!el || !T.root.contains(el)) return;
     const d = el.dataset;
     const c = T.py && T.view === 'calc' ? calcDef() : null;
-    if ('tRetry' in d) return start();
+    if ('tRetry' in d) {
+      if (T.loading && !T.py) location.reload(); // a stuck download: start afresh
+      return start();
+    }
     if (d.tSolve !== undefined && c) {
       values(c)[d.tKey] = d.tSolve;
       persist();
@@ -615,6 +620,13 @@ const CashTools = (() => {
 
   function start() {
     T.loadError = null;
+    T.slow = false;
+    clearTimeout(T.slowTimer);
+    if (!T.py)
+      T.slowTimer = setTimeout(() => {
+        T.slow = true;
+        if (!T.py) draw();
+      }, 45_000);
     draw();
     python()
       .then(() => draw())

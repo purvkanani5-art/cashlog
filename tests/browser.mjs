@@ -148,6 +148,16 @@ await check('Offline after one visit: the calculator still works with no network
   await context.setOffline(false);
 });
 
+await check('a missing engine file shows an error, not an endless "Starting"', async () => {
+  const ctx2 = await browser.newContext({ ...devices['iPhone 13'], serviceWorkers: 'block' });
+  const p2 = await ctx2.newPage();
+  await p2.route('**/py/calc/core.py', (r) => r.fulfill({ status: 404, body: '' }));
+  await p2.goto('http://localhost:8124/');
+  await p2.getByRole('button', { name: 'Calc' }).click();
+  await expect(p2.getByText('The calculator could not start')).toBeVisible();
+  await ctx2.close();
+});
+
 await check('no script errors', async () => {
   if (errors.length) throw new Error(errors.join('\n'));
 });
