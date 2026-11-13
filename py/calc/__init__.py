@@ -11,10 +11,14 @@ from collections.abc import Mapping
 from typing import Any
 
 from . import (  # noqa: F401  (each registers its calculators)
+    bonds,
     cashflow,
     depreciation,
+    derivatives,
+    equity,
     loans,
     planners,
+    portfolio,
     rates,
     returns,
     risk,

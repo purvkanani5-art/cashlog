@@ -152,6 +152,13 @@ await check('Calc: the risk-free rate comes from the Kuberlekha list', async () 
   await expect(page.getByRole('region', { name: 'Answer' })).toContainText('0.375'); // (14 - 7.25) / 18
 });
 
+await check('Calc: bond price matches Excel PRICE (an optional date stays blank)', async () => {
+  await page.getByRole('button', { name: 'Calc' }).click();
+  await page.getByLabel('Calculator', { exact: true }).selectOption('bond');
+  await expect(page.getByRole('region', { name: 'Answer' })).toContainText('94.634362');
+  await expect(page.getByLabel('Call date (optional)')).toHaveValue('');
+});
+
 await check('Offline after one visit: the calculator still works with no network', async () => {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect

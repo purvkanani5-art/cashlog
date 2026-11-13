@@ -1,5 +1,5 @@
 {
- "made_by": "Kuberlekha v0.18.0",
+ "made_by": "Kuberlekha v0.19.0",
  "engine": "1",
  "python": "3.14.8",
  "catalogue": {
@@ -3175,6 +3175,2578 @@
     ]
    },
    {
+    "key": "portfolio",
+    "title": "Portfolio",
+    "calculators": [
+     {
+      "key": "portfolio",
+      "family": "portfolio",
+      "title": "Portfolio return and risk",
+      "description": "Weights, expected returns and standard deviations of any number of assets with their correlations: the portfolio's return and risk, the diversification benefit, and for two assets the minimum-variance mix and every mix in between.",
+      "keywords": "portfolio return risk standard deviation variance correlation covariance diversification minimum variance efficient frontier markowitz two asset",
+      "fields": [
+       {
+        "key": "assets",
+        "label": "Assets",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "name",
+          "label": "Asset",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "w",
+          "label": "Weight %",
+          "kind": "percent",
+          "optional": false
+         },
+         {
+          "key": "er",
+          "label": "Expected return %",
+          "kind": "percent",
+          "optional": false
+         },
+         {
+          "key": "sd",
+          "label": "Standard deviation %",
+          "kind": "percent",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "name": "Equity",
+          "w": "60",
+          "er": "13",
+          "sd": "18"
+         },
+         {
+          "name": "Debt",
+          "w": "40",
+          "er": "7",
+          "sd": "4"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "corr",
+        "label": "Correlations (pairs not listed are 0)",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "a",
+          "label": "Asset",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "b",
+          "label": "With asset",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "rho",
+          "label": "Correlation",
+          "kind": "number",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "a": "Equity",
+          "b": "Debt",
+          "rho": "0.1"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rf",
+        "label": "Risk-free rate for Sharpe (%)",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": "risk_free"
+       }
+      ]
+     },
+     {
+      "key": "capm",
+      "family": "portfolio",
+      "title": "CAPM and the security market line",
+      "description": "The return an asset should earn for its beta, its alpha against an expected return, and on the capital allocation line the mix that reaches a target risk.",
+      "keywords": "capm capital asset pricing model beta required return security market line sml cal alpha undervalued overvalued market risk premium",
+      "fields": [
+       {
+        "key": "rf",
+        "label": "Risk-free rate (%)",
+        "kind": "percent",
+        "default": "6.5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": "risk_free"
+       },
+       {
+        "key": "beta",
+        "label": "Beta",
+        "kind": "number",
+        "default": "1.2",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rm",
+        "label": "Market return (%)",
+        "kind": "percent",
+        "default": "12",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "expected",
+        "label": "Your expected return for it (%)",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "sm",
+        "label": "Market standard deviation (%)",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "target_sd",
+        "label": "Target standard deviation (%)",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "rebalance",
+      "family": "portfolio",
+      "title": "Rebalance to target weights",
+      "description": "What to buy and sell, with any new money, to bring holdings back to their target weights.",
+      "keywords": "rebalance asset allocation target weights buy sell new money drift",
+      "fields": [
+       {
+        "key": "holdings",
+        "label": "Holdings",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "name",
+          "label": "Holding",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "value",
+          "label": "Value now",
+          "kind": "money",
+          "optional": false
+         },
+         {
+          "key": "target",
+          "label": "Target %",
+          "kind": "percent",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "name": "Equity funds",
+          "value": "780000",
+          "target": "60"
+         },
+         {
+          "name": "Debt funds",
+          "value": "320000",
+          "target": "30"
+         },
+         {
+          "name": "Gold",
+          "value": "60000",
+          "target": "10"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "new_money",
+        "label": "New money to invest",
+        "kind": "money",
+        "default": "40000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "bonds",
+    "title": "Bonds and fixed income",
+    "calculators": [
+     {
+      "key": "bond",
+      "family": "bonds",
+      "title": "Bond price, yield and duration",
+      "description": "From settlement and maturity dates, as Excel's PRICE, YIELD, DURATION and MDURATION: clean and dirty price, accrued interest, yield to maturity, to call and to worst, current yield, durations, convexity, PVBP and the price change for a move in yield.",
+      "keywords": "bond price yield ytm ytc yield to call worst duration modified macaulay convexity pvbp dv01 accrued interest clean dirty g-sec ncd debenture coupon",
+      "fields": [
+       {
+        "key": "solve",
+        "label": "Find",
+        "kind": "solve",
+        "default": "price",
+        "hint": "",
+        "options": [
+         {
+          "value": "price",
+          "label": "Price"
+         },
+         {
+          "value": "ytm",
+          "label": "Yield"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "settlement",
+        "label": "Settlement date",
+        "kind": "date",
+        "default": "2008-02-15",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "maturity",
+        "label": "Maturity date",
+        "kind": "date",
+        "default": "2017-11-15",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "coupon",
+        "label": "Coupon rate (%)",
+        "kind": "percent",
+        "default": "5.75",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ytm",
+        "label": "Yield to maturity (%)",
+        "kind": "percent",
+        "default": "6.5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "price",
+        "label": "Clean price per 100",
+        "kind": "number",
+        "default": "94.634361",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "redemption",
+        "label": "Redemption per 100",
+        "kind": "number",
+        "default": "100",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "frequency",
+        "label": "Coupons a year",
+        "kind": "choice",
+        "default": "2",
+        "hint": "",
+        "options": [
+         {
+          "value": "2",
+          "label": "Half-yearly (2)"
+         },
+         {
+          "value": "1",
+          "label": "Yearly (1)"
+         },
+         {
+          "value": "4",
+          "label": "Quarterly (4)"
+         },
+         {
+          "value": "12",
+          "label": "Monthly (12)"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "basis",
+        "label": "Day count",
+        "kind": "choice",
+        "default": "0",
+        "hint": "",
+        "options": [
+         {
+          "value": "0",
+          "label": "30/360 US (Excel basis 0)"
+         },
+         {
+          "value": "1",
+          "label": "Actual/actual (basis 1)"
+         },
+         {
+          "value": "2",
+          "label": "Actual/360 (basis 2)"
+         },
+         {
+          "value": "3",
+          "label": "Actual/365 (basis 3, Indian bonds)"
+         },
+         {
+          "value": "4",
+          "label": "30/360 European (basis 4)"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "face",
+        "label": "Face value held",
+        "kind": "money",
+        "default": "100000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "shift_bp",
+        "label": "Yield change to test (basis points)",
+        "kind": "number",
+        "default": "100",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "call_date",
+        "label": "Call date (optional)",
+        "kind": "date",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "call_price",
+        "label": "Call price per 100",
+        "kind": "number",
+        "default": "100",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "zero",
+      "family": "bonds",
+      "title": "Zero-coupon bond",
+      "description": "Price from yield or yield from price for a bond that pays only at maturity, with its duration.",
+      "keywords": "zero coupon bond strips deep discount price yield",
+      "fields": [
+       {
+        "key": "solve",
+        "label": "Find",
+        "kind": "choice",
+        "default": "price",
+        "hint": "",
+        "options": [
+         {
+          "value": "price",
+          "label": "Price"
+         },
+         {
+          "value": "yield",
+          "label": "Yield"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "face",
+        "label": "Face value",
+        "kind": "money",
+        "default": "100000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "years",
+        "label": "Years to maturity",
+        "kind": "number",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "yield",
+        "label": "Yield (%)",
+        "kind": "percent",
+        "default": "7.2",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "solve": [
+          "price"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "price",
+        "label": "Price",
+        "kind": "money",
+        "default": "70000",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "solve": [
+          "yield"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "compounding",
+        "label": "Yield compounded",
+        "kind": "choice",
+        "default": "2",
+        "hint": "",
+        "options": [
+         {
+          "value": "1",
+          "label": "Yearly"
+         },
+         {
+          "value": "2",
+          "label": "Half-yearly"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "curve",
+      "family": "bonds",
+      "title": "Spot and forward rates",
+      "description": "Bootstrap spot (zero) rates from yearly par yields, or par yields from spot rates, with the implied forward rates and discount factors.",
+      "keywords": "spot rate zero rate bootstrapping par yield forward rate yield curve term structure discount factor",
+      "fields": [
+       {
+        "key": "given",
+        "label": "I have",
+        "kind": "choice",
+        "default": "par",
+        "hint": "",
+        "options": [
+         {
+          "value": "par",
+          "label": "Par yields"
+         },
+         {
+          "value": "spot",
+          "label": "Spot rates"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "curve",
+        "label": "Rates by year",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "year",
+          "label": "Year",
+          "kind": "number",
+          "optional": false
+         },
+         {
+          "key": "rate",
+          "label": "Rate %",
+          "kind": "percent",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "year": "1",
+          "rate": "6.5"
+         },
+         {
+          "year": "2",
+          "rate": "6.8"
+         },
+         {
+          "year": "3",
+          "rate": "7.0"
+         },
+         {
+          "year": "4",
+          "rate": "7.1"
+         },
+         {
+          "year": "5",
+          "rate": "7.2"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "from_year",
+        "label": "Forward from year",
+        "kind": "int",
+        "default": "2",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "to_year",
+        "label": "…to year",
+        "kind": "int",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "equity",
+    "title": "Equity valuation",
+    "calculators": [
+     {
+      "key": "ddm",
+      "family": "equity",
+      "title": "Dividend discount model",
+      "description": "A share's value from its dividends: Gordon growth, two-stage, or the H-model; with the margin of safety against the price, implied return and PVGO.",
+      "keywords": "ddm dividend discount model gordon growth two stage h model intrinsic value share pvgo",
+      "fields": [
+       {
+        "key": "model",
+        "label": "Model",
+        "kind": "choice",
+        "default": "gordon",
+        "hint": "",
+        "options": [
+         {
+          "value": "gordon",
+          "label": "Gordon growth (constant)"
+         },
+         {
+          "value": "two_stage",
+          "label": "Two-stage"
+         },
+         {
+          "value": "h",
+          "label": "H-model"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "d0",
+        "label": "Dividend just paid (D₀)",
+        "kind": "money",
+        "default": "10",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "r",
+        "label": "Required return (%)",
+        "kind": "percent",
+        "default": "12",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "g",
+        "label": "Growth (%)",
+        "kind": "percent",
+        "default": "6",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "model": [
+          "gordon"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "g1",
+        "label": "Growth now (%)",
+        "kind": "percent",
+        "default": "15",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "model": [
+          "two_stage",
+          "h"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "n",
+        "label": "Years of that growth",
+        "kind": "int",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "model": [
+          "two_stage"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "h",
+        "label": "H: half the years over which growth falls",
+        "kind": "number",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "model": [
+          "h"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "g2",
+        "label": "Long-run growth (%)",
+        "kind": "percent",
+        "default": "6",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "model": [
+          "two_stage",
+          "h"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "price",
+        "label": "Market price (optional)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "eps",
+        "label": "Next year's EPS (optional, for PVGO and P/E)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "dcf",
+      "family": "equity",
+      "title": "DCF valuation",
+      "description": "Forecast free cash flows, a terminal value by growth or by an exit multiple, discounted at WACC (FCFF, giving enterprise value) or the cost of equity (FCFE, giving equity value).",
+      "keywords": "dcf discounted cash flow fcff fcfe enterprise value terminal value exit multiple intrinsic",
+      "fields": [
+       {
+        "key": "basis",
+        "label": "Cash flows are",
+        "kind": "choice",
+        "default": "fcff",
+        "hint": "",
+        "options": [
+         {
+          "value": "fcff",
+          "label": "To the firm (FCFF), discount at WACC"
+         },
+         {
+          "value": "fcfe",
+          "label": "To equity (FCFE), at Ke"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "fcf",
+        "label": "Forecast free cash flows",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "year",
+          "label": "Year",
+          "kind": "number",
+          "optional": false
+         },
+         {
+          "key": "fcf",
+          "label": "Free cash flow",
+          "kind": "money",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "year": "1",
+          "fcf": "1200"
+         },
+         {
+          "year": "2",
+          "fcf": "1380"
+         },
+         {
+          "year": "3",
+          "fcf": "1560"
+         },
+         {
+          "year": "4",
+          "fcf": "1720"
+         },
+         {
+          "year": "5",
+          "fcf": "1850"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rate",
+        "label": "Discount rate (%)",
+        "kind": "percent",
+        "default": "11",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "terminal",
+        "label": "Terminal value by",
+        "kind": "choice",
+        "default": "growth",
+        "hint": "",
+        "options": [
+         {
+          "value": "growth",
+          "label": "Perpetual growth"
+         },
+         {
+          "value": "multiple",
+          "label": "Exit multiple"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "g",
+        "label": "Terminal growth (%)",
+        "kind": "percent",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "terminal": [
+          "growth"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "multiple",
+        "label": "Exit multiple",
+        "kind": "number",
+        "default": "12",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "terminal": [
+          "multiple"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "metric",
+        "label": "…applied to (EBITDA in the last year)",
+        "kind": "money",
+        "default": "2600",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "terminal": [
+          "multiple"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "net_debt",
+        "label": "Net debt (debt − cash)",
+        "kind": "money",
+        "default": "3000",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "basis": [
+          "fcff"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "shares",
+        "label": "Shares outstanding",
+        "kind": "number",
+        "default": "100",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "price",
+        "label": "Market price per share",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "wacc",
+      "family": "equity",
+      "title": "Cost of capital (WACC)",
+      "description": "Weighted average cost of capital from market values, with the cost of equity from CAPM or given, and the after-tax cost of debt.",
+      "keywords": "wacc weighted average cost of capital cost of equity cost of debt capm beta tax shield",
+      "fields": [
+       {
+        "key": "equity",
+        "label": "Market value of equity",
+        "kind": "money",
+        "default": "6000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "debt",
+        "label": "Market value of debt",
+        "kind": "money",
+        "default": "4000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "preferred",
+        "label": "Preference capital",
+        "kind": "money",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ke_by",
+        "label": "Cost of equity",
+        "kind": "choice",
+        "default": "capm",
+        "hint": "",
+        "options": [
+         {
+          "value": "capm",
+          "label": "From CAPM"
+         },
+         {
+          "value": "given",
+          "label": "I know it"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rf",
+        "label": "Risk-free rate (%)",
+        "kind": "percent",
+        "default": "7",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "ke_by": [
+          "capm"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": "risk_free"
+       },
+       {
+        "key": "beta",
+        "label": "Beta",
+        "kind": "number",
+        "default": "1.1",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "ke_by": [
+          "capm"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "mrp",
+        "label": "Market risk premium (%)",
+        "kind": "percent",
+        "default": "6",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "ke_by": [
+          "capm"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ke",
+        "label": "Cost of equity (%)",
+        "kind": "percent",
+        "default": "13.6",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "ke_by": [
+          "given"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "kd",
+        "label": "Cost of debt before tax (%)",
+        "kind": "percent",
+        "default": "9",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "tax",
+        "label": "Tax rate (%)",
+        "kind": "percent",
+        "default": "25.17",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "kp",
+        "label": "Cost of preference capital (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "dupont",
+      "family": "equity",
+      "title": "DuPont analysis (ROE)",
+      "description": "Return on equity split into margin, asset turnover and leverage, and into five steps when EBT and EBIT are given.",
+      "keywords": "dupont roe return on equity margin asset turnover leverage equity multiplier roa",
+      "fields": [
+       {
+        "key": "net_income",
+        "label": "Net income",
+        "kind": "money",
+        "default": "1200",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "sales",
+        "label": "Sales",
+        "kind": "money",
+        "default": "15000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "assets",
+        "label": "Total assets (average)",
+        "kind": "money",
+        "default": "12000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "equity",
+        "label": "Shareholders' equity (average)",
+        "kind": "money",
+        "default": "6000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ebt",
+        "label": "Profit before tax (for five steps)",
+        "kind": "money",
+        "default": "1600",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ebit",
+        "label": "EBIT (for five steps)",
+        "kind": "money",
+        "default": "2000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "multiples",
+      "family": "equity",
+      "title": "Justified P/E, P/B and growth",
+      "description": "Sustainable growth from ROE and retention, the P/E and P/B a share justifies, and PVGO and earnings yield at a market price.",
+      "keywords": "justified pe pb price to earnings price to book sustainable growth retention roe pvgo earnings yield ev ebitda multiples",
+      "fields": [
+       {
+        "key": "roe",
+        "label": "ROE (%)",
+        "kind": "percent",
+        "default": "16",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "payout",
+        "label": "Dividend payout (%)",
+        "kind": "percent",
+        "default": "40",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "r",
+        "label": "Required return (%)",
+        "kind": "percent",
+        "default": "12",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "eps",
+        "label": "EPS (optional)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "price",
+        "label": "Market price (optional)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ev",
+        "label": "Enterprise value (optional)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "ebitda",
+        "label": "EBITDA (optional)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "derivatives",
+    "title": "Derivatives and currency",
+    "calculators": [
+     {
+      "key": "black_scholes",
+      "family": "derivatives",
+      "title": "Black-Scholes option value and Greeks",
+      "description": "European call and put values with a dividend yield, the Greeks, and implied volatility from a market price.",
+      "keywords": "black scholes option pricing call put greeks delta gamma vega theta rho implied volatility iv nifty options european",
+      "fields": [
+       {
+        "key": "solve",
+        "label": "Find",
+        "kind": "choice",
+        "default": "price",
+        "hint": "",
+        "options": [
+         {
+          "value": "price",
+          "label": "Option values"
+         },
+         {
+          "value": "iv",
+          "label": "Implied volatility"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "spot",
+        "label": "Spot price (S)",
+        "kind": "money",
+        "default": "42",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "strike",
+        "label": "Strike (K)",
+        "kind": "money",
+        "default": "40",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "time_in",
+        "label": "Time to expiry in",
+        "kind": "choice",
+        "default": "years",
+        "hint": "",
+        "options": [
+         {
+          "value": "years",
+          "label": "Years"
+         },
+         {
+          "value": "days",
+          "label": "Days"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "years",
+        "label": "Years to expiry",
+        "kind": "number",
+        "default": "0.5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "years"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Days to expiry",
+        "kind": "number",
+        "default": "30",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "days"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "r",
+        "label": "Risk-free rate (%)",
+        "kind": "percent",
+        "default": "10",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "q",
+        "label": "Dividend yield (%)",
+        "kind": "percent",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rate_type",
+        "label": "Rates are",
+        "kind": "choice",
+        "default": "continuous",
+        "hint": "",
+        "options": [
+         {
+          "value": "continuous",
+          "label": "Continuously compounded"
+         },
+         {
+          "value": "annual",
+          "label": "Ordinary annual rates"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "vol",
+        "label": "Volatility (%)",
+        "kind": "percent",
+        "default": "20",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "solve": [
+          "price"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "option",
+        "label": "The price is of a",
+        "kind": "choice",
+        "default": "call",
+        "hint": "",
+        "options": [
+         {
+          "value": "call",
+          "label": "Call"
+         },
+         {
+          "value": "put",
+          "label": "Put"
+         }
+        ],
+        "show_when": {
+         "solve": [
+          "iv"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "market",
+        "label": "Market price of the option",
+        "kind": "money",
+        "default": "4.76",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "solve": [
+          "iv"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "binomial",
+      "family": "derivatives",
+      "title": "Binomial option value (American or European)",
+      "description": "A Cox-Ross-Rubinstein tree: European or American calls and puts, with early exercise.",
+      "keywords": "binomial tree option american european early exercise crr cox ross rubinstein put call",
+      "fields": [
+       {
+        "key": "option",
+        "label": "Option",
+        "kind": "choice",
+        "default": "put",
+        "hint": "",
+        "options": [
+         {
+          "value": "call",
+          "label": "Call"
+         },
+         {
+          "value": "put",
+          "label": "Put"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "style",
+        "label": "Style",
+        "kind": "choice",
+        "default": "american",
+        "hint": "",
+        "options": [
+         {
+          "value": "american",
+          "label": "American"
+         },
+         {
+          "value": "european",
+          "label": "European"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "spot",
+        "label": "Spot price (S)",
+        "kind": "money",
+        "default": "50",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "strike",
+        "label": "Strike (K)",
+        "kind": "money",
+        "default": "50",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "time_in",
+        "label": "Time to expiry in",
+        "kind": "choice",
+        "default": "years",
+        "hint": "",
+        "options": [
+         {
+          "value": "years",
+          "label": "Years"
+         },
+         {
+          "value": "days",
+          "label": "Days"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "years",
+        "label": "Years to expiry",
+        "kind": "number",
+        "default": "0.4166666667",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "years"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Days to expiry",
+        "kind": "number",
+        "default": "30",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "days"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "r",
+        "label": "Risk-free rate (%)",
+        "kind": "percent",
+        "default": "10",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "q",
+        "label": "Dividend yield (%)",
+        "kind": "percent",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rate_type",
+        "label": "Rates are",
+        "kind": "choice",
+        "default": "continuous",
+        "hint": "",
+        "options": [
+         {
+          "value": "continuous",
+          "label": "Continuously compounded"
+         },
+         {
+          "value": "annual",
+          "label": "Ordinary annual rates"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "vol",
+        "label": "Volatility (%)",
+        "kind": "percent",
+        "default": "40",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "steps",
+        "label": "Steps",
+        "kind": "int",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "parity",
+      "family": "derivatives",
+      "title": "Put-call parity",
+      "description": "Find a call, put or spot price from the other two, or check prices for a mispricing.",
+      "keywords": "put call parity arbitrage synthetic options",
+      "fields": [
+       {
+        "key": "find",
+        "label": "Find",
+        "kind": "choice",
+        "default": "check",
+        "hint": "",
+        "options": [
+         {
+          "value": "check",
+          "label": "Check for mispricing"
+         },
+         {
+          "value": "call",
+          "label": "Call"
+         },
+         {
+          "value": "put",
+          "label": "Put"
+         },
+         {
+          "value": "spot",
+          "label": "Spot"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "call",
+        "label": "Call price",
+        "kind": "money",
+        "default": "4.76",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "put",
+        "label": "Put price",
+        "kind": "money",
+        "default": "0.81",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "spot",
+        "label": "Spot price",
+        "kind": "money",
+        "default": "42",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "strike",
+        "label": "Strike",
+        "kind": "money",
+        "default": "40",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "time_in",
+        "label": "Time to expiry in",
+        "kind": "choice",
+        "default": "years",
+        "hint": "",
+        "options": [
+         {
+          "value": "years",
+          "label": "Years"
+         },
+         {
+          "value": "days",
+          "label": "Days"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "years",
+        "label": "Years to expiry",
+        "kind": "number",
+        "default": "0.5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "years"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Days to expiry",
+        "kind": "number",
+        "default": "30",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "days"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "r",
+        "label": "Risk-free rate (%)",
+        "kind": "percent",
+        "default": "10",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "q",
+        "label": "Dividend yield (%)",
+        "kind": "percent",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rate_type",
+        "label": "Rates are",
+        "kind": "choice",
+        "default": "continuous",
+        "hint": "",
+        "options": [
+         {
+          "value": "continuous",
+          "label": "Continuously compounded"
+         },
+         {
+          "value": "annual",
+          "label": "Ordinary annual rates"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "payoff",
+      "family": "derivatives",
+      "title": "Option strategy payoff",
+      "description": "Legs of calls, puts and stock, long or short: profit or loss at expiry across prices, the maximum profit and loss, and break-evens. Covered calls, protective puts, spreads, straddles.",
+      "keywords": "option strategy payoff diagram covered call protective put spread straddle strangle iron condor breakeven max profit loss",
+      "fields": [
+       {
+        "key": "legs",
+        "label": "Legs",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "kind",
+          "label": "Call, put or stock",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "side",
+          "label": "Long or short",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "strike",
+          "label": "Strike (blank for stock)",
+          "kind": "money",
+          "optional": true
+         },
+         {
+          "key": "premium",
+          "label": "Premium (or stock cost)",
+          "kind": "money",
+          "optional": false
+         },
+         {
+          "key": "qty",
+          "label": "Quantity",
+          "kind": "number",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "kind": "call",
+          "side": "long",
+          "strike": "22000",
+          "premium": "180",
+          "qty": "75"
+         },
+         {
+          "kind": "call",
+          "side": "short",
+          "strike": "22300",
+          "premium": "70",
+          "qty": "75"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "forward",
+      "family": "derivatives",
+      "title": "Forward and futures fair value",
+      "description": "The fair price of a forward or future from spot, interest, dividend yield and storage cost, and the cash-and-carry trade against a market price.",
+      "keywords": "forward futures fair value cost of carry basis dividend yield storage cash and carry arbitrage nifty futures",
+      "fields": [
+       {
+        "key": "spot",
+        "label": "Spot price",
+        "kind": "money",
+        "default": "22000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "time_in",
+        "label": "Time to expiry in",
+        "kind": "choice",
+        "default": "years",
+        "hint": "",
+        "options": [
+         {
+          "value": "years",
+          "label": "Years"
+         },
+         {
+          "value": "days",
+          "label": "Days"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "years",
+        "label": "Years to expiry",
+        "kind": "number",
+        "default": "0.5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "years"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Days to expiry",
+        "kind": "number",
+        "default": "30",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "time_in": [
+          "days"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "r",
+        "label": "Interest rate (%)",
+        "kind": "percent",
+        "default": "7",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "yield",
+        "label": "Dividend or income yield (%)",
+        "kind": "percent",
+        "default": "1.3",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "storage",
+        "label": "Storage cost (%, for commodities)",
+        "kind": "percent",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "compounding",
+        "label": "Rates are",
+        "kind": "choice",
+        "default": "continuous",
+        "hint": "",
+        "options": [
+         {
+          "value": "continuous",
+          "label": "Continuously compounded"
+         },
+         {
+          "value": "discrete",
+          "label": "Annual"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "market",
+        "label": "Market futures price (optional)",
+        "kind": "money",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "fx",
+      "family": "derivatives",
+      "title": "Currency forward and cross rates",
+      "description": "A currency's forward rate from spot and the two interest rates (covered interest parity), the forward points and premium, and a cross rate.",
+      "keywords": "fx forex currency forward covered interest parity forward points premium discount cross rate usd inr",
+      "fields": [
+       {
+        "key": "spot",
+        "label": "Spot (domestic units per foreign unit, e.g. ₹ per $)",
+        "kind": "number",
+        "default": "84.20",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "domestic",
+        "label": "Domestic interest rate (%)",
+        "kind": "percent",
+        "default": "6.75",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "foreign",
+        "label": "Foreign interest rate (%)",
+        "kind": "percent",
+        "default": "4.5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Days to delivery",
+        "kind": "number",
+        "default": "90",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "basis_d",
+        "label": "Domestic day basis",
+        "kind": "choice",
+        "default": "365",
+        "hint": "",
+        "options": [
+         {
+          "value": "365",
+          "label": "365"
+         },
+         {
+          "value": "360",
+          "label": "360"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "basis_f",
+        "label": "Foreign day basis",
+        "kind": "choice",
+        "default": "360",
+        "hint": "",
+        "options": [
+         {
+          "value": "360",
+          "label": "360"
+         },
+         {
+          "value": "365",
+          "label": "365"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "cross",
+        "label": "Second quote for a cross rate (foreign per third currency)",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
     "key": "planners",
     "title": "Planners: SIP, goals, schemes",
     "calculators": [
@@ -4603,6 +7175,182 @@
     "title": "Utilities",
     "calculators": [
      {
+      "key": "dates",
+      "family": "utils",
+      "title": "Days between dates",
+      "description": "Actual days, years-months-days and 30/360 day counts between two dates, or a date some months and days away (31 Jan + 1 month is the end of February).",
+      "keywords": "date days between 30/360 day count calendar add months maturity",
+      "fields": [
+       {
+        "key": "mode",
+        "label": "Find",
+        "kind": "choice",
+        "default": "between",
+        "hint": "",
+        "options": [
+         {
+          "value": "between",
+          "label": "Days between two dates"
+         },
+         {
+          "value": "add",
+          "label": "A date after some time"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "start",
+        "label": "Start date",
+        "kind": "date",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "end",
+        "label": "End date",
+        "kind": "date",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "between"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "months",
+        "label": "Months to add (negative to go back)",
+        "kind": "int",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "add"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Days to add (negative to go back)",
+        "kind": "int",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "add"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "percent",
+      "family": "utils",
+      "title": "Percentages, markup and GST",
+      "description": "Percentage change, a percentage of a number, markup on cost against margin on price, and tax added to or taken out of an amount.",
+      "keywords": "percent percentage change markup margin gst tax inclusive exclusive",
+      "fields": [
+       {
+        "key": "mode",
+        "label": "Find",
+        "kind": "choice",
+        "default": "change",
+        "hint": "",
+        "options": [
+         {
+          "value": "change",
+          "label": "Change from A to B"
+         },
+         {
+          "value": "of",
+          "label": "A% of B"
+         },
+         {
+          "value": "share",
+          "label": "A is what % of B"
+         },
+         {
+          "value": "markup",
+          "label": "Cost and price: markup and margin"
+         },
+         {
+          "value": "add_tax",
+          "label": "Add tax (GST) to an amount"
+         },
+         {
+          "value": "remove_tax",
+          "label": "Take tax out of an amount that includes it"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "a",
+        "label": "A (or cost, or amount)",
+        "kind": "number",
+        "default": "100",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "b",
+        "label": "B (or price, or tax rate %)",
+        "kind": "number",
+        "default": "118",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
       "key": "depreciation",
       "family": "utils",
       "title": "Depreciation schedule",
@@ -4785,182 +7533,6 @@
           "u": "10000"
          }
         ],
-        "fill": "",
-        "default_from": ""
-       }
-      ]
-     },
-     {
-      "key": "dates",
-      "family": "utils",
-      "title": "Days between dates",
-      "description": "Actual days, years-months-days and 30/360 day counts between two dates, or a date some months and days away (31 Jan + 1 month is the end of February).",
-      "keywords": "date days between 30/360 day count calendar add months maturity",
-      "fields": [
-       {
-        "key": "mode",
-        "label": "Find",
-        "kind": "choice",
-        "default": "between",
-        "hint": "",
-        "options": [
-         {
-          "value": "between",
-          "label": "Days between two dates"
-         },
-         {
-          "value": "add",
-          "label": "A date after some time"
-         }
-        ],
-        "show_when": {},
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       },
-       {
-        "key": "start",
-        "label": "Start date",
-        "kind": "date",
-        "default": "",
-        "hint": "",
-        "options": [],
-        "show_when": {},
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       },
-       {
-        "key": "end",
-        "label": "End date",
-        "kind": "date",
-        "default": "",
-        "hint": "",
-        "options": [],
-        "show_when": {
-         "mode": [
-          "between"
-         ]
-        },
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       },
-       {
-        "key": "months",
-        "label": "Months to add (negative to go back)",
-        "kind": "int",
-        "default": "0",
-        "hint": "",
-        "options": [],
-        "show_when": {
-         "mode": [
-          "add"
-         ]
-        },
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       },
-       {
-        "key": "days",
-        "label": "Days to add (negative to go back)",
-        "kind": "int",
-        "default": "0",
-        "hint": "",
-        "options": [],
-        "show_when": {
-         "mode": [
-          "add"
-         ]
-        },
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       }
-      ]
-     },
-     {
-      "key": "percent",
-      "family": "utils",
-      "title": "Percentages, markup and GST",
-      "description": "Percentage change, a percentage of a number, markup on cost against margin on price, and tax added to or taken out of an amount.",
-      "keywords": "percent percentage change markup margin gst tax inclusive exclusive",
-      "fields": [
-       {
-        "key": "mode",
-        "label": "Find",
-        "kind": "choice",
-        "default": "change",
-        "hint": "",
-        "options": [
-         {
-          "value": "change",
-          "label": "Change from A to B"
-         },
-         {
-          "value": "of",
-          "label": "A% of B"
-         },
-         {
-          "value": "share",
-          "label": "A is what % of B"
-         },
-         {
-          "value": "markup",
-          "label": "Cost and price: markup and margin"
-         },
-         {
-          "value": "add_tax",
-          "label": "Add tax (GST) to an amount"
-         },
-         {
-          "value": "remove_tax",
-          "label": "Take tax out of an amount that includes it"
-         }
-        ],
-        "show_when": {},
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       },
-       {
-        "key": "a",
-        "label": "A (or cost, or amount)",
-        "kind": "number",
-        "default": "100",
-        "hint": "",
-        "options": [],
-        "show_when": {},
-        "optional": false,
-        "columns": [],
-        "rows": [],
-        "fill": "",
-        "default_from": ""
-       },
-       {
-        "key": "b",
-        "label": "B (or price, or tax rate %)",
-        "kind": "number",
-        "default": "118",
-        "hint": "",
-        "options": [],
-        "show_when": {},
-        "optional": false,
-        "columns": [],
-        "rows": [],
         "fill": "",
         "default_from": ""
        }
@@ -28096,6 +30668,2377 @@
      "steps": [
       "Rate from the salvage value: 1 − (salvage / cost)^(1/life) = 45.072%",
       "WDV = book value at the start of the year × rate"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "portfolio",
+   "inputs": {
+    "assets": [
+     {
+      "name": "Equity",
+      "w": "60",
+      "er": "13",
+      "sd": "18"
+     },
+     {
+      "name": "Debt",
+      "w": "40",
+      "er": "7",
+      "sd": "4"
+     }
+    ],
+    "corr": [
+     {
+      "a": "Equity",
+      "b": "Debt",
+      "rho": "0.1"
+     }
+    ],
+    "rf": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "sd",
+      "label": "Portfolio standard deviation",
+      "value": "11.075",
+      "unit": "percent",
+      "exact": "11.075016930009633173",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "er",
+       "label": "Portfolio expected return",
+       "value": "10.6",
+       "unit": "percent",
+       "exact": "10.6",
+       "note": ""
+      },
+      {
+       "key": "weighted_sd",
+       "label": "Weighted average of the standard deviations",
+       "value": "12.4",
+       "unit": "percent",
+       "exact": "12.4",
+       "note": ""
+      },
+      {
+       "key": "div_ratio",
+       "label": "Diversification ratio (weighted SD ÷ portfolio SD)",
+       "value": "1.1196",
+       "unit": "ratio",
+       "exact": "1.1196371146305068757",
+       "note": ""
+      },
+      {
+       "key": "mv_w1",
+       "label": "Minimum-variance weight in Equity",
+       "value": "2.7027",
+       "unit": "percent",
+       "exact": "2.7027027027027027027",
+       "note": ""
+      },
+      {
+       "key": "mv_sd",
+       "label": "…its standard deviation",
+       "value": "3.9702",
+       "unit": "percent",
+       "exact": "3.9701589593065618413",
+       "note": ""
+      },
+      {
+       "key": "mv_er",
+       "label": "…its expected return",
+       "value": "7.1622",
+       "unit": "percent",
+       "exact": "7.1621621621621621622",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "frontier",
+       "title": "Mixes of Equity and Debt",
+       "columns": [
+        {
+         "key": "w",
+         "label": "Weight in Equity",
+         "unit": "percent"
+        },
+        {
+         "key": "er",
+         "label": "Expected return",
+         "unit": "percent"
+        },
+        {
+         "key": "sd",
+         "label": "Standard deviation",
+         "unit": "percent"
+        }
+       ],
+       "rows": [
+        [
+         "0",
+         "7",
+         "4"
+        ],
+        [
+         "5",
+         "7.3",
+         "3.9917"
+        ],
+        [
+         "10",
+         "7.6",
+         "4.1828"
+        ],
+        [
+         "15",
+         "7.9",
+         "4.5482"
+        ],
+        [
+         "20",
+         "8.2",
+         "5.0501"
+        ],
+        [
+         "25",
+         "8.5",
+         "5.6524"
+        ],
+        [
+         "30",
+         "8.8",
+         "6.3265"
+        ],
+        [
+         "35",
+         "9.1",
+         "7.0517"
+        ],
+        [
+         "40",
+         "9.4",
+         "7.8138"
+        ],
+        [
+         "45",
+         "9.7",
+         "8.6031"
+        ],
+        [
+         "50",
+         "10",
+         "9.4128"
+        ],
+        [
+         "55",
+         "10.3",
+         "10.2379"
+        ],
+        [
+         "60",
+         "10.6",
+         "11.075"
+        ],
+        [
+         "65",
+         "10.9",
+         "11.9217"
+        ],
+        [
+         "70",
+         "11.2",
+         "12.7759"
+        ],
+        [
+         "75",
+         "11.5",
+         "13.6363"
+        ],
+        [
+         "80",
+         "11.8",
+         "14.5019"
+        ],
+        [
+         "85",
+         "12.1",
+         "15.3716"
+        ],
+        [
+         "90",
+         "12.4",
+         "16.2449"
+        ],
+        [
+         "95",
+         "12.7",
+         "17.1212"
+        ],
+        [
+         "100",
+         "13",
+         "18"
+        ]
+       ]
+      }
+     ],
+     "chart": {
+      "kind": "line",
+      "title": "Return and risk by weight in Equity",
+      "x_label": "Weight in Equity (%)",
+      "y_unit": "percent",
+      "x": [
+       "0",
+       "5",
+       "10",
+       "15",
+       "20",
+       "25",
+       "30",
+       "35",
+       "40",
+       "45",
+       "50",
+       "55",
+       "60",
+       "65",
+       "70",
+       "75",
+       "80",
+       "85",
+       "90",
+       "95",
+       "100"
+      ],
+      "series": [
+       {
+        "name": "Expected return",
+        "values": [
+         "7",
+         "7.3",
+         "7.6",
+         "7.9",
+         "8.2",
+         "8.5",
+         "8.8",
+         "9.1",
+         "9.4",
+         "9.7",
+         "10",
+         "10.3",
+         "10.6",
+         "10.9",
+         "11.2",
+         "11.5",
+         "11.8",
+         "12.1",
+         "12.4",
+         "12.7",
+         "13"
+        ]
+       },
+       {
+        "name": "Standard deviation",
+        "values": [
+         "4",
+         "3.9917",
+         "4.1828",
+         "4.5482",
+         "5.0501",
+         "5.6524",
+         "6.3265",
+         "7.0517",
+         "7.8138",
+         "8.6031",
+         "9.4128",
+         "10.2379",
+         "11.075",
+         "11.9217",
+         "12.7759",
+         "13.6363",
+         "14.5019",
+         "15.3716",
+         "16.2449",
+         "17.1212",
+         "18"
+        ]
+       }
+      ],
+      "marks": []
+     },
+     "steps": [
+      "σp² = Σᵢ Σⱼ wᵢ wⱼ σᵢ σⱼ ρᵢⱼ;  E(Rp) = Σ wᵢ E(Rᵢ)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "capm",
+   "inputs": {
+    "rf": "6.5",
+    "beta": "1.2",
+    "rm": "12",
+    "expected": "",
+    "sm": "",
+    "target_sd": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "required",
+      "label": "Required return (CAPM)",
+      "value": "13.1",
+      "unit": "percent",
+      "exact": "13.1",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "mrp",
+       "label": "Market risk premium",
+       "value": "5.5",
+       "unit": "percent",
+       "exact": "5.5",
+       "note": ""
+      },
+      {
+       "key": "premium",
+       "label": "This asset's risk premium",
+       "value": "6.6",
+       "unit": "percent",
+       "exact": "6.6",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "E(R) = Rf + β (Rm − Rf)",
+      "CAL: E(R) = Rf + (σ / σm)(Rm − Rf)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "rebalance",
+   "inputs": {
+    "holdings": [
+     {
+      "name": "Equity funds",
+      "value": "780000",
+      "target": "60"
+     },
+     {
+      "name": "Debt funds",
+      "value": "320000",
+      "target": "30"
+     },
+     {
+      "name": "Gold",
+      "value": "60000",
+      "target": "10"
+     }
+    ],
+    "new_money": "40000"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "total",
+      "label": "Total after new money",
+      "value": "1200000.00",
+      "unit": "money",
+      "exact": "1200000",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "turnover",
+       "label": "Buying and selling in all",
+       "value": "160000.00",
+       "unit": "money",
+       "exact": "160000",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "trades",
+       "title": "Trades to reach the targets",
+       "columns": [
+        {
+         "key": "name",
+         "label": "Holding",
+         "unit": "text"
+        },
+        {
+         "key": "now",
+         "label": "Value now",
+         "unit": "money"
+        },
+        {
+         "key": "pct",
+         "label": "Share now",
+         "unit": "percent"
+        },
+        {
+         "key": "target",
+         "label": "Target",
+         "unit": "percent"
+        },
+        {
+         "key": "goal",
+         "label": "Value at target",
+         "unit": "money"
+        },
+        {
+         "key": "trade",
+         "label": "Buy (+) or sell (−)",
+         "unit": "money"
+        }
+       ],
+       "rows": [
+        [
+         "Equity funds",
+         "780000.00",
+         "67.2414",
+         "60",
+         "720000.00",
+         "-60000.00"
+        ],
+        [
+         "Debt funds",
+         "320000.00",
+         "27.5862",
+         "30",
+         "360000.00",
+         "40000.00"
+        ],
+        [
+         "Gold",
+         "60000.00",
+         "5.1724",
+         "10",
+         "120000.00",
+         "60000.00"
+        ]
+       ]
+      }
+     ],
+     "chart": null,
+     "steps": [],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "bond",
+   "inputs": {
+    "solve": "price",
+    "settlement": "2008-02-15",
+    "maturity": "2017-11-15",
+    "coupon": "5.75",
+    "ytm": "6.5",
+    "price": "94.634361",
+    "redemption": "100",
+    "frequency": "2",
+    "basis": "0",
+    "face": "100000",
+    "shift_bp": "100",
+    "call_date": "",
+    "call_price": "100"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "price",
+      "label": "Clean price per 100",
+      "value": "94.634362",
+      "unit": "number",
+      "exact": "94.634361621322098625",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "ytm",
+       "label": "Yield to maturity",
+       "value": "6.5",
+       "unit": "percent",
+       "exact": "6.5",
+       "note": ""
+      },
+      {
+       "key": "accrued",
+       "label": "Accrued interest per 100",
+       "value": "1.4375",
+       "unit": "number",
+       "exact": "1.4375",
+       "note": ""
+      },
+      {
+       "key": "dirty",
+       "label": "Dirty (invoice) price per 100",
+       "value": "96.071862",
+       "unit": "number",
+       "exact": "96.071861621322098625",
+       "note": ""
+      },
+      {
+       "key": "invoice",
+       "label": "Invoice amount for face 100000.00",
+       "value": "96071.86",
+       "unit": "money",
+       "exact": "96071.861621322098625",
+       "note": ""
+      },
+      {
+       "key": "current",
+       "label": "Current yield (coupon ÷ clean price)",
+       "value": "6.076",
+       "unit": "percent",
+       "exact": "6.0760171057195208471",
+       "note": ""
+      },
+      {
+       "key": "mac",
+       "label": "Macaulay duration (DURATION), years",
+       "value": "7.4165",
+       "unit": "years",
+       "exact": "7.4164846963505718522",
+       "note": ""
+      },
+      {
+       "key": "mod",
+       "label": "Modified duration (MDURATION)",
+       "value": "7.183036",
+       "unit": "number",
+       "exact": "7.1830360255211349659",
+       "note": ""
+      },
+      {
+       "key": "conv",
+       "label": "Convexity",
+       "value": "64.897745",
+       "unit": "number",
+       "exact": "64.897744573143553874",
+       "note": ""
+      },
+      {
+       "key": "pvbp",
+       "label": "Price value of a basis point, per 100",
+       "value": "0.069009",
+       "unit": "number",
+       "exact": "0.069008764306483794888",
+       "note": ""
+      },
+      {
+       "key": "coupons",
+       "label": "Coupons left",
+       "value": "20",
+       "unit": "count",
+       "exact": "20",
+       "note": ""
+      },
+      {
+       "key": "est",
+       "label": "Price change for 100 bp: duration + convexity estimate",
+       "value": "-6.8585",
+       "unit": "percent",
+       "exact": "-6.8585473026554171965",
+       "note": ""
+      },
+      {
+       "key": "exact",
+       "label": "…by repricing",
+       "value": "-6.869",
+       "unit": "percent",
+       "exact": "-6.8690068692576006782",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Price = redemption/(1+y/f)^(N−1+DSC/E) + Σ coupon/(1+y/f)^(k−1+DSC/E) − coupon × A/E (Excel PRICE)",
+      "Accrued = coupon × A/E;  dirty = clean + accrued",
+      "Macaulay = Σ t·PV / Σ PV;  modified = Macaulay / (1 + y/f)",
+      "ΔP/P ≈ −modified × Δy + ½ × convexity × Δy²"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "zero",
+   "inputs": {
+    "solve": "price",
+    "face": "100000",
+    "years": "5",
+    "yield": "7.2",
+    "price": "70000",
+    "compounding": "2"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "price",
+      "label": "Price",
+      "value": "70210.56",
+      "unit": "money",
+      "exact": "70210.561442549324813",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "discount",
+       "label": "Discount (face − price)",
+       "value": "29789.44",
+       "unit": "money",
+       "exact": "29789.438557450675187",
+       "note": ""
+      },
+      {
+       "key": "mac",
+       "label": "Macaulay duration (years) — the maturity",
+       "value": "5",
+       "unit": "years",
+       "exact": "5",
+       "note": ""
+      },
+      {
+       "key": "mod",
+       "label": "Modified duration",
+       "value": "4.826255",
+       "unit": "number",
+       "exact": "4.8262548262548262548",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Price = face / (1 + y/m)^(m × years)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "curve",
+   "inputs": {
+    "given": "par",
+    "curve": [
+     {
+      "year": "1",
+      "rate": "6.5"
+     },
+     {
+      "year": "2",
+      "rate": "6.8"
+     },
+     {
+      "year": "3",
+      "rate": "7.0"
+     },
+     {
+      "year": "4",
+      "rate": "7.1"
+     },
+     {
+      "year": "5",
+      "rate": "7.2"
+     }
+    ],
+    "from_year": "2",
+    "to_year": "5"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "spot_last",
+      "label": "Spot rate, year 5",
+      "value": "7.238",
+      "unit": "percent",
+      "exact": "7.2379876781701505496",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "fwd_ab",
+       "label": "Forward rate from year 2 to 5 (a year)",
+       "value": "7.5241",
+       "unit": "percent",
+       "exact": "7.5241106274007157438",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "curve",
+       "title": "The curve",
+       "columns": [
+        {
+         "key": "year",
+         "label": "Year",
+         "unit": "count"
+        },
+        {
+         "key": "par",
+         "label": "Par yield",
+         "unit": "percent"
+        },
+        {
+         "key": "spot",
+         "label": "Spot (zero) rate",
+         "unit": "percent"
+        },
+        {
+         "key": "fwd",
+         "label": "One-year forward starting the year before",
+         "unit": "percent"
+        },
+        {
+         "key": "df",
+         "label": "Discount factor",
+         "unit": "number"
+        }
+       ],
+       "rows": [
+        [
+         "1",
+         "6.5",
+         "6.5",
+         "6.5",
+         "0.938967"
+        ],
+        [
+         "2",
+         "6.8",
+         "6.8102",
+         "7.1214",
+         "0.876545"
+        ],
+        [
+         "3",
+         "7",
+         "7.0214",
+         "7.4451",
+         "0.815808"
+        ],
+        [
+         "4",
+         "7.1",
+         "7.1276",
+         "7.4466",
+         "0.759268"
+        ],
+        [
+         "5",
+         "7.2",
+         "7.238",
+         "7.6809",
+         "0.70511"
+        ]
+       ]
+      }
+     ],
+     "chart": {
+      "kind": "line",
+      "title": "Yield curve",
+      "x_label": "Year",
+      "y_unit": "percent",
+      "x": [
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "series": [
+       {
+        "name": "Spot",
+        "values": [
+         "6.5",
+         "6.8102",
+         "7.0214",
+         "7.1276",
+         "7.238"
+        ]
+       },
+       {
+        "name": "Forward",
+        "values": [
+         "6.5",
+         "7.1214",
+         "7.4451",
+         "7.4466",
+         "7.6809"
+        ]
+       }
+      ],
+      "marks": []
+     },
+     "steps": [
+      "Bootstrapping: 100 = c·100 Σ 1/(1+sₖ)^k + 100/(1+sₙ)^n, solved year by year for sₙ",
+      "Forward from a to b: [(1+s_b)^b / (1+s_a)^a]^(1/(b−a)) − 1"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "ddm",
+   "inputs": {
+    "model": "gordon",
+    "d0": "10",
+    "r": "12",
+    "g": "6",
+    "g1": "15",
+    "n": "5",
+    "h": "5",
+    "g2": "6",
+    "price": "",
+    "eps": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "value",
+      "label": "Value per share",
+      "value": "176.67",
+      "unit": "money",
+      "exact": "176.66666666666666667",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "d1",
+       "label": "Next dividend (D₁)",
+       "value": "10.60",
+       "unit": "money",
+       "exact": "10.6",
+       "note": ""
+      },
+      {
+       "key": "yield",
+       "label": "Dividend yield at that value (D₁ / V₀)",
+       "value": "6",
+       "unit": "percent",
+       "exact": "6",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "V₀ = D₁ / (r − g), D₁ = D₀ (1 + g)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "dcf",
+   "inputs": {
+    "basis": "fcff",
+    "fcf": [
+     {
+      "year": "1",
+      "fcf": "1200"
+     },
+     {
+      "year": "2",
+      "fcf": "1380"
+     },
+     {
+      "year": "3",
+      "fcf": "1560"
+     },
+     {
+      "year": "4",
+      "fcf": "1720"
+     },
+     {
+      "year": "5",
+      "fcf": "1850"
+     }
+    ],
+    "rate": "11",
+    "terminal": "growth",
+    "g": "5",
+    "multiple": "12",
+    "metric": "2600",
+    "net_debt": "3000",
+    "shares": "100",
+    "price": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "ev",
+      "label": "Enterprise value",
+      "value": "24785.67",
+      "unit": "money",
+      "exact": "24785.667572120935638",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "pv_flows",
+       "label": "Present value of the forecast cash flows",
+       "value": "5572.68",
+       "unit": "money",
+       "exact": "5572.6808262250936481",
+       "note": ""
+      },
+      {
+       "key": "tv",
+       "label": "Terminal value at the last year",
+       "value": "32375.00",
+       "unit": "money",
+       "exact": "32375",
+       "note": ""
+      },
+      {
+       "key": "pv_tv",
+       "label": "…its present value",
+       "value": "19212.99",
+       "unit": "money",
+       "exact": "19212.98674589584199",
+       "note": ""
+      },
+      {
+       "key": "tv_share",
+       "label": "Terminal value's share of the total",
+       "value": "77.5165",
+       "unit": "percent",
+       "exact": "77.516519133447598766",
+       "note": ""
+      },
+      {
+       "key": "equity",
+       "label": "Equity value (EV − net debt)",
+       "value": "21785.67",
+       "unit": "money",
+       "exact": "21785.667572120935638",
+       "note": ""
+      },
+      {
+       "key": "per_share",
+       "label": "Value per share",
+       "value": "217.86",
+       "unit": "money",
+       "exact": "217.85667572120935638",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "pv",
+       "title": "Discounted cash flows",
+       "columns": [
+        {
+         "key": "year",
+         "label": "Year",
+         "unit": "number"
+        },
+        {
+         "key": "fcf",
+         "label": "Free cash flow",
+         "unit": "money"
+        },
+        {
+         "key": "df",
+         "label": "Discount factor",
+         "unit": "number"
+        },
+        {
+         "key": "pv",
+         "label": "Present value",
+         "unit": "money"
+        }
+       ],
+       "rows": [
+        [
+         "1",
+         "1200.00",
+         "0.900901",
+         "1081.08"
+        ],
+        [
+         "2",
+         "1380.00",
+         "0.811622",
+         "1120.04"
+        ],
+        [
+         "3",
+         "1560.00",
+         "0.731191",
+         "1140.66"
+        ],
+        [
+         "4",
+         "1720.00",
+         "0.658731",
+         "1133.02"
+        ],
+        [
+         "5",
+         "1850.00",
+         "0.593451",
+         "1097.88"
+        ]
+       ]
+      }
+     ],
+     "chart": null,
+     "steps": [
+      "Value = Σ FCFₜ / (1 + r)^t + TV / (1 + r)^N",
+      "TV by growth = FCF_N (1 + g) / (r − g); by multiple = multiple × the metric at year N"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "wacc",
+   "inputs": {
+    "equity": "6000",
+    "debt": "4000",
+    "preferred": "0",
+    "ke_by": "capm",
+    "rf": "7",
+    "beta": "1.1",
+    "mrp": "6",
+    "ke": "13.6",
+    "kd": "9",
+    "tax": "25.17",
+    "kp": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "wacc",
+      "label": "WACC",
+      "value": "10.8539",
+      "unit": "percent",
+      "exact": "10.85388",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "ke",
+       "label": "Cost of equity",
+       "value": "13.6",
+       "unit": "percent",
+       "exact": "13.6",
+       "note": ""
+      },
+      {
+       "key": "kd_after",
+       "label": "Cost of debt after tax",
+       "value": "6.7347",
+       "unit": "percent",
+       "exact": "6.7347",
+       "note": ""
+      },
+      {
+       "key": "we",
+       "label": "Weight of equity",
+       "value": "60",
+       "unit": "percent",
+       "exact": "60",
+       "note": ""
+      },
+      {
+       "key": "wd",
+       "label": "Weight of debt",
+       "value": "40",
+       "unit": "percent",
+       "exact": "40",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "WACC = E/V·Ke + D/V·Kd(1 − t) + P/V·Kp",
+      "Ke by CAPM = Rf + β × market risk premium"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "dupont",
+   "inputs": {
+    "net_income": "1200",
+    "sales": "15000",
+    "assets": "12000",
+    "equity": "6000",
+    "ebt": "1600",
+    "ebit": "2000"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "roe",
+      "label": "Return on equity",
+      "value": "20",
+      "unit": "percent",
+      "exact": "20",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "margin",
+       "label": "Net profit margin (NI / sales)",
+       "value": "8",
+       "unit": "percent",
+       "exact": "8",
+       "note": ""
+      },
+      {
+       "key": "turnover",
+       "label": "Asset turnover (sales / assets)",
+       "value": "1.25",
+       "unit": "ratio",
+       "exact": "1.25",
+       "note": ""
+      },
+      {
+       "key": "leverage",
+       "label": "Equity multiplier (assets / equity)",
+       "value": "2",
+       "unit": "ratio",
+       "exact": "2",
+       "note": ""
+      },
+      {
+       "key": "roa",
+       "label": "Return on assets",
+       "value": "10",
+       "unit": "percent",
+       "exact": "10",
+       "note": ""
+      },
+      {
+       "key": "tax_burden",
+       "label": "Tax burden (NI / EBT)",
+       "value": "0.75",
+       "unit": "ratio",
+       "exact": "0.75",
+       "note": ""
+      },
+      {
+       "key": "interest_burden",
+       "label": "Interest burden (EBT / EBIT)",
+       "value": "0.8",
+       "unit": "ratio",
+       "exact": "0.8",
+       "note": ""
+      },
+      {
+       "key": "ebit_margin",
+       "label": "EBIT margin (EBIT / sales)",
+       "value": "13.3333",
+       "unit": "percent",
+       "exact": "13.333333333333333333",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "ROE = margin × turnover × equity multiplier",
+      "Five-step: ROE = (NI/EBT)(EBT/EBIT)(EBIT/sales)(sales/assets)(assets/equity)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "multiples",
+   "inputs": {
+    "roe": "16",
+    "payout": "40",
+    "r": "12",
+    "eps": "",
+    "price": "",
+    "ev": "",
+    "ebitda": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "g",
+      "label": "Sustainable growth (retention × ROE)",
+      "value": "9.6",
+      "unit": "percent",
+      "exact": "9.6",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "pe_lead",
+       "label": "Justified forward P/E: payout / (r − g)",
+       "value": "16.6667",
+       "unit": "ratio",
+       "exact": "16.666666666666666667",
+       "note": ""
+      },
+      {
+       "key": "pe_trail",
+       "label": "Justified trailing P/E: payout (1 + g) / (r − g)",
+       "value": "18.2667",
+       "unit": "ratio",
+       "exact": "18.266666666666666667",
+       "note": ""
+      },
+      {
+       "key": "pb",
+       "label": "Justified P/B: (ROE − g) / (r − g)",
+       "value": "2.6667",
+       "unit": "ratio",
+       "exact": "2.6666666666666666667",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "g = b × ROE;  forward P/E = (1 − b) / (r − g);  P/B = (ROE − g) / (r − g)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "black_scholes",
+   "inputs": {
+    "solve": "price",
+    "spot": "42",
+    "strike": "40",
+    "time_in": "years",
+    "years": "0.5",
+    "days": "30",
+    "r": "10",
+    "q": "0",
+    "rate_type": "continuous",
+    "vol": "20",
+    "option": "call",
+    "market": "4.76"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "call",
+      "label": "Call value",
+      "value": "4.76",
+      "unit": "money",
+      "exact": "4.7594223928715332196",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "put",
+       "label": "Put value",
+       "value": "0.81",
+       "unit": "money",
+       "exact": "0.80859937290009358326",
+       "note": ""
+      },
+      {
+       "key": "d1",
+       "label": "d1",
+       "value": "0.769263",
+       "unit": "number",
+       "exact": "0.76926262810603138091",
+       "note": ""
+      },
+      {
+       "key": "d2",
+       "label": "d2",
+       "value": "0.627841",
+       "unit": "number",
+       "exact": "0.62784127186872187603",
+       "note": ""
+      },
+      {
+       "key": "delta_c",
+       "label": "Delta, call",
+       "value": "0.779131",
+       "unit": "number",
+       "exact": "0.77913129094266894042",
+       "note": ""
+      },
+      {
+       "key": "delta_p",
+       "label": "Delta, put",
+       "value": "-0.220869",
+       "unit": "number",
+       "exact": "-0.22086870905733105958",
+       "note": ""
+      },
+      {
+       "key": "gamma",
+       "label": "Gamma",
+       "value": "0.049963",
+       "unit": "number",
+       "exact": "0.049962670405911855657",
+       "note": ""
+      },
+      {
+       "key": "vega",
+       "label": "Vega (per 1% of volatility)",
+       "value": "0.088134",
+       "unit": "number",
+       "exact": "0.088134150596028513379",
+       "note": ""
+      },
+      {
+       "key": "theta_c",
+       "label": "Theta, call (per day)",
+       "value": "-0.012491",
+       "unit": "number",
+       "exact": "-0.012490663546829113686",
+       "note": ""
+      },
+      {
+       "key": "theta_p",
+       "label": "Theta, put (per day)",
+       "value": "-0.002066",
+       "unit": "number",
+       "exact": "-0.0020662314975062204357",
+       "note": ""
+      },
+      {
+       "key": "rho_c",
+       "label": "Rho, call (per 1% rate)",
+       "value": "0.13982",
+       "unit": "number",
+       "exact": "0.13982045913360281139",
+       "note": ""
+      },
+      {
+       "key": "rho_p",
+       "label": "Rho, put (per 1% rate)",
+       "value": "-0.050425",
+       "unit": "number",
+       "exact": "-0.050425425766539990428",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "d1 = [ln(S/K) + (r − q + σ²/2) T] / (σ√T);  d2 = d1 − σ√T",
+      "Call = S e^(−qT) N(d1) − K e^(−rT) N(d2);  put = K e^(−rT) N(−d2) − S e^(−qT) N(−d1)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "binomial",
+   "inputs": {
+    "option": "put",
+    "style": "american",
+    "spot": "50",
+    "strike": "50",
+    "time_in": "years",
+    "years": "0.4166666667",
+    "days": "30",
+    "r": "10",
+    "q": "0",
+    "rate_type": "continuous",
+    "vol": "40",
+    "steps": "5"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "value",
+      "label": "American put value",
+      "value": "4.49",
+      "unit": "money",
+      "exact": "4.488458534866577496",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "u",
+       "label": "Up factor (u)",
+       "value": "1.122401",
+       "unit": "number",
+       "exact": "1.1224009024508516353",
+       "note": ""
+      },
+      {
+       "key": "d",
+       "label": "Down factor (d)",
+       "value": "0.890947",
+       "unit": "number",
+       "exact": "0.89094725228429562891",
+       "note": ""
+      },
+      {
+       "key": "p",
+       "label": "Risk-neutral probability of up (p)",
+       "value": "0.507319",
+       "unit": "number",
+       "exact": "0.50731928331796250308",
+       "note": ""
+      },
+      {
+       "key": "early",
+       "label": "Nodes where early exercise is better",
+       "value": "3",
+       "unit": "count",
+       "exact": "3",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "u = e^(σ√Δt), d = 1/u, p = (e^((r−q)Δt) − d)/(u − d) (Cox-Ross-Rubinstein)",
+      "Work back from expiry: value = e^(−rΔt)[p·up + (1−p)·down], or exercise if worth more"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "parity",
+   "inputs": {
+    "find": "check",
+    "call": "4.76",
+    "put": "0.81",
+    "spot": "42",
+    "strike": "40",
+    "time_in": "years",
+    "years": "0.5",
+    "days": "30",
+    "r": "10",
+    "q": "0",
+    "rate_type": "continuous"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "gap",
+      "label": "Call − put − (S − PV(K)): the mispricing",
+      "value": "0.00",
+      "unit": "money",
+      "exact": "-0.00082301997143963634299",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "trade",
+       "label": "Arbitrage",
+       "value": "none: the prices agree with parity",
+       "unit": "text",
+       "exact": "none: the prices agree with parity",
+       "note": ""
+      },
+      {
+       "key": "pvk",
+       "label": "Present value of the strike",
+       "value": "38.05",
+       "unit": "money",
+       "exact": "38.049176980028560364",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "C + K e^(−rT) = P + S e^(−qT)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "payoff",
+   "inputs": {
+    "legs": [
+     {
+      "kind": "call",
+      "side": "long",
+      "strike": "22000",
+      "premium": "180",
+      "qty": "75"
+     },
+     {
+      "kind": "call",
+      "side": "short",
+      "strike": "22300",
+      "premium": "70",
+      "qty": "75"
+     }
+    ]
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "max_profit",
+      "label": "Maximum profit at expiry",
+      "value": "14250.00",
+      "unit": "money",
+      "exact": "14250",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "max_loss",
+       "label": "Maximum loss at expiry",
+       "value": "-8250.00",
+       "unit": "money",
+       "exact": "-8250",
+       "note": ""
+      },
+      {
+       "key": "breakeven",
+       "label": "Break-even prices",
+       "value": "22110.00",
+       "unit": "text",
+       "exact": "22110.00",
+       "note": ""
+      },
+      {
+       "key": "net_premium",
+       "label": "Net premium received (+) or paid (−)",
+       "value": "-8250.00",
+       "unit": "money",
+       "exact": "-8250",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "pnl",
+       "title": "Profit at each price",
+       "columns": [
+        {
+         "key": "price",
+         "label": "Price at expiry",
+         "unit": "money"
+        },
+        {
+         "key": "pnl",
+         "label": "Profit or loss",
+         "unit": "money"
+        }
+       ],
+       "rows": [
+        [
+         "13200.00",
+         "-8250.00"
+        ],
+        [
+         "14101.00",
+         "-8250.00"
+        ],
+        [
+         "15002.00",
+         "-8250.00"
+        ],
+        [
+         "15903.00",
+         "-8250.00"
+        ],
+        [
+         "16804.00",
+         "-8250.00"
+        ],
+        [
+         "17705.00",
+         "-8250.00"
+        ],
+        [
+         "18606.00",
+         "-8250.00"
+        ],
+        [
+         "19507.00",
+         "-8250.00"
+        ],
+        [
+         "20408.00",
+         "-8250.00"
+        ],
+        [
+         "21309.00",
+         "-8250.00"
+        ],
+        [
+         "22000.00",
+         "-8250.00"
+        ],
+        [
+         "22660.50",
+         "14250.00"
+        ],
+        [
+         "23561.50",
+         "14250.00"
+        ],
+        [
+         "24462.50",
+         "14250.00"
+        ],
+        [
+         "25363.50",
+         "14250.00"
+        ],
+        [
+         "26264.50",
+         "14250.00"
+        ],
+        [
+         "27165.50",
+         "14250.00"
+        ],
+        [
+         "28066.50",
+         "14250.00"
+        ],
+        [
+         "28967.50",
+         "14250.00"
+        ],
+        [
+         "29868.50",
+         "14250.00"
+        ],
+        [
+         "30769.50",
+         "14250.00"
+        ]
+       ]
+      }
+     ],
+     "chart": {
+      "kind": "line",
+      "title": "Profit or loss at expiry",
+      "x_label": "Price at expiry",
+      "y_unit": "money",
+      "x": [
+       "13200.00",
+       "13425.25",
+       "13650.50",
+       "13875.75",
+       "14101.00",
+       "14326.25",
+       "14551.50",
+       "14776.75",
+       "15002.00",
+       "15227.25",
+       "15452.50",
+       "15677.75",
+       "15903.00",
+       "16128.25",
+       "16353.50",
+       "16578.75",
+       "16804.00",
+       "17029.25",
+       "17254.50",
+       "17479.75",
+       "17705.00",
+       "17930.25",
+       "18155.50",
+       "18380.75",
+       "18606.00",
+       "18831.25",
+       "19056.50",
+       "19281.75",
+       "19507.00",
+       "19732.25",
+       "19957.50",
+       "20182.75",
+       "20408.00",
+       "20633.25",
+       "20858.50",
+       "21083.75",
+       "21309.00",
+       "21534.25",
+       "21759.50",
+       "21984.75",
+       "22000.00",
+       "22210.00",
+       "22300.00",
+       "22435.25",
+       "22660.50",
+       "22885.75",
+       "23111.00",
+       "23336.25",
+       "23561.50",
+       "23786.75",
+       "24012.00",
+       "24237.25",
+       "24462.50",
+       "24687.75",
+       "24913.00",
+       "25138.25",
+       "25363.50",
+       "25588.75",
+       "25814.00",
+       "26039.25",
+       "26264.50",
+       "26489.75",
+       "26715.00",
+       "26940.25",
+       "27165.50",
+       "27390.75",
+       "27616.00",
+       "27841.25",
+       "28066.50",
+       "28291.75",
+       "28517.00",
+       "28742.25",
+       "28967.50",
+       "29192.75",
+       "29418.00",
+       "29643.25",
+       "29868.50",
+       "30093.75",
+       "30319.00",
+       "30544.25",
+       "30769.50",
+       "30994.75",
+       "31220.00"
+      ],
+      "series": [
+       {
+        "name": "Profit",
+        "values": [
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "-8250.00",
+         "7500.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00",
+         "14250.00"
+        ]
+       }
+      ],
+      "marks": []
+     },
+     "steps": [],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "forward",
+   "inputs": {
+    "spot": "22000",
+    "time_in": "years",
+    "years": "0.5",
+    "days": "30",
+    "r": "7",
+    "yield": "1.3",
+    "storage": "0",
+    "compounding": "continuous",
+    "market": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "forward",
+      "label": "Fair forward / futures price",
+      "value": "22636.02",
+      "unit": "money",
+      "exact": "22636.020238359525778",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "basis",
+       "label": "Basis (fair price − spot)",
+       "value": "636.02",
+       "unit": "money",
+       "exact": "636.02023835952577795",
+       "note": ""
+      },
+      {
+       "key": "basis_pct",
+       "label": "…as a share of spot, a year",
+       "value": "5.782",
+       "unit": "percent",
+       "exact": "5.7820021669047797995",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Continuous: F = S e^((r − y + u)T);  discrete: F = S [(1 + r + u)/(1 + y)]^T"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "fx",
+   "inputs": {
+    "spot": "84.20",
+    "domestic": "6.75",
+    "foreign": "4.5",
+    "days": "90",
+    "basis_d": "365",
+    "basis_f": "360",
+    "cross": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "forward",
+      "label": "Forward rate (covered interest parity)",
+      "value": "84.649108",
+      "unit": "number",
+      "exact": "84.649108488409502684",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "points",
+       "label": "Forward points (forward − spot)",
+       "value": "0.449108",
+       "unit": "number",
+       "exact": "0.44910848840950268385",
+       "note": ""
+      },
+      {
+       "key": "premium",
+       "label": "Annualised forward premium (+) or discount (−) of the foreign currency",
+       "value": "2.1632",
+       "unit": "percent",
+       "exact": "2.1631644004944375773",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "F = S × (1 + r_domestic × days/basis) / (1 + r_foreign × days/basis)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "bond",
+   "inputs": {
+    "solve": "ytm",
+    "settlement": "2008-02-15",
+    "maturity": "2016-11-15",
+    "coupon": "5.75",
+    "ytm": "6.5",
+    "price": "95.04287",
+    "redemption": "100",
+    "frequency": "2",
+    "basis": "0",
+    "face": "100000",
+    "shift_bp": "100",
+    "call_date": "",
+    "call_price": "100"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "ytm",
+      "label": "Yield to maturity (YIELD)",
+      "value": "6.5",
+      "unit": "percent",
+      "exact": "6.5000006880754610633",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "price",
+       "label": "Clean price per 100",
+       "value": "95.04287",
+       "unit": "number",
+       "exact": "95.04287",
+       "note": ""
+      },
+      {
+       "key": "accrued",
+       "label": "Accrued interest per 100",
+       "value": "1.4375",
+       "unit": "number",
+       "exact": "1.4375",
+       "note": ""
+      },
+      {
+       "key": "dirty",
+       "label": "Dirty (invoice) price per 100",
+       "value": "96.48037",
+       "unit": "number",
+       "exact": "96.48037",
+       "note": ""
+      },
+      {
+       "key": "invoice",
+       "label": "Invoice amount for face 100000.00",
+       "value": "96480.37",
+       "unit": "money",
+       "exact": "96480.37",
+       "note": ""
+      },
+      {
+       "key": "current",
+       "label": "Current yield (coupon ÷ clean price)",
+       "value": "6.0499",
+       "unit": "percent",
+       "exact": "6.0499014812999649527",
+       "note": ""
+      },
+      {
+       "key": "mac",
+       "label": "Macaulay duration (DURATION), years",
+       "value": "6.8424",
+       "unit": "years",
+       "exact": "6.8423877533492727851",
+       "note": ""
+      },
+      {
+       "key": "mod",
+       "label": "Modified duration (MDURATION)",
+       "value": "6.62701",
+       "unit": "number",
+       "exact": "6.6270099085228651755",
+       "note": ""
+      },
+      {
+       "key": "conv",
+       "label": "Convexity",
+       "value": "54.615702",
+       "unit": "number",
+       "exact": "54.615702001202617548",
+       "note": ""
+      },
+      {
+       "key": "pvbp",
+       "label": "Price value of a basis point, per 100",
+       "value": "0.063938",
+       "unit": "number",
+       "exact": "0.063937636796795218559",
+       "note": ""
+      },
+      {
+       "key": "coupons",
+       "label": "Coupons left",
+       "value": "18",
+       "unit": "count",
+       "exact": "18",
+       "note": ""
+      },
+      {
+       "key": "est",
+       "label": "Price change for 100 bp: duration + convexity estimate",
+       "value": "-6.3539",
+       "unit": "percent",
+       "exact": "-6.3539313985168520878",
+       "note": ""
+      },
+      {
+       "key": "exact",
+       "label": "…by repricing",
+       "value": "-6.362",
+       "unit": "percent",
+       "exact": "-6.3619770467325280221",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Price = redemption/(1+y/f)^(N−1+DSC/E) + Σ coupon/(1+y/f)^(k−1+DSC/E) − coupon × A/E (Excel PRICE)",
+      "Accrued = coupon × A/E;  dirty = clean + accrued",
+      "Macaulay = Σ t·PV / Σ PV;  modified = Macaulay / (1 + y/f)",
+      "ΔP/P ≈ −modified × Δy + ½ × convexity × Δy²"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "bond",
+   "inputs": {
+    "solve": "price",
+    "settlement": "2018-07-01",
+    "maturity": "2048-01-01",
+    "coupon": "8",
+    "ytm": "9",
+    "price": "94.634361",
+    "redemption": "100",
+    "frequency": "2",
+    "basis": "1",
+    "face": "100000",
+    "shift_bp": "100",
+    "call_date": "",
+    "call_price": "100"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "price",
+      "label": "Clean price per 100",
+      "value": "89.716633",
+      "unit": "number",
+      "exact": "89.71663348503747347",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "ytm",
+       "label": "Yield to maturity",
+       "value": "9",
+       "unit": "percent",
+       "exact": "9",
+       "note": ""
+      },
+      {
+       "key": "accrued",
+       "label": "Accrued interest per 100",
+       "value": "0",
+       "unit": "number",
+       "exact": "0",
+       "note": ""
+      },
+      {
+       "key": "dirty",
+       "label": "Dirty (invoice) price per 100",
+       "value": "89.716633",
+       "unit": "number",
+       "exact": "89.71663348503747347",
+       "note": ""
+      },
+      {
+       "key": "invoice",
+       "label": "Invoice amount for face 100000.00",
+       "value": "89716.63",
+       "unit": "money",
+       "exact": "89716.63348503747347",
+       "note": ""
+      },
+      {
+       "key": "current",
+       "label": "Current yield (coupon ÷ clean price)",
+       "value": "8.917",
+       "unit": "percent",
+       "exact": "8.9169641004576961966",
+       "note": ""
+      },
+      {
+       "key": "mac",
+       "label": "Macaulay duration (DURATION), years",
+       "value": "10.9191",
+       "unit": "years",
+       "exact": "10.919145281591912749",
+       "note": ""
+      },
+      {
+       "key": "mod",
+       "label": "Modified duration (MDURATION)",
+       "value": "10.448943",
+       "unit": "number",
+       "exact": "10.448942853198002631",
+       "note": ""
+      },
+      {
+       "key": "conv",
+       "label": "Convexity",
+       "value": "187.585276",
+       "unit": "number",
+       "exact": "187.58527570538673369",
+       "note": ""
+      },
+      {
+       "key": "pvbp",
+       "label": "Price value of a basis point, per 100",
+       "value": "0.093744",
+       "unit": "number",
+       "exact": "0.093744397626646692032",
+       "note": ""
+      },
+      {
+       "key": "coupons",
+       "label": "Coupons left",
+       "value": "59",
+       "unit": "count",
+       "exact": "59",
+       "note": ""
+      },
+      {
+       "key": "est",
+       "label": "Price change for 100 bp: duration + convexity estimate",
+       "value": "-9.511",
+       "unit": "percent",
+       "exact": "-9.5110164746710689625",
+       "note": ""
+      },
+      {
+       "key": "exact",
+       "label": "…by repricing",
+       "value": "-9.5773",
+       "unit": "percent",
+       "exact": "-9.5772513441379767153",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Price = redemption/(1+y/f)^(N−1+DSC/E) + Σ coupon/(1+y/f)^(k−1+DSC/E) − coupon × A/E (Excel PRICE)",
+      "Accrued = coupon × A/E;  dirty = clean + accrued",
+      "Macaulay = Σ t·PV / Σ PV;  modified = Macaulay / (1 + y/f)",
+      "ΔP/P ≈ −modified × Δy + ½ × convexity × Δy²"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "black_scholes",
+   "inputs": {
+    "solve": "iv",
+    "spot": "42",
+    "strike": "40",
+    "time_in": "years",
+    "years": "0.5",
+    "days": "30",
+    "r": "10",
+    "q": "0",
+    "rate_type": "continuous",
+    "vol": "20",
+    "option": "put",
+    "market": "0.81"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "call",
+      "label": "Call value",
+      "value": "4.76",
+      "unit": "money",
+      "exact": "4.7608230199714396363",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "put",
+       "label": "Put value",
+       "value": "0.81",
+       "unit": "money",
+       "exact": "0.81",
+       "note": ""
+      },
+      {
+       "key": "iv",
+       "label": "Implied volatility",
+       "value": "20.0159",
+       "unit": "percent",
+       "exact": "20.015888944466295899",
+       "note": ""
+      },
+      {
+       "key": "d1",
+       "label": "d1",
+       "value": "0.768764",
+       "unit": "number",
+       "exact": "0.76876428188947011584",
+       "note": ""
+      },
+      {
+       "key": "d2",
+       "label": "d2",
+       "value": "0.627231",
+       "unit": "number",
+       "exact": "0.62723057384838046797",
+       "note": ""
+      },
+      {
+       "key": "delta_c",
+       "label": "Delta, call",
+       "value": "0.778983",
+       "unit": "number",
+       "exact": "0.77898337181865477803",
+       "note": ""
+      },
+      {
+       "key": "delta_p",
+       "label": "Delta, put",
+       "value": "-0.221017",
+       "unit": "number",
+       "exact": "-0.22101662818134522197",
+       "note": ""
+      },
+      {
+       "key": "gamma",
+       "label": "Gamma",
+       "value": "0.049942",
+       "unit": "number",
+       "exact": "0.049942145118133595657",
+       "note": ""
+      },
+      {
+       "key": "vega",
+       "label": "Vega (per 1% of volatility)",
+       "value": "0.088168",
+       "unit": "number",
+       "exact": "0.088167933155368979648",
+       "note": ""
+      },
+      {
+       "key": "theta_c",
+       "label": "Theta, call (per day)",
+       "value": "-0.012494",
+       "unit": "number",
+       "exact": "-0.012494266899019724503",
+       "note": ""
+      },
+      {
+       "key": "theta_p",
+       "label": "Theta, put (per day)",
+       "value": "-0.00207",
+       "unit": "number",
+       "exact": "-0.002069834849696831253",
+       "note": ""
+      },
+      {
+       "key": "rho_c",
+       "label": "Rho, call (per 1% rate)",
+       "value": "0.139782",
+       "unit": "number",
+       "exact": "0.1397823929820603052",
+       "note": ""
+      },
+      {
+       "key": "rho_p",
+       "label": "Rho, put (per 1% rate)",
+       "value": "-0.050463",
+       "unit": "number",
+       "exact": "-0.050463491918082496614",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "d1 = [ln(S/K) + (r − q + σ²/2) T] / (σ√T);  d2 = d1 − σ√T",
+      "Call = S e^(−qT) N(d1) − K e^(−rT) N(d2);  put = K e^(−rT) N(−d2) − S e^(−qT) N(−d1)"
      ],
      "warnings": []
     }

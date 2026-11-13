@@ -19,7 +19,9 @@
   as Excel works them out, the normal distribution, volatility, drawdown, Sharpe, Sortino, alpha, beta, VaR,
   with tables pasted from Excel and the risk-free rate from the list; (1.4) loans (EMI, prepayment, true
   cost, comparing offers, balance transfer), planners (SIP with step-up, goal, SWP, retirement, FD, RD, PPF,
-  EPF, NPS, Sukanya Samriddhi, ULIP against term + fund, rent or buy, cost of delay) and depreciation; a
+  EPF, NPS, Sukanya Samriddhi, ULIP against term + fund, rent or buy, cost of delay) and depreciation;
+  (1.5) portfolio maths, bonds (as Excel's PRICE and YIELD), equity valuation, Black-Scholes, binomial
+  trees, strategy payoffs, futures and currency forwards; a
   keypad with registers M0 to
   M9 and a tape; inputs saved on the phone by name.
 - **Tax** (1.2): Kuberlekha's income tax calculator (new regime), with the rates from the loaded list, or the

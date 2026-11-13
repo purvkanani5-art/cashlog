@@ -4,7 +4,7 @@
    Money is integer paise everywhere; rupee text is converted exactly, never through floating point. */
 'use strict';
 
-const APP_VERSION = '1.4.0';
+const APP_VERSION = '1.5.0';
 const KEYS = { entries: 'cl.entries', lists: 'cl.lists', settings: 'cl.settings', lastExport: 'cl.lastExport' };
 const LOCK_AFTER_MS = 2 * 60 * 1000; // ask for the PIN again after two minutes away
 // 1.1 (Kuberlekha decision #118): account, account_id = the money account the entry was paid from; one file per account.

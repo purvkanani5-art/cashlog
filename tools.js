@@ -160,7 +160,7 @@ const CashTools = (() => {
           { date: '2025-04-01', amount: '-100000' },
           { date: todayText(), amount: '112000' },
         ];
-      else if (f.kind === 'date') out[f.key] = f.default || todayText();
+      else if (f.kind === 'date') out[f.key] = f.default || (f.optional ? '' : todayText());
       else out[f.key] = f.default;
     }
     return out;

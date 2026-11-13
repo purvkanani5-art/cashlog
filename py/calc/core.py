@@ -574,6 +574,10 @@ FAMILIES: list[tuple[str, str]] = [
     ("returns", "Returns"),
     ("stats", "Statistics"),
     ("risk", "Risk and performance"),
+    ("portfolio", "Portfolio"),
+    ("bonds", "Bonds and fixed income"),
+    ("equity", "Equity valuation"),
+    ("derivatives", "Derivatives and currency"),
     ("planners", "Planners: SIP, goals, schemes"),
     ("utils", "Utilities"),
 ]
