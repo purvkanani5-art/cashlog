@@ -10,7 +10,15 @@ from __future__ import annotations
 from collections.abc import Mapping
 from typing import Any
 
-from . import cashflow, rates, tvm, utils  # noqa: F401  (each module registers its calculators)
+from . import (  # noqa: F401  (each registers its calculators)
+    cashflow,
+    rates,
+    returns,
+    risk,
+    stats,
+    tvm,
+    utils,
+)
 from .core import FAMILIES, REGISTRY, CalcError, Inputs, result_dict
 from .expr import evaluate
 

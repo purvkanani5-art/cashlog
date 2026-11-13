@@ -131,6 +131,27 @@ await check('Tax: a list from Kuberlekha brings its own rates', async () => {
   await expect(page.getByRole('region', { name: 'Tax payable' }).locator('..')).toContainText('cess (5%)');
 });
 
+await check('Calc: a table pasted from Excel gives Excel\u2019s STDEV.S', async () => {
+  await page.getByRole('button', { name: 'Calc' }).click();
+  await page.getByLabel('Calculator', { exact: true }).selectOption('stats_one');
+  await page.getByText('Paste rows (from Excel or a list)').click();
+  await page.getByLabel('Rows to paste').fill('Value\n1345\n1301\n1368\n1322\n1310\n1370\n1318\n1350\n1303\n1299');
+  await page.getByRole('button', { name: 'Replace the rows' }).click();
+  await expect(page.getByRole('region', { name: 'Answer' })).toContainText('27.463916');
+  await expect(page.getByLabel('Row 10 Value')).toHaveValue('1299');
+});
+
+await check('Calc: the risk-free rate comes from the Kuberlekha list', async () => {
+  await page.getByRole('button', { name: 'Settings' }).click();
+  const list = { app: 'cashlog', version: 1, entity: 'Test', made: '2026-11-13', categories: [{ id: 1, name: 'Food and Dining', group: null }], people: [], accounts: [], risk_free_pct: '7.25' };
+  await page.locator('#list-file').setInputFiles({ name: 'list.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(list)) });
+  await page.getByRole('button', { name: 'Calc' }).click();
+  await page.getByLabel('Calculator', { exact: true }).selectOption('ratios');
+  await page.getByRole('button', { name: 'Start again' }).click();
+  await expect(page.getByLabel('Risk-free rate (%)')).toHaveValue('7.25');
+  await expect(page.getByRole('region', { name: 'Answer' })).toContainText('0.375'); // (14 - 7.25) / 18
+});
+
 await check('Offline after one visit: the calculator still works with no network', async () => {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect

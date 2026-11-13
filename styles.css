@@ -874,3 +874,32 @@ details.card summary {
   font-weight: 600;
   padding: 0 4px;
 }
+
+/* 1.3: table inputs (returns, prices, scenarios) */
+.t-head {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.t-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.t-paste {
+  margin-top: 8px;
+}
+
+.t-paste summary {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand);
+  cursor: pointer;
+}
+
+.t-paste textarea {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 14px;
+  margin-top: 6px;
+}

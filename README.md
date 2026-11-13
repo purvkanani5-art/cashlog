@@ -15,7 +15,9 @@
 - **Settings:** load the categories, people and accounts list downloaded from Kuberlekha, set a 4-digit PIN.
 - **Calc** (1.2): Kuberlekha's financial calculator, the same calculators with the same answers to the last
   digit: TVM (solve any of N, I/Y, PV, PMT, FV), annuities, interest and rate conversions, money-market
-  yields, flat against reducing rates, NPV, IRR, MIRR, XIRR, dates, percentages; a keypad with registers M0 to
+  yields, flat against reducing rates, NPV, IRR, MIRR, XIRR, dates, percentages; (1.3) returns, statistics
+  as Excel works them out, the normal distribution, volatility, drawdown, Sharpe, Sortino, alpha, beta, VaR,
+  with tables pasted from Excel and the risk-free rate from the list; a keypad with registers M0 to
   M9 and a tape; inputs saved on the phone by name.
 - **Tax** (1.2): Kuberlekha's income tax calculator (new regime), with the rates from the loaded list, or the
   built-in rates until one is loaded.

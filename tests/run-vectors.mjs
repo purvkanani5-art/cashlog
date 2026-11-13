@@ -25,6 +25,11 @@ for (const [file, sha] of Object.entries(manifest.files)) {
 }
 const onDisk = readdirSync(join(root, 'py', 'calc')).filter((f) => f.endsWith('.py'));
 if (onDisk.length !== Object.keys(manifest.files).length) fail('py/calc has files the manifest does not list');
+// UTF-8 read as Windows-1252 and saved again turns ₹ into "â‚¹" (it happened once, in 1.2.1): never ship that.
+for (const f of ['app.js', 'tools.js', 'index.html', 'styles.css', 'sw.js', 'README.md']) {
+  const text = readFileSync(join(root, f), 'utf8');
+  if (/â€|â‚|Ã[\u0080-¿]|^﻿/.test(text)) fail(`${f} has garbled characters (wrong encoding)`);
+}
 // GitHub Pages runs Jekyll unless .nojekyll exists, and Jekyll drops files starting with _ (calc/__init__.py).
 try {
   readFileSync(join(root, '.nojekyll'));

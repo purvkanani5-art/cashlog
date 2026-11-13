@@ -1,5 +1,5 @@
 {
- "made_by": "Kuberlekha v0.16.0",
+ "made_by": "Kuberlekha v0.17.0",
  "engine": "1",
  "python": "3.14.8",
  "catalogue": {
@@ -45,7 +45,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "n",
@@ -55,7 +59,11 @@
         "hint": "Years × payments per year",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "i_y",
@@ -65,7 +73,11 @@
         "hint": "Nominal annual rate",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "pv",
@@ -75,7 +87,11 @@
         "hint": "Received +, paid −",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "pmt",
@@ -85,7 +101,11 @@
         "hint": "Received +, paid −",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "fv",
@@ -95,7 +115,11 @@
         "hint": "Received +, paid −",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "p_y",
@@ -130,7 +154,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "c_y",
@@ -165,7 +193,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "timing",
@@ -184,7 +216,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -224,7 +260,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "payment",
@@ -234,7 +274,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -244,7 +288,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "growth",
@@ -259,7 +307,11 @@
           "growing_perpetuity"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "n",
@@ -275,7 +327,11 @@
           "deferred"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "deferral",
@@ -289,7 +345,11 @@
           "deferred"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "timing",
@@ -308,7 +368,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      }
@@ -333,7 +397,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -343,7 +411,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "years",
@@ -353,7 +425,11 @@
         "hint": "Decimals allowed: 2.5 is two and a half years",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "compounding",
@@ -392,7 +468,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -428,7 +508,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -438,7 +522,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "compounding",
@@ -481,7 +569,11 @@
           "nominal"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "period",
@@ -520,7 +612,11 @@
           "periodic"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "days",
@@ -534,7 +630,11 @@
           "days"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "target_days",
@@ -544,7 +644,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": true
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -563,7 +667,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "inflation",
@@ -573,7 +681,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "amount",
@@ -583,7 +695,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": true
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "years",
@@ -593,7 +709,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": true
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -612,7 +732,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "days",
@@ -622,7 +746,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "from",
@@ -657,7 +785,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "price",
@@ -671,7 +803,11 @@
           "price"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "yield",
@@ -689,7 +825,11 @@
           "bey"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -717,7 +857,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "principal",
@@ -727,7 +871,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -737,7 +885,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "months",
@@ -747,7 +899,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -775,7 +931,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -789,7 +949,11 @@
           "time"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "years",
@@ -803,7 +967,11 @@
           "rate"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "multiple",
@@ -813,7 +981,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      }
@@ -838,7 +1010,11 @@
         "hint": "Paid out negative, received positive",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -848,7 +1024,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "per_year",
@@ -875,7 +1055,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "finance_rate",
@@ -885,7 +1069,11 @@
         "hint": "Blank: the discount rate",
         "options": [],
         "show_when": {},
-        "optional": true
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "reinvest_rate",
@@ -895,7 +1083,11 @@
         "hint": "Blank: the discount rate",
         "options": [],
         "show_when": {},
-        "optional": true
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -914,7 +1106,11 @@
         "hint": "Paid out negative; today's value as received",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "rate",
@@ -924,7 +1120,1537 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "returns",
+    "title": "Returns",
+    "calculators": [
+     {
+      "key": "hpr",
+      "family": "returns",
+      "title": "Holding period return and CAGR",
+      "description": "What an investment returned between two values, with any income received: holding period return, CAGR, simple annual return, and after inflation or tax if you give them.",
+      "keywords": "hpr holding period return cagr annualised absolute return growth multiple real after tax",
+      "fields": [
+       {
+        "key": "begin",
+        "label": "Value at the start",
+        "kind": "money",
+        "default": "100000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "end",
+        "label": "Value at the end",
+        "kind": "money",
+        "default": "185000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "income",
+        "label": "Income received in between",
+        "kind": "money",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "period",
+        "label": "Period given as",
+        "kind": "choice",
+        "default": "years",
+        "hint": "",
+        "options": [
+         {
+          "value": "years",
+          "label": "Years"
+         },
+         {
+          "value": "dates",
+          "label": "Dates"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "years",
+        "label": "Years",
+        "kind": "number",
+        "default": "5",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "period": [
+          "years"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "start",
+        "label": "Start date",
+        "kind": "date",
+        "default": "2021-04-01",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "period": [
+          "dates"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "finish",
+        "label": "End date",
+        "kind": "date",
+        "default": "2026-03-31",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "period": [
+          "dates"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "inflation",
+        "label": "Inflation a year (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "tax",
+        "label": "Tax on the gain (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "return_series",
+      "family": "returns",
+      "title": "Returns over many periods",
+      "description": "A run of monthly (or any) returns: cumulative return, arithmetic and geometric means, the annualised return, best and worst, rolling returns, and the growth of 100.",
+      "keywords": "arithmetic geometric mean return series cumulative annualised rolling returns monthly growth of 100",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Period returns",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "period",
+          "label": "Period",
+          "kind": "text",
+          "optional": true
+         },
+         {
+          "key": "r",
+          "label": "Return %",
+          "kind": "percent",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "period": "Apr",
+          "r": "2.1"
+         },
+         {
+          "period": "May",
+          "r": "-1.4"
+         },
+         {
+          "period": "Jun",
+          "r": "3.3"
+         },
+         {
+          "period": "Jul",
+          "r": "0.8"
+         },
+         {
+          "period": "Aug",
+          "r": "-2.6"
+         },
+         {
+          "period": "Sep",
+          "r": "1.9"
+         },
+         {
+          "period": "Oct",
+          "r": "4.2"
+         },
+         {
+          "period": "Nov",
+          "r": "-0.7"
+         },
+         {
+          "period": "Dec",
+          "r": "1.1"
+         },
+         {
+          "period": "Jan",
+          "r": "-3.0"
+         },
+         {
+          "period": "Feb",
+          "r": "2.4"
+         },
+         {
+          "period": "Mar",
+          "r": "1.6"
+         }
+        ],
+        "fill": "returns",
+        "default_from": ""
+       },
+       {
+        "key": "per_year",
+        "label": "Periods a year",
+        "kind": "choice",
+        "default": "12",
+        "hint": "",
+        "options": [
+         {
+          "value": "252",
+          "label": "Daily, trading days (252)"
+         },
+         {
+          "value": "365",
+          "label": "Daily, calendar days (365)"
+         },
+         {
+          "value": "52",
+          "label": "Weekly (52)"
+         },
+         {
+          "value": "12",
+          "label": "Monthly (12)"
+         },
+         {
+          "value": "4",
+          "label": "Quarterly (4)"
+         },
+         {
+          "value": "1",
+          "label": "Yearly (1)"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "window",
+        "label": "Rolling window (periods; 0 for none)",
+        "kind": "int",
+        "default": "6",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "twr_mwr",
+      "family": "returns",
+      "title": "Time-weighted and money-weighted return",
+      "description": "Valuations on each date you put money in or took it out. The time-weighted return measures the investment; the money-weighted return (XIRR) measures your own result, timing included.",
+      "keywords": "twr mwr time weighted money weighted return xirr cfa performance measurement",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Valuations",
+        "kind": "table",
+        "default": "",
+        "hint": "Value just before the money moved that day; the last row is the final value",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "date",
+          "label": "Date",
+          "kind": "date",
+          "optional": false
+         },
+         {
+          "key": "value",
+          "label": "Value before money in or out",
+          "kind": "money",
+          "optional": false
+         },
+         {
+          "key": "flow",
+          "label": "Money in (+) or out (−)",
+          "kind": "money",
+          "optional": true
+         }
+        ],
+        "rows": [
+         {
+          "date": "2025-04-01",
+          "value": "0",
+          "flow": "100000"
+         },
+         {
+          "date": "2025-07-01",
+          "value": "108000",
+          "flow": "50000"
+         },
+         {
+          "date": "2025-10-01",
+          "value": "150000",
+          "flow": "-20000"
+         },
+         {
+          "date": "2026-03-31",
+          "value": "146000",
+          "flow": ""
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "stats",
+    "title": "Statistics",
+    "calculators": [
+     {
+      "key": "stats_one",
+      "family": "stats",
+      "title": "Statistics of a series",
+      "description": "Mean, median, mode, quartiles, variance and standard deviation (sample and population), skewness, kurtosis, semideviation below a target, percentiles and z-scores, as Excel works them out. Paste a column straight from Excel.",
+      "keywords": "mean average median mode variance standard deviation stdev skew kurtosis quartile percentile z-score semivariance downside chebyshev coefficient of variation",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Values",
+        "kind": "table",
+        "default": "",
+        "hint": "Returns in % or any numbers",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "x",
+          "label": "Value",
+          "kind": "number",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "x": "12.5"
+         },
+         {
+          "x": "-3.2"
+         },
+         {
+          "x": "8.1"
+         },
+         {
+          "x": "4.7"
+         },
+         {
+          "x": "-1.9"
+         },
+         {
+          "x": "15.3"
+         },
+         {
+          "x": "6.6"
+         },
+         {
+          "x": "2.4"
+         },
+         {
+          "x": "9.8"
+         },
+         {
+          "x": "-6.1"
+         },
+         {
+          "x": "7.2"
+         },
+         {
+          "x": "3.5"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "target",
+        "label": "Target for semideviation",
+        "kind": "number",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "percentile",
+        "label": "Percentile to find (0 to 100)",
+        "kind": "number",
+        "default": "90",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "z_of",
+        "label": "z-score of this value",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "chebyshev_k",
+        "label": "Chebyshev: within k standard deviations",
+        "kind": "number",
+        "default": "2",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "stats_two",
+      "family": "stats",
+      "title": "Correlation and regression (two series)",
+      "description": "Covariance, correlation, the least-squares line (slope, intercept, R squared, standard error, t-statistics) and a forecast, as Excel works them out.",
+      "keywords": "covariance correlation regression slope intercept r squared beta forecast linear steyx t-stat",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Pairs",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "x",
+          "label": "X",
+          "kind": "number",
+          "optional": false
+         },
+         {
+          "key": "y",
+          "label": "Y",
+          "kind": "number",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "x": "1.2",
+          "y": "1.9"
+         },
+         {
+          "x": "-0.8",
+          "y": "-1.4"
+         },
+         {
+          "x": "2.5",
+          "y": "3.1"
+         },
+         {
+          "x": "0.4",
+          "y": "0.2"
+         },
+         {
+          "x": "-1.6",
+          "y": "-2.3"
+         },
+         {
+          "x": "3.1",
+          "y": "3.8"
+         },
+         {
+          "x": "0.9",
+          "y": "1.5"
+         },
+         {
+          "x": "-0.3",
+          "y": "-0.1"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "x0",
+        "label": "Forecast Y at this X",
+        "kind": "number",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "scenarios",
+      "family": "stats",
+      "title": "Expected value from scenarios",
+      "description": "Outcomes with their probabilities: the expected value, variance and standard deviation.",
+      "keywords": "expected value probability scenario variance standard deviation weighted outcome",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Scenarios",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "label",
+          "label": "Scenario",
+          "kind": "text",
+          "optional": true
+         },
+         {
+          "key": "p",
+          "label": "Probability %",
+          "kind": "percent",
+          "optional": false
+         },
+         {
+          "key": "x",
+          "label": "Outcome",
+          "kind": "number",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "label": "Boom",
+          "p": "25",
+          "x": "24"
+         },
+         {
+          "label": "Normal",
+          "p": "50",
+          "x": "11"
+         },
+         {
+          "label": "Slump",
+          "p": "25",
+          "x": "-8"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "normal",
+      "family": "stats",
+      "title": "Normal distribution",
+      "description": "Probabilities below, above or between values; the value for a probability; confidence intervals. Worked in decimals to Excel's NORM.DIST and NORM.INV.",
+      "keywords": "normal distribution probability z table norm.dist norm.inv confidence interval bell curve",
+      "fields": [
+       {
+        "key": "mode",
+        "label": "Find",
+        "kind": "choice",
+        "default": "prob",
+        "hint": "",
+        "options": [
+         {
+          "value": "prob",
+          "label": "Probability below and above a value"
+         },
+         {
+          "value": "between",
+          "label": "Probability between two values"
+         },
+         {
+          "value": "value",
+          "label": "Value for a probability"
+         },
+         {
+          "value": "interval",
+          "label": "Confidence interval"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "mean",
+        "label": "Mean (μ)",
+        "kind": "number",
+        "default": "0",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "sd",
+        "label": "Standard deviation (σ)",
+        "kind": "number",
+        "default": "1",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "x",
+        "label": "Value",
+        "kind": "number",
+        "default": "1.96",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "prob",
+          "between"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "x2",
+        "label": "Second value",
+        "kind": "number",
+        "default": "-1.96",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "between"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "p",
+        "label": "Probability below (%)",
+        "kind": "percent",
+        "default": "95",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "value"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "confidence",
+        "label": "Confidence (%)",
+        "kind": "percent",
+        "default": "95",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "interval"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "n",
+        "label": "Sample size (1 for one observation)",
+        "kind": "int",
+        "default": "1",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "mode": [
+          "interval"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "key": "risk",
+    "title": "Risk and performance",
+    "calculators": [
+     {
+      "key": "prices",
+      "family": "risk",
+      "title": "Volatility and drawdown from prices",
+      "description": "Prices or NAVs by date: period returns, annualised volatility, CAGR, maximum drawdown with its dates and recovery, and the Calmar ratio.",
+      "keywords": "volatility standard deviation annualised drawdown max drawdown calmar nav price series risk",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Prices",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "date",
+          "label": "Date",
+          "kind": "date",
+          "optional": false
+         },
+         {
+          "key": "price",
+          "label": "Price or value",
+          "kind": "money",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "date": "2025-03-31",
+          "price": "100"
+         },
+         {
+          "date": "2025-04-30",
+          "price": "103.2"
+         },
+         {
+          "date": "2025-05-31",
+          "price": "99.8"
+         },
+         {
+          "date": "2025-06-30",
+          "price": "106.4"
+         },
+         {
+          "date": "2025-07-31",
+          "price": "104.1"
+         },
+         {
+          "date": "2025-08-31",
+          "price": "97.5"
+         },
+         {
+          "date": "2025-09-30",
+          "price": "101.9"
+         },
+         {
+          "date": "2025-10-31",
+          "price": "108.3"
+         },
+         {
+          "date": "2025-11-30",
+          "price": "110.0"
+         },
+         {
+          "date": "2025-12-31",
+          "price": "106.2"
+         },
+         {
+          "date": "2026-01-31",
+          "price": "112.5"
+         },
+         {
+          "date": "2026-02-28",
+          "price": "115.1"
+         },
+         {
+          "date": "2026-03-31",
+          "price": "113.4"
+         }
+        ],
+        "fill": "prices",
+        "default_from": ""
+       },
+       {
+        "key": "per_year",
+        "label": "Prices are",
+        "kind": "choice",
+        "default": "12",
+        "hint": "",
+        "options": [
+         {
+          "value": "252",
+          "label": "Daily, trading days (252)"
+         },
+         {
+          "value": "365",
+          "label": "Daily, calendar days (365)"
+         },
+         {
+          "value": "52",
+          "label": "Weekly (52)"
+         },
+         {
+          "value": "12",
+          "label": "Monthly (12)"
+         },
+         {
+          "value": "4",
+          "label": "Quarterly (4)"
+         },
+         {
+          "value": "1",
+          "label": "Yearly (1)"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "performance",
+      "family": "risk",
+      "title": "Sharpe, Sortino, alpha, beta (from returns)",
+      "description": "Period returns of a portfolio or fund, and of a benchmark if you have it: Sharpe, Sortino, Treynor, Jensen's alpha, beta, R squared, tracking error, information ratio, M², capture ratios, maximum drawdown and Calmar.",
+      "keywords": "sharpe sortino treynor jensen alpha beta tracking error information ratio m2 modigliani capture ratio calmar drawdown volatility performance risk adjusted",
+      "fields": [
+       {
+        "key": "data",
+        "label": "Returns by period",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "period",
+          "label": "Period",
+          "kind": "text",
+          "optional": true
+         },
+         {
+          "key": "rp",
+          "label": "Portfolio %",
+          "kind": "percent",
+          "optional": false
+         },
+         {
+          "key": "rb",
+          "label": "Benchmark %",
+          "kind": "percent",
+          "optional": true
+         }
+        ],
+        "rows": [
+         {
+          "period": "Apr",
+          "rp": "2.4",
+          "rb": "1.9"
+         },
+         {
+          "period": "May",
+          "rp": "-1.1",
+          "rb": "-1.6"
+         },
+         {
+          "period": "Jun",
+          "rp": "3.6",
+          "rb": "3.0"
+         },
+         {
+          "period": "Jul",
+          "rp": "0.6",
+          "rb": "1.1"
+         },
+         {
+          "period": "Aug",
+          "rp": "-2.2",
+          "rb": "-2.9"
+         },
+         {
+          "period": "Sep",
+          "rp": "1.7",
+          "rb": "1.3"
+         },
+         {
+          "period": "Oct",
+          "rp": "4.5",
+          "rb": "3.9"
+         },
+         {
+          "period": "Nov",
+          "rp": "-0.4",
+          "rb": "-0.9"
+         },
+         {
+          "period": "Dec",
+          "rp": "1.5",
+          "rb": "0.8"
+         },
+         {
+          "period": "Jan",
+          "rp": "-2.7",
+          "rb": "-3.4"
+         },
+         {
+          "period": "Feb",
+          "rp": "2.9",
+          "rb": "2.2"
+         },
+         {
+          "period": "Mar",
+          "rp": "1.2",
+          "rb": "1.8"
+         }
+        ],
+        "fill": "returns_pair",
+        "default_from": ""
+       },
+       {
+        "key": "per_year",
+        "label": "Periods a year",
+        "kind": "choice",
+        "default": "12",
+        "hint": "",
+        "options": [
+         {
+          "value": "252",
+          "label": "Daily, trading days (252)"
+         },
+         {
+          "value": "365",
+          "label": "Daily, calendar days (365)"
+         },
+         {
+          "value": "52",
+          "label": "Weekly (52)"
+         },
+         {
+          "value": "12",
+          "label": "Monthly (12)"
+         },
+         {
+          "value": "4",
+          "label": "Quarterly (4)"
+         },
+         {
+          "value": "1",
+          "label": "Yearly (1)"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rf",
+        "label": "Risk-free rate, annual (%)",
+        "kind": "percent",
+        "default": "6.5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": "risk_free"
+       },
+       {
+        "key": "mar",
+        "label": "Target return for Sortino, annual (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "Blank: the risk-free rate",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "ratios",
+      "family": "risk",
+      "title": "Risk-adjusted ratios from summary figures",
+      "description": "The CFA exam way: from a portfolio's return, risk and beta (and the market's), work out Sharpe, Treynor, Jensen's alpha, CAPM, M², Sortino and the information ratio. Leave blank what you do not have.",
+      "keywords": "sharpe treynor jensen alpha capm m2 sortino information ratio summary cfa",
+      "fields": [
+       {
+        "key": "rp",
+        "label": "Portfolio return (%)",
+        "kind": "percent",
+        "default": "14",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "sp",
+        "label": "Portfolio standard deviation (%)",
+        "kind": "percent",
+        "default": "18",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rf",
+        "label": "Risk-free rate (%)",
+        "kind": "percent",
+        "default": "6.5",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": "risk_free"
+       },
+       {
+        "key": "beta",
+        "label": "Portfolio beta",
+        "kind": "number",
+        "default": "1.1",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "rm",
+        "label": "Market return (%)",
+        "kind": "percent",
+        "default": "12",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "sm",
+        "label": "Market standard deviation (%)",
+        "kind": "percent",
+        "default": "15",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "dd",
+        "label": "Downside deviation (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "mar",
+        "label": "Target return for Sortino (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "Blank: the risk-free rate",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "te",
+        "label": "Tracking error (%)",
+        "kind": "percent",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": true,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "var",
+      "family": "risk",
+      "title": "Value at risk (VaR) and expected shortfall",
+      "description": "How much could be lost over a period at a confidence level: parametric (normal) from a mean and standard deviation, or historical from past returns; with expected shortfall (CVaR).",
+      "keywords": "var value at risk expected shortfall cvar parametric historical confidence loss",
+      "fields": [
+       {
+        "key": "method",
+        "label": "Method",
+        "kind": "choice",
+        "default": "parametric",
+        "hint": "",
+        "options": [
+         {
+          "value": "parametric",
+          "label": "Parametric (normal)"
+         },
+         {
+          "value": "historical",
+          "label": "Historical returns"
+         }
+        ],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "amount",
+        "label": "Amount invested",
+        "kind": "money",
+        "default": "1000000",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "confidence",
+        "label": "Confidence (%)",
+        "kind": "percent",
+        "default": "95",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "days",
+        "label": "Holding period (in the same periods as the returns)",
+        "kind": "number",
+        "default": "1",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "mean",
+        "label": "Expected return a year (%)",
+        "kind": "percent",
+        "default": "12",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "method": [
+          "parametric"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "sd",
+        "label": "Standard deviation a year (%)",
+        "kind": "percent",
+        "default": "18",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "method": [
+          "parametric"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "basis",
+        "label": "Days in a year for the holding period",
+        "kind": "choice",
+        "default": "252",
+        "hint": "",
+        "options": [
+         {
+          "value": "252",
+          "label": "252 trading days"
+         },
+         {
+          "value": "365",
+          "label": "365 days"
+         }
+        ],
+        "show_when": {
+         "method": [
+          "parametric"
+         ]
+        },
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "returns",
+        "label": "Past returns",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {
+         "method": [
+          "historical"
+         ]
+        },
+        "optional": false,
+        "columns": [
+         {
+          "key": "r",
+          "label": "Return %",
+          "kind": "percent",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "r": "1.2"
+         },
+         {
+          "r": "-0.8"
+         },
+         {
+          "r": "0.5"
+         },
+         {
+          "r": "-2.1"
+         },
+         {
+          "r": "1.7"
+         },
+         {
+          "r": "0.3"
+         },
+         {
+          "r": "-1.4"
+         },
+         {
+          "r": "2.2"
+         },
+         {
+          "r": "-0.6"
+         },
+         {
+          "r": "0.9"
+         },
+         {
+          "r": "-3.0"
+         },
+         {
+          "r": "1.1"
+         },
+         {
+          "r": "0.4"
+         },
+         {
+          "r": "-0.2"
+         },
+         {
+          "r": "1.8"
+         },
+         {
+          "r": "-1.1"
+         },
+         {
+          "r": "0.7"
+         },
+         {
+          "r": "-2.5"
+         },
+         {
+          "r": "1.3"
+         },
+         {
+          "r": "0.1"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
+       }
+      ]
+     },
+     {
+      "key": "safety_first",
+      "family": "risk",
+      "title": "Roy's safety-first ratio",
+      "description": "Which portfolio is least likely to fall below a minimum return you must earn.",
+      "keywords": "roy safety first ratio shortfall threshold minimum return cfa",
+      "fields": [
+       {
+        "key": "threshold",
+        "label": "Minimum acceptable return (%)",
+        "kind": "percent",
+        "default": "4",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
+       },
+       {
+        "key": "data",
+        "label": "Portfolios",
+        "kind": "table",
+        "default": "",
+        "hint": "",
+        "options": [],
+        "show_when": {},
+        "optional": false,
+        "columns": [
+         {
+          "key": "name",
+          "label": "Portfolio",
+          "kind": "text",
+          "optional": false
+         },
+         {
+          "key": "er",
+          "label": "Expected return %",
+          "kind": "percent",
+          "optional": false
+         },
+         {
+          "key": "sd",
+          "label": "Standard deviation %",
+          "kind": "percent",
+          "optional": false
+         }
+        ],
+        "rows": [
+         {
+          "name": "A",
+          "er": "9",
+          "sd": "12"
+         },
+         {
+          "name": "B",
+          "er": "11",
+          "sd": "20"
+         },
+         {
+          "name": "C",
+          "er": "6.5",
+          "sd": "5"
+         }
+        ],
+        "fill": "",
+        "default_from": ""
        }
       ]
      }
@@ -958,7 +2684,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "start",
@@ -968,7 +2698,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "end",
@@ -982,7 +2716,11 @@
           "between"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "months",
@@ -996,7 +2734,11 @@
           "add"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "days",
@@ -1010,7 +2752,11 @@
           "add"
          ]
         },
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      },
@@ -1054,7 +2800,11 @@
          }
         ],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "a",
@@ -1064,7 +2814,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        },
        {
         "key": "b",
@@ -1074,7 +2828,11 @@
         "hint": "",
         "options": [],
         "show_when": {},
-        "optional": false
+        "optional": false,
+        "columns": [],
+        "rows": [],
+        "fill": "",
+        "default_from": ""
        }
       ]
      }
@@ -10918,6 +12676,2598 @@
      "steps": [],
      "warnings": []
     }
+   }
+  },
+  {
+   "key": "hpr",
+   "inputs": {
+    "begin": "100000",
+    "end": "185000",
+    "income": "0",
+    "period": "years",
+    "years": "5",
+    "start": "2021-04-01",
+    "finish": "2026-03-31",
+    "inflation": "",
+    "tax": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "hpr",
+      "label": "Holding period return",
+      "value": "85",
+      "unit": "percent",
+      "exact": "85",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "gain",
+       "label": "Gain (end + income − begin)",
+       "value": "85000.00",
+       "unit": "money",
+       "exact": "85000",
+       "note": ""
+      },
+      {
+       "key": "cagr",
+       "label": "Annualised (CAGR)",
+       "value": "13.0926",
+       "unit": "percent",
+       "exact": "13.092640899795962467",
+       "note": ""
+      },
+      {
+       "key": "simple",
+       "label": "Annualised, simple (HPR ÷ years)",
+       "value": "17",
+       "unit": "percent",
+       "exact": "17",
+       "note": ""
+      },
+      {
+       "key": "multiple",
+       "label": "Money multiple",
+       "value": "1.85",
+       "unit": "ratio",
+       "exact": "1.85",
+       "note": ""
+      },
+      {
+       "key": "years",
+       "label": "Years",
+       "value": "5",
+       "unit": "years",
+       "exact": "5",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "HPR = (end + income − begin) / begin",
+      "CAGR = (1 + HPR)^(1/years) − 1"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "return_series",
+   "inputs": {
+    "data": [
+     {
+      "period": "Apr",
+      "r": "2.1"
+     },
+     {
+      "period": "May",
+      "r": "-1.4"
+     },
+     {
+      "period": "Jun",
+      "r": "3.3"
+     },
+     {
+      "period": "Jul",
+      "r": "0.8"
+     },
+     {
+      "period": "Aug",
+      "r": "-2.6"
+     },
+     {
+      "period": "Sep",
+      "r": "1.9"
+     },
+     {
+      "period": "Oct",
+      "r": "4.2"
+     },
+     {
+      "period": "Nov",
+      "r": "-0.7"
+     },
+     {
+      "period": "Dec",
+      "r": "1.1"
+     },
+     {
+      "period": "Jan",
+      "r": "-3.0"
+     },
+     {
+      "period": "Feb",
+      "r": "2.4"
+     },
+     {
+      "period": "Mar",
+      "r": "1.6"
+     }
+    ],
+    "per_year": "12",
+    "window": "6"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "cumulative",
+      "label": "Cumulative return",
+      "value": "9.8323",
+      "unit": "percent",
+      "exact": "9.8323240713178246602",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "arith",
+       "label": "Arithmetic mean per period",
+       "value": "0.8083",
+       "unit": "percent",
+       "exact": "0.80833333333333333333",
+       "note": ""
+      },
+      {
+       "key": "geo",
+       "label": "Geometric mean per period",
+       "value": "0.7846",
+       "unit": "percent",
+       "exact": "0.78460107348959013564",
+       "note": ""
+      },
+      {
+       "key": "annual",
+       "label": "Annualised (geometric)",
+       "value": "9.8323",
+       "unit": "percent",
+       "exact": "9.8323240713178246602",
+       "note": ""
+      },
+      {
+       "key": "annual_arith",
+       "label": "Annualised arithmetic mean (× periods a year)",
+       "value": "9.7",
+       "unit": "percent",
+       "exact": "9.7",
+       "note": ""
+      },
+      {
+       "key": "best",
+       "label": "Best period",
+       "value": "4.2",
+       "unit": "percent",
+       "exact": "4.2",
+       "note": ""
+      },
+      {
+       "key": "worst",
+       "label": "Worst period",
+       "value": "-3",
+       "unit": "percent",
+       "exact": "-3",
+       "note": ""
+      },
+      {
+       "key": "positive",
+       "label": "Periods with a gain",
+       "value": "8",
+       "unit": "count",
+       "exact": "8",
+       "note": ""
+      },
+      {
+       "key": "count",
+       "label": "Periods",
+       "value": "12",
+       "unit": "count",
+       "exact": "12",
+       "note": ""
+      },
+      {
+       "key": "roll_avg",
+       "label": "Rolling 6-period returns, annualised: average",
+       "value": "9.9761",
+       "unit": "percent",
+       "exact": "9.9760989263913476501",
+       "note": ""
+      },
+      {
+       "key": "roll_min",
+       "label": "…lowest",
+       "value": "1.4252",
+       "unit": "percent",
+       "exact": "1.4252288752260971739",
+       "note": ""
+      },
+      {
+       "key": "roll_max",
+       "label": "…highest",
+       "value": "14.3462",
+       "unit": "percent",
+       "exact": "14.346249345268551042",
+       "note": ""
+      },
+      {
+       "key": "roll_neg",
+       "label": "…windows that lost money",
+       "value": "0",
+       "unit": "count",
+       "exact": "0",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "growth",
+       "title": "Growth of 100",
+       "columns": [
+        {
+         "key": "period",
+         "label": "Period",
+         "unit": "text"
+        },
+        {
+         "key": "r",
+         "label": "Return",
+         "unit": "percent"
+        },
+        {
+         "key": "index",
+         "label": "Value of 100",
+         "unit": "number"
+        }
+       ],
+       "rows": [
+        [
+         "Apr",
+         "2.1",
+         "102.1"
+        ],
+        [
+         "May",
+         "-1.4",
+         "100.6706"
+        ],
+        [
+         "Jun",
+         "3.3",
+         "103.99273"
+        ],
+        [
+         "Jul",
+         "0.8",
+         "104.824672"
+        ],
+        [
+         "Aug",
+         "-2.6",
+         "102.09923"
+        ],
+        [
+         "Sep",
+         "1.9",
+         "104.039116"
+        ],
+        [
+         "Oct",
+         "4.2",
+         "108.408758"
+        ],
+        [
+         "Nov",
+         "-0.7",
+         "107.649897"
+        ],
+        [
+         "Dec",
+         "1.1",
+         "108.834046"
+        ],
+        [
+         "Jan",
+         "-3",
+         "105.569025"
+        ],
+        [
+         "Feb",
+         "2.4",
+         "108.102681"
+        ],
+        [
+         "Mar",
+         "1.6",
+         "109.832324"
+        ]
+       ]
+      }
+     ],
+     "chart": {
+      "kind": "line",
+      "title": "Growth of 100",
+      "x_label": "Period",
+      "y_unit": "money",
+      "x": [
+       "Apr",
+       "May",
+       "Jun",
+       "Jul",
+       "Aug",
+       "Sep",
+       "Oct",
+       "Nov",
+       "Dec",
+       "Jan",
+       "Feb",
+       "Mar"
+      ],
+      "series": [
+       {
+        "name": "Value of 100",
+        "values": [
+         "102.10",
+         "100.67",
+         "103.99",
+         "104.82",
+         "102.10",
+         "104.04",
+         "108.41",
+         "107.65",
+         "108.83",
+         "105.57",
+         "108.10",
+         "109.83"
+        ]
+       }
+      ],
+      "marks": []
+     },
+     "steps": [
+      "Cumulative = Π(1 + r) − 1;  geometric mean = (Π(1 + r))^(1/n) − 1",
+      "Annualised = (Π(1 + r))^(periods a year / n) − 1"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "twr_mwr",
+   "inputs": {
+    "data": [
+     {
+      "date": "2025-04-01",
+      "value": "0",
+      "flow": "100000"
+     },
+     {
+      "date": "2025-07-01",
+      "value": "108000",
+      "flow": "50000"
+     },
+     {
+      "date": "2025-10-01",
+      "value": "150000",
+      "flow": "-20000"
+     },
+     {
+      "date": "2026-03-31",
+      "value": "146000",
+      "flow": ""
+     }
+    ]
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "twr",
+      "label": "Time-weighted return",
+      "value": "15.1509",
+      "unit": "percent",
+      "exact": "15.150925024342745862",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "twr_annual",
+       "label": "Time-weighted, annualised",
+       "value": "15.1956",
+       "unit": "percent",
+       "exact": "15.195562082898172569",
+       "note": ""
+      },
+      {
+       "key": "mwr",
+       "label": "Money-weighted return (XIRR, annual)",
+       "value": "12.6063",
+       "unit": "percent",
+       "exact": "12.606299948326904149",
+       "note": ""
+      },
+      {
+       "key": "put_in",
+       "label": "Money put in (with the opening value)",
+       "value": "150000.00",
+       "unit": "money",
+       "exact": "150000",
+       "note": ""
+      },
+      {
+       "key": "taken",
+       "label": "Money taken out",
+       "value": "20000.00",
+       "unit": "money",
+       "exact": "20000",
+       "note": ""
+      },
+      {
+       "key": "gain",
+       "label": "Gain (end + taken out − put in)",
+       "value": "16000.00",
+       "unit": "money",
+       "exact": "16000",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "periods",
+       "title": "Sub-periods",
+       "columns": [
+        {
+         "key": "from",
+         "label": "From",
+         "unit": "date"
+        },
+        {
+         "key": "to",
+         "label": "To",
+         "unit": "date"
+        },
+        {
+         "key": "start",
+         "label": "Value after money in/out",
+         "unit": "money"
+        },
+        {
+         "key": "end",
+         "label": "Value at the end",
+         "unit": "money"
+        },
+        {
+         "key": "r",
+         "label": "Return",
+         "unit": "percent"
+        }
+       ],
+       "rows": [
+        [
+         "2025-04-01",
+         "2025-07-01",
+         "100000.00",
+         "108000.00",
+         "8"
+        ],
+        [
+         "2025-07-01",
+         "2025-10-01",
+         "158000.00",
+         "150000.00",
+         "-5.0633"
+        ],
+        [
+         "2025-10-01",
+         "2026-03-31",
+         "130000.00",
+         "146000.00",
+         "12.3077"
+        ]
+       ]
+      }
+     ],
+     "chart": null,
+     "steps": [
+      "Each sub-period: r = value at its end / (value at its start + money in or out then) − 1",
+      "TWR = Π(1 + r) − 1, which the timing of your money does not affect",
+      "MWR = the XIRR of your money in and out with the final value; it does reflect the timing"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "stats_one",
+   "inputs": {
+    "data": [
+     {
+      "x": "12.5"
+     },
+     {
+      "x": "-3.2"
+     },
+     {
+      "x": "8.1"
+     },
+     {
+      "x": "4.7"
+     },
+     {
+      "x": "-1.9"
+     },
+     {
+      "x": "15.3"
+     },
+     {
+      "x": "6.6"
+     },
+     {
+      "x": "2.4"
+     },
+     {
+      "x": "9.8"
+     },
+     {
+      "x": "-6.1"
+     },
+     {
+      "x": "7.2"
+     },
+     {
+      "x": "3.5"
+     }
+    ],
+    "target": "0",
+    "percentile": "90",
+    "z_of": "",
+    "chebyshev_k": "2"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "mean",
+      "label": "Mean (average)",
+      "value": "4.908333",
+      "unit": "number",
+      "exact": "4.9083333333333333333",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "count",
+       "label": "Count",
+       "value": "12",
+       "unit": "count",
+       "exact": "12",
+       "note": ""
+      },
+      {
+       "key": "sum",
+       "label": "Sum",
+       "value": "58.9",
+       "unit": "number",
+       "exact": "58.9",
+       "note": ""
+      },
+      {
+       "key": "median",
+       "label": "Median",
+       "value": "5.65",
+       "unit": "number",
+       "exact": "5.65",
+       "note": ""
+      },
+      {
+       "key": "mode",
+       "label": "Mode",
+       "value": "none (no value repeats)",
+       "unit": "text",
+       "exact": "none (no value repeats)",
+       "note": ""
+      },
+      {
+       "key": "min",
+       "label": "Minimum",
+       "value": "-6.1",
+       "unit": "number",
+       "exact": "-6.1",
+       "note": ""
+      },
+      {
+       "key": "max",
+       "label": "Maximum",
+       "value": "15.3",
+       "unit": "number",
+       "exact": "15.3",
+       "note": ""
+      },
+      {
+       "key": "range",
+       "label": "Range",
+       "value": "21.4",
+       "unit": "number",
+       "exact": "21.4",
+       "note": ""
+      },
+      {
+       "key": "q1",
+       "label": "First quartile (Q1)",
+       "value": "1.325",
+       "unit": "number",
+       "exact": "1.325",
+       "note": ""
+      },
+      {
+       "key": "q3",
+       "label": "Third quartile (Q3)",
+       "value": "8.525",
+       "unit": "number",
+       "exact": "8.525",
+       "note": ""
+      },
+      {
+       "key": "iqr",
+       "label": "Interquartile range",
+       "value": "7.2",
+       "unit": "number",
+       "exact": "7.2",
+       "note": ""
+      },
+      {
+       "key": "var_s",
+       "label": "Variance, sample (VAR.S)",
+       "value": "40.859015",
+       "unit": "number",
+       "exact": "40.859015151515151515",
+       "note": ""
+      },
+      {
+       "key": "var_p",
+       "label": "Variance, population (VAR.P)",
+       "value": "37.454097",
+       "unit": "number",
+       "exact": "37.454097222222222222",
+       "note": ""
+      },
+      {
+       "key": "sd_s",
+       "label": "Standard deviation, sample (STDEV.S)",
+       "value": "6.392106",
+       "unit": "number",
+       "exact": "6.3921056899518762193",
+       "note": ""
+      },
+      {
+       "key": "sd_p",
+       "label": "Standard deviation, population (STDEV.P)",
+       "value": "6.119975",
+       "unit": "number",
+       "exact": "6.1199752632034569542",
+       "note": ""
+      },
+      {
+       "key": "cv",
+       "label": "Coefficient of variation (sample SD / mean)",
+       "value": "1.3023",
+       "unit": "ratio",
+       "exact": "1.3022965752024196033",
+       "note": ""
+      },
+      {
+       "key": "se",
+       "label": "Standard error of the mean",
+       "value": "1.845242",
+       "unit": "number",
+       "exact": "1.8452419703911271303",
+       "note": ""
+      },
+      {
+       "key": "skew",
+       "label": "Skewness (SKEW)",
+       "value": "-0.198466",
+       "unit": "number",
+       "exact": "-0.19846629154294300967",
+       "note": ""
+      },
+      {
+       "key": "kurt",
+       "label": "Excess kurtosis (KURT)",
+       "value": "-0.550928",
+       "unit": "number",
+       "exact": "-0.55092825114886052242",
+       "note": ""
+      },
+      {
+       "key": "semivariance",
+       "label": "Target semivariance below 0 (n − 1)",
+       "value": "4.641818",
+       "unit": "number",
+       "exact": "4.6418181818181818182",
+       "note": ""
+      },
+      {
+       "key": "semideviation",
+       "label": "Target semideviation",
+       "value": "2.154488",
+       "unit": "number",
+       "exact": "2.1544879163778528415",
+       "note": ""
+      },
+      {
+       "key": "percentile",
+       "label": "90th percentile (PERCENTILE.INC)",
+       "value": "12.23",
+       "unit": "number",
+       "exact": "12.23",
+       "note": ""
+      },
+      {
+       "key": "chebyshev",
+       "label": "Chebyshev: at least this share lies within 2 SD",
+       "value": "75",
+       "unit": "percent",
+       "exact": "75",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Sample variance s² = Σ(x − x̄)² / (n − 1); population σ² = Σ(x − x̄)² / n",
+      "Skewness = n / ((n − 1)(n − 2)) · Σ((x − x̄)/s)³ (Excel SKEW)",
+      "Target semivariance = Σ over x < B of (x − B)² / (n − 1) (CFA)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "stats_two",
+   "inputs": {
+    "data": [
+     {
+      "x": "1.2",
+      "y": "1.9"
+     },
+     {
+      "x": "-0.8",
+      "y": "-1.4"
+     },
+     {
+      "x": "2.5",
+      "y": "3.1"
+     },
+     {
+      "x": "0.4",
+      "y": "0.2"
+     },
+     {
+      "x": "-1.6",
+      "y": "-2.3"
+     },
+     {
+      "x": "3.1",
+      "y": "3.8"
+     },
+     {
+      "x": "0.9",
+      "y": "1.5"
+     },
+     {
+      "x": "-0.3",
+      "y": "-0.1"
+     }
+    ],
+    "x0": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "corr",
+      "label": "Correlation (CORREL)",
+      "value": "0.989695",
+      "unit": "number",
+      "exact": "0.98969516333965071961",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "cov_s",
+       "label": "Covariance, sample (COVARIANCE.S)",
+       "value": "3.363929",
+       "unit": "number",
+       "exact": "3.3639285714285714286",
+       "note": ""
+      },
+      {
+       "key": "cov_p",
+       "label": "Covariance, population (COVARIANCE.P)",
+       "value": "2.943438",
+       "unit": "number",
+       "exact": "2.9434375",
+       "note": ""
+      },
+      {
+       "key": "slope",
+       "label": "Slope (SLOPE): Y per unit of X",
+       "value": "1.314401",
+       "unit": "number",
+       "exact": "1.3144013396595032096",
+       "note": ""
+      },
+      {
+       "key": "intercept",
+       "label": "Intercept (INTERCEPT)",
+       "value": "-0.049721",
+       "unit": "number",
+       "exact": "-0.049720904270164666481",
+       "note": ""
+      },
+      {
+       "key": "r2",
+       "label": "R squared (RSQ)",
+       "value": "0.979497",
+       "unit": "number",
+       "exact": "0.97949651633789791774",
+       "note": ""
+      },
+      {
+       "key": "steyx",
+       "label": "Standard error of the estimate (STEYX)",
+       "value": "0.328604",
+       "unit": "number",
+       "exact": "0.32860423368337992548",
+       "note": ""
+      },
+      {
+       "key": "t_slope",
+       "label": "t-statistic of the slope (6 degrees of freedom)",
+       "value": "16.930245",
+       "unit": "number",
+       "exact": "16.93024507453368446",
+       "note": ""
+      },
+      {
+       "key": "t_corr",
+       "label": "t-statistic of the correlation",
+       "value": "16.930245",
+       "unit": "number",
+       "exact": "16.93024507453368446",
+       "note": ""
+      },
+      {
+       "key": "mean_x",
+       "label": "Mean of X",
+       "value": "0.675",
+       "unit": "number",
+       "exact": "0.675",
+       "note": ""
+      },
+      {
+       "key": "mean_y",
+       "label": "Mean of Y",
+       "value": "0.8375",
+       "unit": "number",
+       "exact": "0.8375",
+       "note": ""
+      },
+      {
+       "key": "sd_x",
+       "label": "Standard deviation of X (sample)",
+       "value": "1.599777",
+       "unit": "number",
+       "exact": "1.5997767701419202336",
+       "note": ""
+      },
+      {
+       "key": "sd_y",
+       "label": "Standard deviation of Y (sample)",
+       "value": "2.124643",
+       "unit": "number",
+       "exact": "2.1246428271258072466",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Covariance = Σ(x − x̄)(y − ȳ) / (n − 1);  correlation = cov / (sₓ s_y)",
+      "Slope = cov / sₓ²;  intercept = ȳ − slope · x̄;  R² = correlation²",
+      "STEYX = √(Σ(y − ŷ)² / (n − 2))"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "scenarios",
+   "inputs": {
+    "data": [
+     {
+      "label": "Boom",
+      "p": "25",
+      "x": "24"
+     },
+     {
+      "label": "Normal",
+      "p": "50",
+      "x": "11"
+     },
+     {
+      "label": "Slump",
+      "p": "25",
+      "x": "-8"
+     }
+    ]
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "ev",
+      "label": "Expected value",
+      "value": "9.5",
+      "unit": "number",
+      "exact": "9.5",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "var",
+       "label": "Variance",
+       "value": "130.25",
+       "unit": "number",
+       "exact": "130.25",
+       "note": ""
+      },
+      {
+       "key": "sd",
+       "label": "Standard deviation",
+       "value": "11.412712",
+       "unit": "number",
+       "exact": "11.412712210513327406",
+       "note": ""
+      },
+      {
+       "key": "cv",
+       "label": "Coefficient of variation",
+       "value": "1.2013",
+       "unit": "ratio",
+       "exact": "1.2013381274224555164",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "rows",
+       "title": "Each scenario",
+       "columns": [
+        {
+         "key": "label",
+         "label": "Scenario",
+         "unit": "text"
+        },
+        {
+         "key": "p",
+         "label": "Probability",
+         "unit": "percent"
+        },
+        {
+         "key": "x",
+         "label": "Outcome",
+         "unit": "number"
+        },
+        {
+         "key": "px",
+         "label": "p × outcome",
+         "unit": "number"
+        },
+        {
+         "key": "dev",
+         "label": "p × (x − E)²",
+         "unit": "number"
+        }
+       ],
+       "rows": [
+        [
+         "Boom",
+         "25",
+         "24",
+         "6",
+         "52.5625"
+        ],
+        [
+         "Normal",
+         "50",
+         "11",
+         "5.5",
+         "1.125"
+        ],
+        [
+         "Slump",
+         "25",
+         "-8",
+         "-2",
+         "76.5625"
+        ]
+       ]
+      }
+     ],
+     "chart": null,
+     "steps": [
+      "E(X) = Σ p·x;  Var = Σ p·(x − E(X))²"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "normal",
+   "inputs": {
+    "mode": "prob",
+    "mean": "0",
+    "sd": "1",
+    "x": "1.96",
+    "x2": "-1.96",
+    "p": "95",
+    "confidence": "95",
+    "n": "1"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "below",
+      "label": "P(X < 1.96)",
+      "value": "97.5002",
+      "unit": "percent",
+      "exact": "97.500210485177956586",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "above",
+       "label": "P(X > 1.96)",
+       "value": "2.4998",
+       "unit": "percent",
+       "exact": "2.4997895148220434137",
+       "note": ""
+      },
+      {
+       "key": "z",
+       "label": "z",
+       "value": "1.96",
+       "unit": "number",
+       "exact": "1.96",
+       "note": ""
+      },
+      {
+       "key": "pdf",
+       "label": "Density at the value (NORM.DIST, FALSE)",
+       "value": "0.058441",
+       "unit": "number",
+       "exact": "0.05844094433345146032",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "z = (x − μ) / σ;  Φ(z) = ½ + φ(z) · Σ z^(2n+1) / (1·3·5···(2n+1))",
+      "Interval: mean ± z · σ / √n"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "prices",
+   "inputs": {
+    "data": [
+     {
+      "date": "2025-03-31",
+      "price": "100"
+     },
+     {
+      "date": "2025-04-30",
+      "price": "103.2"
+     },
+     {
+      "date": "2025-05-31",
+      "price": "99.8"
+     },
+     {
+      "date": "2025-06-30",
+      "price": "106.4"
+     },
+     {
+      "date": "2025-07-31",
+      "price": "104.1"
+     },
+     {
+      "date": "2025-08-31",
+      "price": "97.5"
+     },
+     {
+      "date": "2025-09-30",
+      "price": "101.9"
+     },
+     {
+      "date": "2025-10-31",
+      "price": "108.3"
+     },
+     {
+      "date": "2025-11-30",
+      "price": "110.0"
+     },
+     {
+      "date": "2025-12-31",
+      "price": "106.2"
+     },
+     {
+      "date": "2026-01-31",
+      "price": "112.5"
+     },
+     {
+      "date": "2026-02-28",
+      "price": "115.1"
+     },
+     {
+      "date": "2026-03-31",
+      "price": "113.4"
+     }
+    ],
+    "per_year": "12"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "vol",
+      "label": "Volatility, annualised",
+      "value": "15.1717",
+      "unit": "percent",
+      "exact": "15.171729078545993787",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "total",
+       "label": "Total return",
+       "value": "13.4",
+       "unit": "percent",
+       "exact": "13.4",
+       "note": ""
+      },
+      {
+       "key": "cagr",
+       "label": "CAGR (from the dates)",
+       "value": "13.4",
+       "unit": "percent",
+       "exact": "13.4",
+       "note": ""
+      },
+      {
+       "key": "vol_period",
+       "label": "Standard deviation per period",
+       "value": "4.3797",
+       "unit": "percent",
+       "exact": "4.3797009337853011837",
+       "note": ""
+      },
+      {
+       "key": "mean_period",
+       "label": "Mean return per period",
+       "value": "1.141",
+       "unit": "percent",
+       "exact": "1.1409945944442221563",
+       "note": ""
+      },
+      {
+       "key": "max_dd",
+       "label": "Maximum drawdown",
+       "value": "-8.3647",
+       "unit": "percent",
+       "exact": "-8.3646616541353383459",
+       "note": ""
+      },
+      {
+       "key": "dd_from",
+       "label": "…from the peak on",
+       "value": "2025-06-30",
+       "unit": "date",
+       "exact": "2025-06-30",
+       "note": ""
+      },
+      {
+       "key": "dd_to",
+       "label": "…to the low on",
+       "value": "2025-08-31",
+       "unit": "date",
+       "exact": "2025-08-31",
+       "note": ""
+      },
+      {
+       "key": "dd_back",
+       "label": "…back to the peak on",
+       "value": "2025-10-31",
+       "unit": "date",
+       "exact": "2025-10-31",
+       "note": ""
+      },
+      {
+       "key": "calmar",
+       "label": "Calmar ratio (CAGR ÷ maximum drawdown)",
+       "value": "1.602",
+       "unit": "ratio",
+       "exact": "1.6019775280898876404",
+       "note": ""
+      },
+      {
+       "key": "current_dd",
+       "label": "Below the highest price now",
+       "value": "-1.477",
+       "unit": "percent",
+       "exact": "-1.4769765421372719374",
+       "note": ""
+      },
+      {
+       "key": "best",
+       "label": "Best period",
+       "value": "6.6132",
+       "unit": "percent",
+       "exact": "6.6132264529058116232",
+       "note": ""
+      },
+      {
+       "key": "worst",
+       "label": "Worst period",
+       "value": "-6.3401",
+       "unit": "percent",
+       "exact": "-6.3400576368876080692",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "returns",
+       "title": "Period returns",
+       "columns": [
+        {
+         "key": "date",
+         "label": "Date",
+         "unit": "date"
+        },
+        {
+         "key": "price",
+         "label": "Price",
+         "unit": "money"
+        },
+        {
+         "key": "r",
+         "label": "Return",
+         "unit": "percent"
+        }
+       ],
+       "rows": [
+        [
+         "2025-03-31",
+         "100.00",
+         ""
+        ],
+        [
+         "2025-04-30",
+         "103.20",
+         "3.2"
+        ],
+        [
+         "2025-05-31",
+         "99.80",
+         "-3.2946"
+        ],
+        [
+         "2025-06-30",
+         "106.40",
+         "6.6132"
+        ],
+        [
+         "2025-07-31",
+         "104.10",
+         "-2.1617"
+        ],
+        [
+         "2025-08-31",
+         "97.50",
+         "-6.3401"
+        ],
+        [
+         "2025-09-30",
+         "101.90",
+         "4.5128"
+        ],
+        [
+         "2025-10-31",
+         "108.30",
+         "6.2807"
+        ],
+        [
+         "2025-11-30",
+         "110.00",
+         "1.5697"
+        ],
+        [
+         "2025-12-31",
+         "106.20",
+         "-3.4545"
+        ],
+        [
+         "2026-01-31",
+         "112.50",
+         "5.9322"
+        ],
+        [
+         "2026-02-28",
+         "115.10",
+         "2.3111"
+        ],
+        [
+         "2026-03-31",
+         "113.40",
+         "-1.477"
+        ]
+       ]
+      }
+     ],
+     "chart": {
+      "kind": "line",
+      "title": "Price",
+      "x_label": "Date",
+      "y_unit": "money",
+      "x": [
+       "2025-03-31",
+       "2025-04-30",
+       "2025-05-31",
+       "2025-06-30",
+       "2025-07-31",
+       "2025-08-31",
+       "2025-09-30",
+       "2025-10-31",
+       "2025-11-30",
+       "2025-12-31",
+       "2026-01-31",
+       "2026-02-28",
+       "2026-03-31"
+      ],
+      "series": [
+       {
+        "name": "Price",
+        "values": [
+         "100.00",
+         "103.20",
+         "99.80",
+         "106.40",
+         "104.10",
+         "97.50",
+         "101.90",
+         "108.30",
+         "110.00",
+         "106.20",
+         "112.50",
+         "115.10",
+         "113.40"
+        ]
+       }
+      ],
+      "marks": []
+     },
+     "steps": [
+      "Period return = price / previous price − 1",
+      "Volatility = SD of period returns (n − 1) × √(periods a year)",
+      "Maximum drawdown = the largest fall from a high to a later low"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "performance",
+   "inputs": {
+    "data": [
+     {
+      "period": "Apr",
+      "rp": "2.4",
+      "rb": "1.9"
+     },
+     {
+      "period": "May",
+      "rp": "-1.1",
+      "rb": "-1.6"
+     },
+     {
+      "period": "Jun",
+      "rp": "3.6",
+      "rb": "3.0"
+     },
+     {
+      "period": "Jul",
+      "rp": "0.6",
+      "rb": "1.1"
+     },
+     {
+      "period": "Aug",
+      "rp": "-2.2",
+      "rb": "-2.9"
+     },
+     {
+      "period": "Sep",
+      "rp": "1.7",
+      "rb": "1.3"
+     },
+     {
+      "period": "Oct",
+      "rp": "4.5",
+      "rb": "3.9"
+     },
+     {
+      "period": "Nov",
+      "rp": "-0.4",
+      "rb": "-0.9"
+     },
+     {
+      "period": "Dec",
+      "rp": "1.5",
+      "rb": "0.8"
+     },
+     {
+      "period": "Jan",
+      "rp": "-2.7",
+      "rb": "-3.4"
+     },
+     {
+      "period": "Feb",
+      "rp": "2.9",
+      "rb": "2.2"
+     },
+     {
+      "period": "Mar",
+      "rp": "1.2",
+      "rb": "1.8"
+     }
+    ],
+    "per_year": "12",
+    "rf": "6.5",
+    "mar": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "sharpe",
+      "label": "Sharpe ratio",
+      "value": "0.7286",
+      "unit": "ratio",
+      "exact": "0.72864355561746643556",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "ann",
+       "label": "Annualised return (geometric)",
+       "value": "12.3736",
+       "unit": "percent",
+       "exact": "12.373573242362464615",
+       "note": ""
+      },
+      {
+       "key": "vol",
+       "label": "Annualised volatility",
+       "value": "7.8035",
+       "unit": "percent",
+       "exact": "7.8034957201593603838",
+       "note": ""
+      },
+      {
+       "key": "sortino",
+       "label": "Sortino ratio (target 6.5% a year)",
+       "value": "1.2308",
+       "unit": "ratio",
+       "exact": "1.2307868349637928125",
+       "note": ""
+      },
+      {
+       "key": "downside",
+       "label": "Downside deviation, annualised",
+       "value": "4.6198",
+       "unit": "percent",
+       "exact": "4.6197820014461460477",
+       "note": ""
+      },
+      {
+       "key": "max_dd",
+       "label": "Maximum drawdown",
+       "value": "-2.7",
+       "unit": "percent",
+       "exact": "-2.7",
+       "note": ""
+      },
+      {
+       "key": "calmar",
+       "label": "Calmar ratio",
+       "value": "4.5828",
+       "unit": "ratio",
+       "exact": "4.5828049045786905981",
+       "note": ""
+      },
+      {
+       "key": "beta",
+       "label": "Beta",
+       "value": "0.9579",
+       "unit": "ratio",
+       "exact": "0.95791994526171741362",
+       "note": ""
+      },
+      {
+       "key": "alpha",
+       "label": "Jensen's alpha, annualised",
+       "value": "4.8373",
+       "unit": "percent",
+       "exact": "4.8372815342925965033",
+       "note": ""
+      },
+      {
+       "key": "treynor",
+       "label": "Treynor ratio",
+       "value": "5.9357",
+       "unit": "percent",
+       "exact": "5.9357432694744766249",
+       "note": ""
+      },
+      {
+       "key": "corr",
+       "label": "Correlation with the benchmark",
+       "value": "0.9803",
+       "unit": "ratio",
+       "exact": "0.98031061528892867601",
+       "note": ""
+      },
+      {
+       "key": "r2",
+       "label": "R squared",
+       "value": "0.961",
+       "unit": "ratio",
+       "exact": "0.96100890244815792122",
+       "note": ""
+      },
+      {
+       "key": "te",
+       "label": "Tracking error, annualised",
+       "value": "1.5771",
+       "unit": "percent",
+       "exact": "1.5771089776146502149",
+       "note": ""
+      },
+      {
+       "key": "ir",
+       "label": "Information ratio",
+       "value": "3.0435",
+       "unit": "ratio",
+       "exact": "3.0435436410107284849",
+       "note": ""
+      },
+      {
+       "key": "m2",
+       "label": "M² (Modigliani): return at the benchmark's risk",
+       "value": "12.3189",
+       "unit": "percent",
+       "exact": "12.318872136695641351",
+       "note": ""
+      },
+      {
+       "key": "m2_alpha",
+       "label": "M² alpha over the benchmark",
+       "value": "4.9329",
+       "unit": "percent",
+       "exact": "4.9329052689130431471",
+       "note": ""
+      },
+      {
+       "key": "up",
+       "label": "Upside capture",
+       "value": "116.8348",
+       "unit": "percent",
+       "exact": "116.83481844226811636",
+       "note": ""
+      },
+      {
+       "key": "down",
+       "label": "Downside capture",
+       "value": "75.1347",
+       "unit": "percent",
+       "exact": "75.134698256784404871",
+       "note": ""
+      },
+      {
+       "key": "ann_b",
+       "label": "Benchmark: annualised return",
+       "value": "7.1302",
+       "unit": "percent",
+       "exact": "7.130189313263166839",
+       "note": ""
+      },
+      {
+       "key": "vol_b",
+       "label": "Benchmark: annualised volatility",
+       "value": "7.9859",
+       "unit": "percent",
+       "exact": "7.9858966593955781382",
+       "note": ""
+      },
+      {
+       "key": "sharpe_b",
+       "label": "Benchmark: Sharpe ratio",
+       "value": "0.1109",
+       "unit": "ratio",
+       "exact": "0.11094143908564597366",
+       "note": ""
+      },
+      {
+       "key": "sys",
+       "label": "Systematic share of variance (R²)",
+       "value": "96.1009",
+       "unit": "percent",
+       "exact": "96.100890244815792122",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Per period risk-free = (1 + 6.5%)^(1/12) − 1",
+      "Sharpe = (mean return − risk-free) × p / (SD × √p)",
+      "Sortino = (mean return − target) × p / downside deviation;  DD = √(Σ min(0, r − target)² / n) × √p",
+      "Beta = cov(Rp, Rb) / var(Rb);  Jensen's α = [mean Rp − (Rf + β(mean Rb − Rf))] × p",
+      "Treynor = annual excess return / β;  IR = annual mean active return / tracking error",
+      "M² = Rf + Sharpe × benchmark volatility"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "ratios",
+   "inputs": {
+    "rp": "14",
+    "sp": "18",
+    "rf": "6.5",
+    "beta": "1.1",
+    "rm": "12",
+    "sm": "15",
+    "dd": "",
+    "mar": "",
+    "te": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "sharpe",
+      "label": "Sharpe ratio",
+      "value": "0.4167",
+      "unit": "ratio",
+      "exact": "0.41666666666666666667",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "treynor",
+       "label": "Treynor ratio",
+       "value": "6.8182",
+       "unit": "percent",
+       "exact": "6.8181818181818181818",
+       "note": ""
+      },
+      {
+       "key": "capm",
+       "label": "CAPM required return",
+       "value": "12.55",
+       "unit": "percent",
+       "exact": "12.55",
+       "note": ""
+      },
+      {
+       "key": "alpha",
+       "label": "Jensen's alpha (return − CAPM)",
+       "value": "1.45",
+       "unit": "percent",
+       "exact": "1.45",
+       "note": ""
+      },
+      {
+       "key": "m2",
+       "label": "M² (return at the market's risk)",
+       "value": "12.75",
+       "unit": "percent",
+       "exact": "12.75",
+       "note": ""
+      },
+      {
+       "key": "m2_alpha",
+       "label": "M² alpha over the market",
+       "value": "0.75",
+       "unit": "percent",
+       "exact": "0.75",
+       "note": ""
+      },
+      {
+       "key": "sharpe_m",
+       "label": "Market's Sharpe ratio",
+       "value": "0.3667",
+       "unit": "ratio",
+       "exact": "0.36666666666666666667",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Sharpe = (Rp − Rf) / σp;  Treynor = (Rp − Rf) / βp",
+      "CAPM = Rf + β(Rm − Rf);  Jensen's α = Rp − CAPM",
+      "M² = Rf + Sharpe × σm;  Sortino = (Rp − target) / downside deviation;  IR = (Rp − Rb) / TE"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "var",
+   "inputs": {
+    "method": "parametric",
+    "amount": "1000000",
+    "confidence": "95",
+    "days": "1",
+    "mean": "12",
+    "sd": "18",
+    "basis": "252",
+    "returns": [
+     {
+      "r": "1.2"
+     },
+     {
+      "r": "-0.8"
+     },
+     {
+      "r": "0.5"
+     },
+     {
+      "r": "-2.1"
+     },
+     {
+      "r": "1.7"
+     },
+     {
+      "r": "0.3"
+     },
+     {
+      "r": "-1.4"
+     },
+     {
+      "r": "2.2"
+     },
+     {
+      "r": "-0.6"
+     },
+     {
+      "r": "0.9"
+     },
+     {
+      "r": "-3.0"
+     },
+     {
+      "r": "1.1"
+     },
+     {
+      "r": "0.4"
+     },
+     {
+      "r": "-0.2"
+     },
+     {
+      "r": "1.8"
+     },
+     {
+      "r": "-1.1"
+     },
+     {
+      "r": "0.7"
+     },
+     {
+      "r": "-2.5"
+     },
+     {
+      "r": "1.3"
+     },
+     {
+      "r": "0.1"
+     }
+    ]
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "var",
+      "label": "Value at risk, 95%",
+      "value": "18174.70",
+      "unit": "money",
+      "exact": "18174.696552450406391",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "var_pct",
+       "label": "…as a share of the amount",
+       "value": "1.8175",
+       "unit": "percent",
+       "exact": "1.8174696552450406391",
+       "note": ""
+      },
+      {
+       "key": "es",
+       "label": "Expected shortfall (CVaR): average loss beyond VaR",
+       "value": "22912.77",
+       "unit": "money",
+       "exact": "22912.774301577358971",
+       "note": ""
+      },
+      {
+       "key": "z",
+       "label": "z",
+       "value": "1.644854",
+       "unit": "number",
+       "exact": "1.6448536269514727149",
+       "note": ""
+      },
+      {
+       "key": "prob",
+       "label": "Chance of a loss at least this big",
+       "value": "5",
+       "unit": "percent",
+       "exact": "5",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "VaR = −(μ·h − z·σ·√h) × amount, h = days / days a year",
+      "Expected shortfall = −(μ·h − σ·√h · φ(z) / (1 − c)) × amount"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "safety_first",
+   "inputs": {
+    "threshold": "4",
+    "data": [
+     {
+      "name": "A",
+      "er": "9",
+      "sd": "12"
+     },
+     {
+      "name": "B",
+      "er": "11",
+      "sd": "20"
+     },
+     {
+      "name": "C",
+      "er": "6.5",
+      "sd": "5"
+     }
+    ]
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "best",
+      "label": "Best by safety-first",
+      "value": "C",
+      "unit": "text",
+      "exact": "C",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "sfr",
+       "label": "Its safety-first ratio",
+       "value": "0.5",
+       "unit": "ratio",
+       "exact": "0.5",
+       "note": ""
+      },
+      {
+       "key": "shortfall",
+       "label": "Its chance of falling below the threshold (normal)",
+       "value": "30.8538",
+       "unit": "percent",
+       "exact": "30.853753872598689636",
+       "note": ""
+      }
+     ],
+     "tables": [
+      {
+       "key": "all",
+       "title": "Every portfolio",
+       "columns": [
+        {
+         "key": "name",
+         "label": "Portfolio",
+         "unit": "text"
+        },
+        {
+         "key": "er",
+         "label": "Expected return",
+         "unit": "percent"
+        },
+        {
+         "key": "sd",
+         "label": "Standard deviation",
+         "unit": "percent"
+        },
+        {
+         "key": "sfr",
+         "label": "Safety-first ratio",
+         "unit": "ratio"
+        },
+        {
+         "key": "p",
+         "label": "Chance below threshold",
+         "unit": "percent"
+        }
+       ],
+       "rows": [
+        [
+         "A",
+         "9",
+         "12",
+         "0.4167",
+         "33.8461"
+        ],
+        [
+         "B",
+         "11",
+         "20",
+         "0.35",
+         "36.3169"
+        ],
+        [
+         "C",
+         "6.5",
+         "5",
+         "0.5",
+         "30.8538"
+        ]
+       ]
+      }
+     ],
+     "chart": null,
+     "steps": [
+      "SFRatio = (expected return − threshold) / standard deviation; choose the highest",
+      "Chance below the threshold = Φ(−SFRatio), if returns are normal"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "stats_one",
+   "inputs": {
+    "data": [
+     {
+      "x": "3"
+     },
+     {
+      "x": "4"
+     },
+     {
+      "x": "5"
+     },
+     {
+      "x": "2"
+     },
+     {
+      "x": "3"
+     },
+     {
+      "x": "4"
+     },
+     {
+      "x": "5"
+     },
+     {
+      "x": "6"
+     },
+     {
+      "x": "4"
+     },
+     {
+      "x": "7"
+     }
+    ],
+    "target": "0",
+    "percentile": "90",
+    "z_of": "",
+    "chebyshev_k": "2"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "mean",
+      "label": "Mean (average)",
+      "value": "4.3",
+      "unit": "number",
+      "exact": "4.3",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "count",
+       "label": "Count",
+       "value": "10",
+       "unit": "count",
+       "exact": "10",
+       "note": ""
+      },
+      {
+       "key": "sum",
+       "label": "Sum",
+       "value": "43",
+       "unit": "number",
+       "exact": "43",
+       "note": ""
+      },
+      {
+       "key": "median",
+       "label": "Median",
+       "value": "4",
+       "unit": "number",
+       "exact": "4",
+       "note": ""
+      },
+      {
+       "key": "mode",
+       "label": "Mode",
+       "value": "4",
+       "unit": "number",
+       "exact": "4",
+       "note": ""
+      },
+      {
+       "key": "min",
+       "label": "Minimum",
+       "value": "2",
+       "unit": "number",
+       "exact": "2",
+       "note": ""
+      },
+      {
+       "key": "max",
+       "label": "Maximum",
+       "value": "7",
+       "unit": "number",
+       "exact": "7",
+       "note": ""
+      },
+      {
+       "key": "range",
+       "label": "Range",
+       "value": "5",
+       "unit": "number",
+       "exact": "5",
+       "note": ""
+      },
+      {
+       "key": "q1",
+       "label": "First quartile (Q1)",
+       "value": "3.25",
+       "unit": "number",
+       "exact": "3.25",
+       "note": ""
+      },
+      {
+       "key": "q3",
+       "label": "Third quartile (Q3)",
+       "value": "5",
+       "unit": "number",
+       "exact": "5",
+       "note": ""
+      },
+      {
+       "key": "iqr",
+       "label": "Interquartile range",
+       "value": "1.75",
+       "unit": "number",
+       "exact": "1.75",
+       "note": ""
+      },
+      {
+       "key": "var_s",
+       "label": "Variance, sample (VAR.S)",
+       "value": "2.233333",
+       "unit": "number",
+       "exact": "2.2333333333333333333",
+       "note": ""
+      },
+      {
+       "key": "var_p",
+       "label": "Variance, population (VAR.P)",
+       "value": "2.01",
+       "unit": "number",
+       "exact": "2.01",
+       "note": ""
+      },
+      {
+       "key": "sd_s",
+       "label": "Standard deviation, sample (STDEV.S)",
+       "value": "1.494434",
+       "unit": "number",
+       "exact": "1.4944341180973262741",
+       "note": ""
+      },
+      {
+       "key": "sd_p",
+       "label": "Standard deviation, population (STDEV.P)",
+       "value": "1.417745",
+       "unit": "number",
+       "exact": "1.4177446878757825203",
+       "note": ""
+      },
+      {
+       "key": "cv",
+       "label": "Coefficient of variation (sample SD / mean)",
+       "value": "0.3475",
+       "unit": "ratio",
+       "exact": "0.34754281816216890096",
+       "note": ""
+      },
+      {
+       "key": "se",
+       "label": "Standard error of the mean",
+       "value": "0.472582",
+       "unit": "number",
+       "exact": "0.4725815626252608401",
+       "note": ""
+      },
+      {
+       "key": "skew",
+       "label": "Skewness (SKEW)",
+       "value": "0.359543",
+       "unit": "number",
+       "exact": "0.35954307140679714326",
+       "note": ""
+      },
+      {
+       "key": "kurt",
+       "label": "Excess kurtosis (KURT)",
+       "value": "-0.1518",
+       "unit": "number",
+       "exact": "-0.15179963720841421888",
+       "note": ""
+      },
+      {
+       "key": "semivariance",
+       "label": "Target semivariance below 0 (n − 1)",
+       "value": "0",
+       "unit": "number",
+       "exact": "0",
+       "note": ""
+      },
+      {
+       "key": "semideviation",
+       "label": "Target semideviation",
+       "value": "0",
+       "unit": "number",
+       "exact": "0",
+       "note": ""
+      },
+      {
+       "key": "percentile",
+       "label": "90th percentile (PERCENTILE.INC)",
+       "value": "6.1",
+       "unit": "number",
+       "exact": "6.1",
+       "note": ""
+      },
+      {
+       "key": "chebyshev",
+       "label": "Chebyshev: at least this share lies within 2 SD",
+       "value": "75",
+       "unit": "percent",
+       "exact": "75",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Sample variance s² = Σ(x − x̄)² / (n − 1); population σ² = Σ(x − x̄)² / n",
+      "Skewness = n / ((n − 1)(n − 2)) · Σ((x − x̄)/s)³ (Excel SKEW)",
+      "Target semivariance = Σ over x < B of (x − B)² / (n − 1) (CFA)"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "normal",
+   "inputs": {
+    "mode": "value",
+    "mean": "40",
+    "sd": "1.5",
+    "x": "1.96",
+    "x2": "-1.96",
+    "p": "90.8789",
+    "confidence": "95",
+    "n": "1"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "x",
+      "label": "Value with 90.8789% below it (NORM.INV)",
+      "value": "42.000002",
+      "unit": "number",
+      "exact": "42.000002009566161257",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "z",
+       "label": "z",
+       "value": "1.333335",
+       "unit": "number",
+       "exact": "1.3333346730441075044",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "z = (x − μ) / σ;  Φ(z) = ½ + φ(z) · Σ z^(2n+1) / (1·3·5···(2n+1))",
+      "Interval: mean ± z · σ / √n"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "normal",
+   "inputs": {
+    "mode": "interval",
+    "mean": "100",
+    "sd": "15",
+    "x": "1.96",
+    "x2": "-1.96",
+    "p": "95",
+    "confidence": "95",
+    "n": "36"
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "half",
+      "label": "Half-width (± from the mean)",
+      "value": "4.89991",
+      "unit": "number",
+      "exact": "4.8999099613501355888",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "lo",
+       "label": "Lower limit",
+       "value": "95.10009",
+       "unit": "number",
+       "exact": "95.100090038649864411",
+       "note": ""
+      },
+      {
+       "key": "hi",
+       "label": "Upper limit",
+       "value": "104.89991",
+       "unit": "number",
+       "exact": "104.89990996135013559",
+       "note": ""
+      },
+      {
+       "key": "z",
+       "label": "z (two-sided)",
+       "value": "1.959964",
+       "unit": "number",
+       "exact": "1.9599639845400542355",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "z = (x − μ) / σ;  Φ(z) = ½ + φ(z) · Σ z^(2n+1) / (1·3·5···(2n+1))",
+      "Interval: mean ± z · σ / √n"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "var",
+   "inputs": {
+    "method": "historical",
+    "amount": "1000000",
+    "confidence": "95",
+    "days": "1",
+    "mean": "12",
+    "sd": "18",
+    "basis": "252",
+    "returns": [
+     {
+      "r": "1.2"
+     },
+     {
+      "r": "-0.8"
+     },
+     {
+      "r": "0.5"
+     },
+     {
+      "r": "-2.1"
+     },
+     {
+      "r": "1.7"
+     },
+     {
+      "r": "0.3"
+     },
+     {
+      "r": "-1.4"
+     },
+     {
+      "r": "2.2"
+     },
+     {
+      "r": "-0.6"
+     },
+     {
+      "r": "0.9"
+     },
+     {
+      "r": "-3.0"
+     },
+     {
+      "r": "1.1"
+     },
+     {
+      "r": "0.4"
+     },
+     {
+      "r": "-0.2"
+     },
+     {
+      "r": "1.8"
+     },
+     {
+      "r": "-1.1"
+     },
+     {
+      "r": "0.7"
+     },
+     {
+      "r": "-2.5"
+     },
+     {
+      "r": "1.3"
+     },
+     {
+      "r": "0.1"
+     }
+    ]
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "var",
+      "label": "Value at risk, 95% (historical)",
+      "value": "25250.00",
+      "unit": "money",
+      "exact": "25250",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "var_pct",
+       "label": "…as a share of the amount",
+       "value": "2.525",
+       "unit": "percent",
+       "exact": "2.525",
+       "note": ""
+      },
+      {
+       "key": "es",
+       "label": "Expected shortfall: average of the losses at or beyond it",
+       "value": "30000.00",
+       "unit": "money",
+       "exact": "30000",
+       "note": ""
+      },
+      {
+       "key": "n",
+       "label": "Returns used",
+       "value": "20",
+       "unit": "count",
+       "exact": "20",
+       "note": ""
+      },
+      {
+       "key": "prob",
+       "label": "Chance of a loss at least this big",
+       "value": "5",
+       "unit": "percent",
+       "exact": "5",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "VaR = the (1 − confidence) percentile of the returns (PERCENTILE.INC), as a loss"
+     ],
+     "warnings": []
+    }
+   }
+  },
+  {
+   "key": "performance",
+   "inputs": {
+    "data": [
+     {
+      "rp": "2"
+     },
+     {
+      "rp": "-1"
+     },
+     {
+      "rp": "3"
+     }
+    ],
+    "per_year": "12",
+    "rf": "6.5",
+    "mar": ""
+   },
+   "expected": {
+    "ok": true,
+    "value": {
+     "answer": {
+      "key": "sharpe",
+      "label": "Sharpe ratio",
+      "value": "1.3432",
+      "unit": "ratio",
+      "exact": "1.3432019305475187806",
+      "note": ""
+     },
+     "values": [
+      {
+       "key": "ann",
+       "label": "Annualised return (geometric)",
+       "value": "17.0282",
+       "unit": "percent",
+       "exact": "17.028156620956090751",
+       "note": ""
+      },
+      {
+       "key": "vol",
+       "label": "Annualised volatility",
+       "value": "7.2111",
+       "unit": "percent",
+       "exact": "7.2111025509279785862",
+       "note": ""
+      },
+      {
+       "key": "sortino",
+       "label": "Sortino ratio (target 6.5% a year)",
+       "value": "3.1733",
+       "unit": "ratio",
+       "exact": "3.173293440452519409",
+       "note": ""
+      },
+      {
+       "key": "downside",
+       "label": "Downside deviation, annualised",
+       "value": "3.0523",
+       "unit": "percent",
+       "exact": "3.052338855369566966",
+       "note": ""
+      },
+      {
+       "key": "max_dd",
+       "label": "Maximum drawdown",
+       "value": "-1",
+       "unit": "percent",
+       "exact": "-1",
+       "note": ""
+      },
+      {
+       "key": "calmar",
+       "label": "Calmar ratio",
+       "value": "17.0282",
+       "unit": "ratio",
+       "exact": "17.028156620956090751",
+       "note": ""
+      }
+     ],
+     "tables": [],
+     "chart": null,
+     "steps": [
+      "Per period risk-free = (1 + 6.5%)^(1/12) − 1",
+      "Sharpe = (mean return − risk-free) × p / (SD × √p)",
+      "Sortino = (mean return − target) × p / downside deviation;  DD = √(Σ min(0, r − target)² / n) × √p",
+      "Beta = cov(Rp, Rb) / var(Rb);  Jensen's α = [mean Rp − (Rf + β(mean Rb − Rf))] × p",
+      "Treynor = annual excess return / β;  IR = annual mean active return / tracking error",
+      "M² = Rf + Sharpe × benchmark volatility"
+     ],
+     "warnings": [
+      "Add the benchmark's return for each period for beta, alpha, Treynor, tracking error, information ratio, M² and capture ratios."
+     ]
+    }
+   }
+  },
+  {
+   "key": "scenarios",
+   "inputs": {
+    "data": [
+     {
+      "p": "40",
+      "x": "1"
+     },
+     {
+      "p": "50",
+      "x": "2"
+     }
+    ]
+   },
+   "expected": {
+    "ok": false,
+    "code": "calc_input",
+    "message": "The probabilities add up to 90%, not 100%.",
+    "field": "data"
    }
   }
  ],

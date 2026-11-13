@@ -150,8 +150,11 @@ const CashTools = (() => {
 
   function defaultsOf(c) {
     const out = {};
+    const riskFree = window.cashLogRiskFree ? window.cashLogRiskFree() : null;
     for (const f of c.fields) {
-      if (f.kind === 'flows') out[f.key] = [{ amount: '-100000', count: '1' }, { amount: '30000', count: '5' }];
+      if (f.kind === 'table') out[f.key] = (f.rows || []).map((r) => ({ ...r }));
+      else if (f.default_from === 'risk_free' && riskFree) out[f.key] = riskFree;
+      else if (f.kind === 'flows') out[f.key] = [{ amount: '-100000', count: '1' }, { amount: '30000', count: '5' }];
       else if (f.kind === 'dated_flows')
         out[f.key] = [
           { date: '2025-04-01', amount: '-100000' },
@@ -185,7 +188,8 @@ const CashTools = (() => {
       return v.startsWith('-') ? v.slice(1) : `-${v}`;
     };
     const out = {};
-    for (const [k, v] of Object.entries(vals)) out[k] = typeof v === 'string' ? sub(v) : v.map((r) => ({ ...r, amount: sub(r.amount) }));
+    for (const [k, v] of Object.entries(vals))
+      out[k] = typeof v === 'string' ? sub(v) : v.map((r) => Object.fromEntries(Object.entries(r).map(([ck, cv]) => [ck, ck === 'date' ? cv : sub(cv)])));
     return out;
   }
 
@@ -203,6 +207,24 @@ const CashTools = (() => {
       return `<div class="field"><div class="label">${esc(f.label)}</div><div class="seg" role="radiogroup" aria-label="${esc(f.label)}">${f.options
         .map((o) => `<button type="button" role="radio" aria-checked="${solving === o.value}" class="${solving === o.value ? 'on' : ''}" data-t-solve="${esc(o.value)}" data-t-key="${esc(f.key)}">${esc(o.label)}</button>`)
         .join('')}</div></div>`;
+    if (f.kind === 'table') {
+      const rows = vals[f.key] || [];
+      const cols = f.columns || [];
+      const head = `<div class="t-row t-head"><span class="t-cf">#</span>${cols.map((c) => `<span class="t-col">${esc(c.label)}${c.optional ? '<span class="muted"> (opt.)</span>' : ''}</span>`).join('')}<span class="t-x"></span></div>`;
+      const body = rows
+        .map(
+          (r, i) => `<div class="t-row"><span class="t-cf">${i + 1}</span>${cols
+            .map((c) => `<input class="input${c.kind === 'text' || c.kind === 'date' ? '' : ' num'} t-col" ${c.kind === 'date' ? 'type="date"' : c.kind === 'text' ? 'autocomplete="off"' : 'inputmode="decimal" autocomplete="off"'} aria-label="Row ${i + 1} ${esc(c.label)}" value="${esc(r[c.key] || '')}" data-t-row="${esc(f.key)}" data-t-i="${i}" data-t-col="${esc(c.key)}">`)
+            .join('')}<button type="button" class="t-x" aria-label="Remove row ${i + 1}" data-t-del="${esc(f.key)}" data-t-i="${i}">✕</button></div>`,
+        )
+        .join('');
+      return `<div class="field"><div class="label">${esc(f.label)}</div>${hint}${head}${body}${errHtml}
+        <button type="button" class="ghost" data-t-add="${esc(f.key)}">+ Add a row</button>
+        <details class="t-paste"><summary>Paste rows (from Excel or a list)</summary>
+          <p class="small muted">One row a line: ${cols.map((c) => esc(c.label)).join(', ')}; columns split by a tab or a semicolon.</p>
+          <textarea class="input" rows="6" aria-label="Rows to paste" data-t-paste-text="${esc(f.key)}"></textarea>
+          <button type="button" class="ghost" data-t-paste="${esc(f.key)}">Replace the rows</button></details></div>`;
+    }
     if (f.kind === 'flows' || f.kind === 'dated_flows') {
       const dated = f.kind === 'dated_flows';
       const rows = vals[f.key] || [];
@@ -309,6 +331,42 @@ const CashTools = (() => {
       <button type="button" class="ghost t-padbtn" aria-pressed="${T.keypad}" data-t-keypad>${T.keypad ? 'Hide keypad' : 'Keypad, registers and tape'}</button>
       ${T.keypad ? keypadHtml() : ''}
       <div id="t-result">${resultHtml()}</div>`;
+  }
+
+  const MON = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+  /** 2026-04-01, 01-04-2026, 01/04/2026 or 01-Apr-2026 -> 2026-04-01; null if not a date. */
+  function toIsoDate(text) {
+    const t = text.trim();
+    const iso = (y, m, d) => (+m >= 1 && +m <= 12 && +d >= 1 && +d <= 31 ? `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}` : null);
+    let m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(t);
+    if (m) return iso(m[1], m[2], m[3]);
+    m = /^(\d{1,2})[-/.](\d{1,2})[-/.](\d{4})$/.exec(t);
+    if (m) return iso(m[3], m[2], m[1]);
+    m = /^(\d{1,2})[-/ ]([a-z]{3})[a-z]*[-/ ,]+(\d{4})$/i.exec(t);
+    if (m && MON.indexOf(m[2].toLowerCase()) >= 0) return iso(m[3], MON.indexOf(m[2].toLowerCase()) + 1, m[1]);
+    return null;
+  }
+
+  /** Rows pasted for a table: cells in column order, dates in any common style; a heading row is skipped. */
+  function parsePastedTable(text, columns) {
+    const rows = [];
+    for (const line of text.split(/\r?\n/)) {
+      if (!line.trim()) continue;
+      const cells = line.split(/\t|;|\s{2,}/).map((c) => c.trim());
+      const row = {};
+      let bad = false;
+      columns.forEach((c, i) => {
+        const cell = cells[i] || '';
+        if (c.kind === 'date') {
+          const d = toIsoDate(cell);
+          if (cell && !d) bad = true;
+          row[c.key] = d || '';
+        } else row[c.key] = cell.replace(/%$/, '');
+      });
+      const header = columns.some((c, i) => c.kind !== 'text' && c.kind !== 'date' && /[a-z]{3}/i.test(cells[i] || ''));
+      if (!bad && !header) rows.push(row);
+    }
+    return rows;
   }
 
   // ---- tax --------------------------------------------------------------------------------------------------
@@ -487,9 +545,23 @@ const CashTools = (() => {
       persist();
       return draw();
     }
+    if (d.tPaste && c) {
+      const box = T.root.querySelector(`[data-t-paste-text="${d.tPaste}"]`);
+      const f = c.fields.find((x) => x.key === d.tPaste);
+      const rows = box && f ? parsePastedTable(box.value, f.columns || []) : [];
+      if (!rows.length) {
+        if (window.toast) window.toast('No rows could be read.');
+        return;
+      }
+      values(c)[d.tPaste] = rows;
+      persist();
+      return draw();
+    }
     if (d.tAdd && c) {
       const rows = values(c)[d.tAdd];
-      rows.push(rows[0] && 'date' in rows[0] ? { date: rows[rows.length - 1].date, amount: '' } : { amount: '', count: '1' });
+      const f = c.fields.find((x) => x.key === d.tAdd);
+      if (f && f.kind === 'table') rows.push(Object.fromEntries((f.columns || []).map((col) => [col.key, ''])));
+      else rows.push(rows[0] && 'date' in rows[0] ? { date: rows[rows.length - 1].date, amount: '' } : { amount: '', count: '1' });
       persist();
       return draw();
     }

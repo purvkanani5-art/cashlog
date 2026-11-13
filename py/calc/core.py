@@ -86,7 +86,23 @@ def parse_number(text: str) -> Decimal | None:
 
 # ------------------------------------------------------------------------------------------- the form
 
-Kind = Literal["number", "money", "percent", "int", "choice", "date", "flows", "dated_flows", "text", "solve"]
+Kind = Literal[
+    "number", "money", "percent", "int", "choice", "date", "flows", "dated_flows", "text", "solve", "table"
+]
+ColumnKind = Literal["number", "money", "percent", "date", "text"]
+
+
+@dataclass(frozen=True)
+class Column:
+    """One column of a table input (kind "table"): returns by period, prices by date, scenarios."""
+
+    key: str
+    label: str
+    kind: ColumnKind = "number"
+    optional: bool = False
+
+    def as_dict(self) -> dict[str, Any]:
+        return {"key": self.key, "label": self.label, "kind": self.kind, "optional": self.optional}
 
 
 @dataclass(frozen=True)
@@ -102,6 +118,10 @@ class Field:
     options: Sequence[tuple[str, str]] = ()
     show_when: Mapping[str, Sequence[str]] = field(default_factory=dict)
     optional: bool = False
+    columns: Sequence[Column] = ()  # a table's columns
+    rows: Sequence[Mapping[str, str]] = ()  # a table's example rows
+    fill: str = ""  # what the books can fill a table with: returns, returns_pair, prices
+    default_from: str = ""  # a setting that gives the default: risk_free
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -113,6 +133,10 @@ class Field:
             "options": [{"value": v, "label": lab} for v, lab in self.options],
             "show_when": {k: list(v) for k, v in self.show_when.items()},
             "optional": self.optional,
+            "columns": [c.as_dict() for c in self.columns],
+            "rows": [dict(r) for r in self.rows],
+            "fill": self.fill,
+            "default_from": self.default_from,
         }
 
 
@@ -325,6 +349,47 @@ class Inputs:
             raise CalcError("Enter CF0 and at least one later cash flow.", key)
         return out
 
+    def table(self, key: str, *, min_rows: int = 2) -> list[dict[str, Any]]:
+        """The rows of a table field, each cell read by its column's kind (percent as a fraction). Rows left
+        wholly blank are skipped; a part-filled row is an error naming the row and column."""
+        f = self.fields[key]
+        raw = self.raw.get(key)
+        rows = [dict(r) for r in f.rows] if raw is None or raw == "" else self._rows(key)
+        out: list[dict[str, Any]] = []
+        for i, row in enumerate(rows, start=1):
+            cells = {c.key: str(row.get(c.key, "") or "").strip() for c in f.columns}
+            if not any(cells.values()):
+                continue
+            parsed: dict[str, Any] = {}
+            for c in f.columns:
+                t = cells[c.key]
+                if not t:
+                    if c.optional:
+                        parsed[c.key] = None
+                        continue
+                    raise CalcError(f"Row {i}: enter the {c.label.lower()}.", key)
+                if c.kind == "text":
+                    parsed[c.key] = t
+                elif c.kind == "date":
+                    try:
+                        parsed[c.key] = dt.date.fromisoformat(t)
+                    except ValueError:
+                        raise CalcError(
+                            f"Row {i}: give the {c.label.lower()} like 2026-04-01.", key
+                        ) from None
+                else:
+                    v = parse_number(t)
+                    if v is None:
+                        raise CalcError(f"Row {i}: '{t}' is not a number ({c.label.lower()}).", key)
+                    if c.kind == "percent":
+                        with localcontext(ctx()):
+                            v = v / HUNDRED
+                    parsed[c.key] = v
+            out.append(parsed)
+        if len(out) < min_rows:
+            raise CalcError(f"{f.label}: enter at least {min_rows} rows.", key)
+        return out
+
     def dated_flows(self, key: str) -> list[tuple[dt.date, Decimal]]:
         out: list[tuple[dt.date, Decimal]] = []
         for i, row in enumerate(self._rows(key), start=1):
@@ -505,6 +570,9 @@ FAMILIES: list[tuple[str, str]] = [
     ("tvm", "Time value of money"),
     ("rates", "Interest rates"),
     ("cashflow", "Cash flows: NPV and IRR"),
+    ("returns", "Returns"),
+    ("stats", "Statistics"),
+    ("risk", "Risk and performance"),
     ("utils", "Utilities"),
 ]
 
