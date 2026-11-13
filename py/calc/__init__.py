@@ -12,6 +12,9 @@ from typing import Any
 
 from . import (  # noqa: F401  (each registers its calculators)
     cashflow,
+    depreciation,
+    loans,
+    planners,
     rates,
     returns,
     risk,

@@ -569,10 +569,12 @@ class Calculator:
 FAMILIES: list[tuple[str, str]] = [
     ("tvm", "Time value of money"),
     ("rates", "Interest rates"),
+    ("loans", "Loans"),
     ("cashflow", "Cash flows: NPV and IRR"),
     ("returns", "Returns"),
     ("stats", "Statistics"),
     ("risk", "Risk and performance"),
+    ("planners", "Planners: SIP, goals, schemes"),
     ("utils", "Utilities"),
 ]
 

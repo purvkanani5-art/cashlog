@@ -1,11 +1,14 @@
 {
- "from": "Kuberlekha v0.17.0",
+ "from": "Kuberlekha v0.18.0",
  "engine": "1",
  "files": {
-  "calc/__init__.py": "cadc6f3f68bcd5097d27cd8d6263d2b6df62ebd79febdd269853cfc38e2c2d80",
+  "calc/__init__.py": "64bf9a20ac0928a3d8fc59af25d64884e544dc431c95f6a0edf08ac78ae42ea1",
   "calc/cashflow.py": "6b39fc8a0190be6acee32ef1c187d10de357a9f7f7ba5edad2ec3480551fa834",
-  "calc/core.py": "17f5f0576869810d5fa491d76d35b79e9f2ac9694091e0ee93b39aacbc98d7a7",
+  "calc/core.py": "b0edbe548ec4380186c963e6228df7564478bbd1968277ec337eb41eb58ad704",
+  "calc/depreciation.py": "0c2b6c1a87a84198a10bbf17faa1ed09b22b5e8bbb18b0ed2a578efd1a923ff2",
   "calc/expr.py": "4d8c59c98d57959498a1c6d9c67c2ec4637b0d2372cf40e5efaa12a21a37431c",
+  "calc/loans.py": "6577d5a0e504a28d612011a98302049ada49a3ce83006fcbc6dd687111bfa2ab",
+  "calc/planners.py": "834aee1ceb45e7b2ce40818538cf85c31ee26c22318e0314e1cc54f751105e97",
   "calc/rates.py": "f4e9389fa502f1d6b05c8ee4a8c229ee4e3e48adc381e3ee3da1818f9ef5d8ec",
   "calc/returns.py": "8140f5fa4ed06bf5e35fc2c94611be2bac294dde0c5488ebd14c301ee75522e4",
   "calc/risk.py": "dd05d1474d5b34c9567204920c7890aee761e023453d05650e302c93f4479cab",
