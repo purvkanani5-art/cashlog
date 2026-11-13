@@ -25,6 +25,12 @@ for (const [file, sha] of Object.entries(manifest.files)) {
 }
 const onDisk = readdirSync(join(root, 'py', 'calc')).filter((f) => f.endsWith('.py'));
 if (onDisk.length !== Object.keys(manifest.files).length) fail('py/calc has files the manifest does not list');
+// GitHub Pages runs Jekyll unless .nojekyll exists, and Jekyll drops files starting with _ (calc/__init__.py).
+try {
+  readFileSync(join(root, '.nojekyll'));
+} catch {
+  fail('.nojekyll is missing: GitHub Pages would not publish py/calc/__init__.py');
+}
 // Offline: the service worker must keep every engine file and every Pyodide file.
 const sw = readFileSync(join(root, 'sw.js'), 'utf8');
 for (const f of [...Object.keys(manifest.files), 'phone.py', 'tax-defaults.json', 'MANIFEST.json'])
